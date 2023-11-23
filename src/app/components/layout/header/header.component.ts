@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NavigationEnd, Router} from "@angular/router";
+import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +8,7 @@ import {NavigationEnd, Router} from "@angular/router";
 export class HeaderComponent {
   public svgPageNamePath: string | undefined;
 
-  constructor(private readonly router: Router)
-  {
+  constructor(private readonly router: Router) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.svgPageNamePath = this.getSvgAssetByPage();
@@ -22,27 +21,27 @@ export class HeaderComponent {
     let url = this.router.url.split('?')[0];
 
     if (url.length === 1 && url === '/') {
-      path += "home"
+      path += 'home';
     }
 
     if (url.includes('profile')) {
-      path += "profile"
+      path += 'profile';
     }
 
     if (url.includes('chart')) {
-      path += "chart"
+      path += 'chart';
     }
 
     if (url.includes('signals')) {
-      path += "signals"
+      path += 'signals';
     }
 
     if (url.includes('assets')) {
-      path += "assets"
+      path += 'assets';
     }
 
     if (path.length) {
-      return "/assets/images/common/header/" + path + ".svg";
+      return './assets/images/common/header/' + path + '.svg';
     }
 
     return undefined;

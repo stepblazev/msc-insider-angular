@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --host 0.0.0.0 --open",
+    "build": "ng build --base-href=./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run customer-portal-web:serve-ssr",
     "serve:ssr": "node dist/customer-portal-web/server/main.js",
     "build:ssr": "ng build && ng run customer-portal-web:server",
-    "prerender": "ng run customer-portal-web:prerender"
+    "prerender": "ng run customer-portal-web:prerender",
+    "github-deploy": "gh-pages -d dist/customer-portal-web/browser"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +44,7 @@
     "@types/jasmine": "~4.3.0",
     "@types/node": "^16.11.7",
     "autoprefixer": "^10.4.16",
+    "gh-pages": "^6.1.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

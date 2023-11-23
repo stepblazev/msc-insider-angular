@@ -3,9 +3,9 @@
         <div class="assets__access">
             <h4>Доступные вам</h4>
         </div>
-        <ul class="assets__list">
-            <li class="assets__item">
-                <div class="flex items-center flex-grow">
+        <div class="assets__list">
+            <a href="/chart" class="assets__item">
+                <div class="flex flex-grow items-start">
                     <span class="assets__item-title">RUB/USD</span>
                     <span class="assets__item-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -14,7 +14,7 @@
                         </svg>
                     </span>
                 </div>
-                <div class="flex items-center">
+                <div class="flex items-center small:relative">
                     <span class="assets__item-value">91,3921</span>
                     <span class="assets__item-change">- 91,39 (- 91,39%)</span>
                     <button class="favorite">
@@ -25,45 +25,48 @@
                         </svg>
                     </button>
                 </div>
-            </li>
-        </ul>
+            </a>
+        </div>
     </div>
     <div class="assets__section assets__section--unavalible">
         <div class="assets__access">
             <h4>Недоступные</h4>
             <button class="mt-4 min-w-[197px] button--green">Разблокировать</button>
         </div>
-        <ul class="assets__list">
-            <li class="assets__item">
-                <div class="flex items-center">
-                    <span class="assets__item-title">EUR/USD</span>
+        <div class="assets__content">
+            <div class="assets__list">
+                <div class="assets__item">
+                    <div class="flex items-center">
+                        <span class="assets__item-title">EUR/USD</span>
+                    </div>
                 </div>
-            </li>
-            <li class="assets__item">
-                <div class="flex items-center">
-                    <span class="assets__item-title">USD/JPY</span>
+                <div class="assets__item">
+                    <div class="flex items-center">
+                        <span class="assets__item-title">USD/JPY</span>
+                    </div>
                 </div>
-            </li>
-            <li class="assets__item">
-                <div class="flex items-center">
-                    <span class="assets__item-title">GBP/USD</span>
+                <div class="assets__item">
+                    <div class="flex items-center">
+                        <span class="assets__item-title">GBP/USD</span>
+                    </div>
                 </div>
-            </li>
-            <li class="assets__item">
-                <div class="flex items-center">
-                    <span class="assets__item-title">AUD/USD</span>
+                <div class="assets__item">
+                    <div class="flex items-center">
+                        <span class="assets__item-title">AUD/USD</span>
+                    </div>
                 </div>
-            </li>
-            <li class="assets__item">
-                <div class="flex items-center">
-                    <span class="assets__item-title">USD/TRY</span>
+                <div class="assets__item">
+                    <div class="flex items-center">
+                        <span class="assets__item-title">USD/TRY</span>
+                    </div>
                 </div>
-            </li>
-            <li class="assets__item">
-                <div class="flex items-center">
-                    <span class="assets__item-title">GBP/CAD</span>
+                <div class="assets__item">
+                    <div class="flex items-center">
+                        <span class="assets__item-title">GBP/CAD</span>
+                    </div>
                 </div>
-            </li>
-        </ul>
+            </div>
+            <button class="assets__more">Смотреть все</button>
+        </div>
     </div>
 </div>

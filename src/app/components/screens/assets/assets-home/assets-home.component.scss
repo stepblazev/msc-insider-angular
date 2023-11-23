@@ -2,20 +2,29 @@
   @apply border-t-[1px] border-gray5;
 
   &__section {
-    @apply py-8 flex border-b-[1px] border-gray5;
-
-    &--avalible {
-    }
+    @apply py-8 desktop:flex border-b-[1px] border-gray5;
 
     &--unavalible {
-      .assets__item-title {
-        @apply text-gray3;
+      .assets__item {
+        @apply cursor-default;
+
+        &-title {
+          @apply text-gray3;
+        }
+
+        &:after {
+          @apply opacity-0;
+        }
       }
     }
   }
 
   &__access {
-    @apply w-[34%];
+    @apply desktop:w-[34%] mb-8;
+  }
+
+  &__content {
+    @apply w-full;
   }
 
   &__list {
@@ -23,17 +32,34 @@
   }
 
   &__item {
-    @apply flex pb-4 border-b-[1px] border-gray3;
+    @apply relative small:flex block pb-4 border-b-[1px] border-gray3 cursor-pointer;
+
+    &--success {
+      .assets__item-change {
+        @apply bg-greenPrimary;
+      }
+    }
+
+    &:after {
+      content: "Смотреть график";
+      transition: opacity 0.2s ease;
+      @apply absolute left-1/2 translate-x-[-50%] top-1 flex justify-center items-center text-button opacity-0;
+    }
+
+    &:hover:after {
+      @apply small:opacity-100;
+    }
 
     &:not(:last-child) {
       @apply mb-4;
     }
 
     &-title {
-      @apply mr-2 text-numeric-1;
+      @apply mr-2 text-numeric-1 max-small:mb-4;
     }
 
     &-icon {
+      @apply mr-2 mt-1;
     }
 
     &-value {
@@ -41,22 +67,36 @@
     }
 
     &-change {
-      @apply text-numeric-6 mr-4 py-1 px-2 rounded-3xl bg-error;
+      @apply text-numeric-6 small:mr-12 py-1 px-2 rounded-3xl bg-error text-center;
     }
 
-    // TODO Будет вынесено в отдельный компонент
     .favorite {
       all: unset;
-      @apply w-[24px] h-[24px] cursor-pointer;
+      @apply small:w-[24px] small:h-[24px] w-[32px] h-[32px] absolute small:top-[50%] top-0 right-0 small:translate-y-[-50%] cursor-pointer flex justify-center items-center;
 
-      &:hover .svg-fill,
+      svg {
+        @apply w-full h-full;
+      }
+
       &--checked .svg-fill {
         @apply fill-greenPrimary;
+      }
+
+      &:not(.favorite--checked):hover .svg-fill {
+        @apply fill-white;
       }
 
       .svg-fill {
         transition: all 0.2s ease;
       }
+    }
+  }
+
+  &__more {
+    @apply mb-[-1rem] p-4 border-none  rounded-none w-full;
+
+    &:hover {
+      @apply bg-primary bg-opacity-30;
     }
   }
 }
