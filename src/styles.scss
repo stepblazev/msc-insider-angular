@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "styles/mixins";
+@import "styles/fonts";
+@import "styles/ui";
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  @apply bg-black1;
+
+  color: #ffffff;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

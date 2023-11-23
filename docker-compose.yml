@@ -1,0 +1,14 @@
+services:
+  angular:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "3000"
+    ports:
+      - "7562:3000"
+    env_file:
+      - ".env"
+    command:
+      ["npm", "run", "serve:ssr"]

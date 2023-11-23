@@ -1,0 +1,13 @@
+.auth-tabs {
+  &__tab {
+    padding: 8px 32px;
+    color: #ffffff;
+
+    @apply rounded-lg;
+
+    &.active {
+      color: #0E0E15;
+      background-color: #ffffff;
+    }
+  }
+}

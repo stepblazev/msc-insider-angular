@@ -1,0 +1,74 @@
+.tariff {
+  @apply small:h-[439px] flex flex-col bg-gray1 rounded-3xl rounded-bl-none border-[1px] border-gray3 overflow-hidden;
+
+  &__head {
+    @apply py-8 px-4 flex justify-between items-center border-b border-gray3 relative;
+    box-shadow: 0px 16px 24px -4px rgba(0, 0, 0, 0.6);
+  }
+
+  &__popular {
+    @apply px-3 py-1 bg-gray2 rounded-2xl;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 50%);
+    text-wrap: nowrap;
+
+    &--green {
+      @apply bg-greenPrimary;
+    }
+  }
+
+  &__name {
+    @apply text-center flex-grow;
+  }
+
+  &__info {
+    @apply absolute to-50% right-4 cursor-pointer flex justify-center items-center;
+
+    &-toggler {
+      all: unset;
+    }
+  }
+
+  &__hover {
+    @apply w-[240px] text-body-3 bg-gray1 mt-3 p-4 border-[1px] border-gray3 rounded-lg;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  &__body {
+    @apply p-6 flex flex-col flex-grow;
+  }
+
+  &__description {
+    @apply mt-7 max-small:mb-7 text-body-2 text-center flex-grow;
+  }
+
+  &__action {
+    @apply p-6 rounded-xl border-[1px] border-gray3;
+  }
+
+  &__price {
+    @apply text-numeric-2 text-center;
+  }
+
+  &__currency {
+    @apply text-subheader-2 font-medium;
+  }
+
+  &__terms {
+    @apply text-center text-body-3;
+  }
+
+  &__expires {
+    @apply mb-5 flex justify-center items-center gap-2 text-body-3;
+
+    &-date {
+      @apply px-3 py-1 bg-error rounded-2xl;
+    }
+  }
+}

@@ -1,0 +1,218 @@
+<div class="flex phone:flex-col desktop:flex-row w-full">
+  <div class="flex flex-col phone:w-full desktop:w-[454px] phone:mb-6 desktop:mb-0 border border-gray4 rounded-xl px-12 py-8 bg-black1 mr-6">
+    <h4 class="mb-2">Фото профиля</h4>
+
+    <input
+      type="file"
+      accept="image/png, image/jpeg, image/jpg"
+      style="display: none"
+      (change)="onAvatarChange($event)"
+      id="upload-photo"
+    >
+
+    <label class="mx-auto mt-10 cursor-pointer w-[172px] h-[172px] relative" for="upload-photo">
+      <img
+        *ngIf="hasUserPhoto"
+        class="w-full h-full rounded-full"
+        [src]="userService.currentUser?.photo"
+      >
+
+      <svg
+        class="absolute top-0 group transition-[200ms]"
+        [ngClass]="{
+            'hover:bg-black1/50 rounded-full': hasUserPhoto
+        }"
+        width="172" height="172" viewBox="0 0 172 172" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle
+          class="group-hover:stroke-white transition-[200ms]"
+          [ngClass]="{
+            'stroke-white': hasUserPhoto
+          }"
+          cx="86" cy="86" r="85.5" stroke="#67676C"/>
+        <path
+          [ngClass]="{
+            'opacity-0 group-hover:opacity-100': hasUserPhoto
+          }"
+          class="group-hover:fill-white transition-[200ms]"
+          d="M58.0568 105.273H59.0966V112.142H59.1818L63.9545 105.273H64.9773V114H63.9205V107.148H63.8352L59.0795 114H58.0568V105.273ZM66.5465 112.33H67.6204C67.6431 112.625 67.7766 112.849 68.021 113.003C68.2681 113.156 68.5891 113.233 68.984 113.233C69.3874 113.233 69.7326 113.151 70.0195 112.986C70.3065 112.818 70.4499 112.548 70.4499 112.176C70.4499 111.957 70.396 111.767 70.288 111.605C70.18 111.44 70.0281 111.312 69.832 111.222C69.636 111.131 69.4045 111.085 69.1374 111.085H68.0124V110.182H69.1374C69.538 110.182 69.8335 110.091 70.0238 109.909C70.217 109.727 70.3136 109.5 70.3136 109.227C70.3136 108.935 70.2099 108.7 70.0025 108.524C69.7951 108.345 69.5011 108.256 69.1204 108.256C68.7369 108.256 68.4173 108.342 68.1616 108.516C67.9059 108.686 67.771 108.906 67.7567 109.176H66.6999C66.7113 108.824 66.8192 108.513 67.0238 108.243C67.2283 107.97 67.5067 107.757 67.859 107.604C68.2113 107.447 68.6147 107.369 69.0692 107.369C69.5295 107.369 69.9286 107.45 70.2667 107.612C70.6076 107.771 70.8704 107.989 71.055 108.264C71.2425 108.537 71.3363 108.847 71.3363 109.193C71.3363 109.562 71.2326 109.861 71.0252 110.088C70.8178 110.315 70.5579 110.477 70.2454 110.574V110.642C70.4925 110.659 70.707 110.739 70.8888 110.881C71.0735 111.02 71.217 111.203 71.3192 111.43C71.4215 111.655 71.4727 111.903 71.4727 112.176C71.4727 112.574 71.3661 112.92 71.1531 113.216C70.94 113.509 70.6474 113.736 70.2752 113.898C69.9031 114.057 69.4783 114.136 69.0011 114.136C68.538 114.136 68.1232 114.061 67.7567 113.911C67.3903 113.757 67.0991 113.545 66.8832 113.276C66.6701 113.003 66.5579 112.688 66.5465 112.33ZM76.4648 112.636L78.7489 107.455H79.7035L76.8739 114H76.0558L73.2773 107.455H74.2148L76.4648 112.636ZM73.891 107.455V114H72.8853V107.455H73.891ZM79.0387 114V107.455H80.0444V114H79.0387ZM84.6296 114.136C83.9989 114.136 83.4549 113.997 82.9975 113.719C82.543 113.438 82.1921 113.045 81.945 112.543C81.7006 112.037 81.5785 111.449 81.5785 110.778C81.5785 110.108 81.7006 109.517 81.945 109.006C82.1921 108.491 82.5359 108.091 82.9762 107.804C83.4194 107.514 83.9364 107.369 84.5273 107.369C84.8683 107.369 85.2049 107.426 85.5373 107.54C85.8697 107.653 86.1722 107.838 86.445 108.094C86.7177 108.347 86.935 108.682 87.0969 109.099C87.2589 109.517 87.3398 110.031 87.3398 110.642V111.068H82.2944V110.199H86.3171C86.3171 109.83 86.2433 109.5 86.0955 109.21C85.9506 108.92 85.7433 108.692 85.4734 108.524C85.2063 108.357 84.891 108.273 84.5273 108.273C84.1268 108.273 83.7802 108.372 83.4876 108.571C83.1978 108.767 82.9748 109.023 82.8185 109.338C82.6623 109.653 82.5842 109.991 82.5842 110.352V110.932C82.5842 111.426 82.6694 111.845 82.8398 112.189C83.0131 112.53 83.2532 112.79 83.56 112.969C83.8668 113.145 84.2234 113.233 84.6296 113.233C84.8938 113.233 85.1325 113.196 85.3455 113.122C85.5614 113.045 85.7475 112.932 85.9038 112.781C86.06 112.628 86.1808 112.437 86.266 112.21L87.2376 112.483C87.1353 112.812 86.9634 113.102 86.7219 113.352C86.4805 113.599 86.1822 113.793 85.8271 113.932C85.4719 114.068 85.0728 114.136 84.6296 114.136ZM93.2504 110.267V111.205H89.6367V110.267H93.2504ZM89.8754 107.455V114H88.8697V107.455H89.8754ZM94.0174 107.455V114H93.0117V107.455H94.0174ZM96.8597 112.517L100.013 107.455H101.172V114H100.167V108.938L97.0302 114H95.854V107.455H96.8597V112.517ZM102.124 108.392V107.455H107.442V108.392H105.294V114H104.288V108.392H102.124ZM109.778 109.824H111.653C112.42 109.824 113.007 110.018 113.413 110.408C113.819 110.797 114.022 111.29 114.022 111.886C114.022 112.278 113.931 112.635 113.75 112.956C113.568 113.274 113.301 113.528 112.949 113.719C112.596 113.906 112.164 114 111.653 114H108.909V107.455H109.914V113.062H111.653C112.051 113.062 112.377 112.957 112.633 112.747C112.889 112.537 113.017 112.267 113.017 111.938C113.017 111.591 112.889 111.308 112.633 111.089C112.377 110.871 112.051 110.761 111.653 110.761H109.778V109.824Z"
+          fill="#67676C"
+        />
+        <path
+          [ngClass]="{
+            'opacity-0 group-hover:opacity-100': hasUserPhoto
+          }"
+          class="group-hover:stroke-white transition-[200ms]"
+          d="M86 81.6666C88.7614 81.6666 91 79.428 91 76.6666C91 73.9052 88.7614 71.6666 86 71.6666C83.2386 71.6666 81 73.9052 81 76.6666C81 79.428 83.2386 81.6666 86 81.6666Z"
+          stroke="#67676C"
+          stroke-width="1.5"/>
+        <path
+          [ngClass]="{
+            'opacity-0 group-hover:opacity-100': hasUserPhoto
+          }"
+          class="group-hover:stroke-white transition-[200ms]"
+          d="M82.2954 90H89.702C94.9037 90 97.5054 90 99.3737 88.775C100.18 88.2466 100.874 87.5647 101.417 86.7683C102.665 84.935 102.665 82.38 102.665 77.2733C102.665 72.165 102.665 69.6116 101.417 67.7783C100.874 66.9818 100.18 66.3 99.3737 65.7716C98.1737 64.9833 96.6704 64.7016 94.3687 64.6016C93.2704 64.6016 92.3254 63.785 92.1104 62.7266C91.9461 61.9514 91.5191 61.2567 90.9018 60.7599C90.2844 60.2631 89.5145 59.9946 88.722 60H83.2754C81.6287 60 80.2104 61.1416 79.887 62.7266C79.672 63.785 78.727 64.6016 77.6287 64.6016C75.3287 64.7016 73.8254 64.985 72.6237 65.7716C71.8181 66.3001 71.1243 66.9819 70.582 67.7783C69.332 69.6116 69.332 72.165 69.332 77.2733C69.332 82.38 69.332 84.9333 70.5804 86.7683C71.1204 87.5616 71.8137 88.2433 72.6237 88.775C74.492 90 77.0937 90 82.2954 90Z"
+          stroke="#67676C"
+          stroke-width="1.5"/>
+        <path
+          [ngClass]="{
+            'opacity-0 group-hover:opacity-100': hasUserPhoto
+          }"
+          class="group-hover:stroke-white transition-[200ms]"
+          d="M97.6667 71.6666H96"
+          stroke="#67676C" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </label>
+
+    <span
+      *ngIf="hasUserPhoto"
+      (click)="onAvatarRemove()"
+      class="text-error text-caption mt-4 mx-auto cursor-pointer"
+    >Удалить фото</span>
+  </div>
+
+  <div class="flex flex-1 phone:justify-center desktop:justify-between border border-gray4 rounded-xl px-12 py-8 bg-black1">
+    <div class="flex flex-col">
+      <h4 class="mb-2">Данные авторизации</h4>
+
+      <form
+        (ngSubmit)="onProfileEdiSubmit()"
+        [formGroup]="form"
+        class="w-[350px] mt-4"
+      >
+        <div class="input-group">
+          <input
+            [ngClass]="{
+            'input-control__error': nameControlHasError && nameControl.touched,
+            'input-control__success': nameControl.valid
+           }"
+            class="input-control"
+            formControlName="name"
+            placeholder="ФИО"
+            type="text"
+            autocomplete="name"
+          >
+
+          <div
+            *ngIf="nameControl.errors?.['minlength'] && !nameControl.errors?.['required'] && nameControl.touched"
+            class="input-control__error"
+          >
+            Минимальная длина фио 4 символа
+          </div>
+
+          <div
+            *ngIf="nameControl.errors?.['required'] && nameControl.touched"
+            class="input-control__error"
+          >
+            Поле обязательное
+          </div>
+        </div>
+
+        <div class="input-group">
+          <input
+            [ngClass]="{
+              'input-control__error': emailControlHasError && emailControl.touched,
+              'input-control__success': emailControl.valid
+             }"
+            class="input-control"
+            formControlName="email"
+            placeholder="Email"
+            type="email"
+            autocomplete="username"
+          >
+          <div
+            *ngIf="emailControl.errors?.['email'] && !emailControl.errors?.['required'] && emailControl.touched"
+            class="input-control__error"
+          >
+            Введите корректный адрес эл. почты
+          </div>
+
+          <div
+            *ngIf="emailControl.errors?.['required'] && emailControl.touched"
+            class="input-control__error"
+          >
+            Поле обязательное
+          </div>
+        </div>
+
+        <div class="input-group">
+          <input
+            [ngClass]="{
+      'input-control__error': passwordControlHasError && passwordControl.touched,
+      'input-control__success': passwordControl.valid
+     }"
+            class="input-control"
+            formControlName="password"
+            placeholder="Пароль, не менее 4 символов"
+            [type]="passwordControlType"
+            autocomplete="password"
+          >
+          <control-password-eye
+            [onClick]="togglePasswordControlType"
+            [isActive]="passwordControlType === 'text'"
+          />
+
+          <div
+            *ngIf="passwordControl.errors?.['pattern'] && !passwordControl.errors?.['minlength'] && passwordControl.touched"
+            class="input-control__error"
+          >
+            Пароль должен содержать хотя бы одну букву в верхнем и нижнем регистре и одну цифру
+          </div>
+
+          <div
+            *ngIf="passwordControl.errors?.['minlength'] && !passwordControl.errors?.['required'] && passwordControl.touched"
+            class="input-control__error"
+          >
+            Минимальная длина пароля 4 символа
+          </div>
+
+          <div
+            *ngIf="passwordControl.errors?.['required'] && passwordControl.touched"
+            class="input-control__error"
+          >
+            Поле обязательное
+          </div>
+        </div>
+
+        <button
+          *ngIf="formBlocked"
+          class="mt-4 w-full"
+          (click)="unblockForm()"
+        >
+          <span>Изменить</span>
+        </button>
+
+        <button
+          *ngIf="!formBlocked"
+          [disabled]="form.invalid || isLoading"
+          class="mt-4 w-full"
+          type="submit"
+        >
+          <span *ngIf="!isLoading">Сохранить изменения</span>
+          <span *ngIf="isLoading"><app-loader-indicator/></span>
+        </button>
+
+        <button
+          *ngIf="!formBlocked"
+          [disabled]="isLoading"
+          class="mt-4 w-full button--gray"
+          (click)="lockForm(true)"
+        >
+          <span>Отменить</span>
+        </button>
+      </form>
+    </div>
+
+    <svg class="phone:hidden desktop:block" width="276" height="276" viewBox="0 0 276 276" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M125 63C125 28.7583 97.2417 1.00001 63 1C28.7584 1 1 28.7583 1 63C1 97.2417 28.7583 125 63 125C97.2416 125 125 97.2417 125 63ZM126 63C126 28.2061 97.794 7.62939e-06 63 0C28.2061 0 0 28.2061 0 63C0 97.7939 28.206 126 63 126C97.7939 126 126 97.7939 126 63ZM213 1C247.242 1.00001 275 28.7583 275 63C275 97.2417 247.242 125 213 125C178.758 125 151 97.2417 151 63C151 28.7583 178.758 1 213 1ZM213 0C247.794 7.62939e-06 276 28.2061 276 63C276 97.7939 247.794 126 213 126C178.206 126 150 97.7939 150 63C150 28.2061 178.206 0 213 0ZM213 275C178.758 275 151 247.242 151 213C151 178.758 178.758 151 213 151C247.242 151 275 178.758 275 213C275 247.242 247.242 275 213 275ZM150 213C150 247.794 178.206 276 213 276C247.794 276 276 247.794 276 213C276 178.206 247.794 150 213 150C178.206 150 150 178.206 150 213Z"
+            fill="url(#paint0_linear_584_37883)"/>
+      <defs>
+        <linearGradient id="paint0_linear_584_37883" x1="0" y1="0" x2="276" y2="276" gradientUnits="userSpaceOnUse">
+          <stop offset="0.224849" stop-color="white" stop-opacity="0.05"/>
+          <stop offset="0.486846" stop-color="white"/>
+          <stop offset="0.725179" stop-color="white" stop-opacity="0.05"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+</div>

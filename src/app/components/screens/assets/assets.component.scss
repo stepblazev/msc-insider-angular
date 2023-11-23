@@ -1,0 +1,37 @@
+.assets-links {
+  @apply m-[-0.75rem] max-small:m-[-0.5rem] flex flex-wrap pb-8;
+
+  &__item {
+    @apply laptop:w-1/3 small:w-1/2 w-full p-3 max-small:p-2;
+  }
+
+  &__title {
+    @apply mr-4;
+  }
+
+  &__icon svg {
+    @apply max-small:w-[42px] max-small:h-[42px];
+  }
+
+  &__link {
+    @apply w-full p-6 max-small:p-4 pr-8 flex justify-between border-[1px] border-gray3 rounded-xl max-small:items-center;
+    transition: border 0.2s ease;
+
+    .svg-fill,
+    .svg-stroke {
+      transition: fill 0.2s ease, stroke 0.2s ease;
+    }
+
+    &:hover,
+    &.active {
+      @apply border-greenPrimary;
+
+      .svg-fill {
+        @apply fill-greenPrimary;
+      }
+      .svg-stroke {
+        @apply stroke-greenPrimary;
+      }
+    }
+  }
+}

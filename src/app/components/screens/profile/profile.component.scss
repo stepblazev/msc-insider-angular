@@ -1,0 +1,68 @@
+.profile-menu-item {
+  @apply flex flex-1 border border-gray3 rounded-xl h-[132px] justify-between p-6;
+
+  &__responsive {
+    @apply phone:w-full laptop:w-[initial] phone:mb-4 [&:last-child]:mb-0 laptop:mb-0 phone:p-4 laptop:p-6;
+
+    .profile-menu-item__title {
+      margin-bottom: 0;
+    }
+
+    .profile-menu-item__subtitle {
+      @apply mt-2;
+    }
+
+    .profile-menu-item__icon svg {
+      @apply phone:w-[24px] phone:h-[24px] laptop:w-[initial] laptop:h-[initial];
+    }
+  }
+
+  &__title-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    @apply mb-2;
+  }
+
+  &__subtitle {
+    @apply text-body-3;
+  }
+
+  &__tariff {
+    &-middle {
+      @apply text-greenPrimary;
+    }
+
+    &-max {
+      @apply text-error;
+    }
+
+    &-admin {
+      @apply text-error;
+    }
+  }
+
+  &,
+  path,
+  rect {
+    @apply transition-[200ms];
+  }
+
+  &:hover,
+  &.active {
+    @apply border-greenPrimary;
+
+    .profile-menu-item__icon {
+      path.fill-only {
+        @apply fill-greenPrimary;
+      }
+
+      path:not(.fill-only),
+      rect {
+        @apply stroke-greenPrimary;
+      }
+    }
+  }
+}

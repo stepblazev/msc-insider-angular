@@ -1,0 +1,7 @@
+.tariff-list {
+  @apply flex flex-row flex-wrap justify-between small:mx-[-0.75rem] my-[-0.75rem];
+
+  &__item {
+    @apply w-full small:w-1/2 small:p-3 max-small:py-3 desktop:w-1/4 desktop:px-3;
+  }
+}

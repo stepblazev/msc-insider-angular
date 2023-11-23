@@ -1,0 +1,18 @@
+<div class="popup" [ngStyle]="{visibility: isOpened ? 'visible': 'hidden'}">
+    <div class="popup__backdrop" (click)="closeModal()" [@backdropState]="isOpened ? 'visible' : 'hidden'"></div>
+    <div class="popup__container" [@popupState]="isOpened ? 'visible' : 'hidden'">
+        <div class="popup__window container">
+            <button class="popup__close" (click)="closeModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="white" />
+                    <path d="M20.2422 11.7574L11.7569 20.2427" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    <path d="M20.2422 20.2426L11.7569 11.7574" stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="text-caption text-center small:mt-1 max-small:mr-3">Esc.</span>
+            </button>
+            <div class="popup__content">
+                <ng-content />
+            </div>
+        </div>
+    </div>
+</div>

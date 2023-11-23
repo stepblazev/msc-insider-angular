@@ -1,0 +1,50 @@
+.menu-item {
+  @apply flex items-center phone:justify-center p-4 max-phone2:p-2 border bg-primary mr-2 last:mr-0 rounded-xl cursor-pointer;
+  transition: 200ms;
+
+  &.active,
+  &:not(.active):hover {
+    @apply bg-white;
+
+    .menu-item-icon {
+      path,
+      rect {
+        @apply stroke-primary;
+      }
+    }
+
+    .menu-item-text {
+      @apply text-primary;
+    }
+  }
+
+  &-icon {
+    @apply mr-0 small:mr-2;
+    transition: 200ms;
+
+    rect,
+    path {
+      transition: 200ms;
+    }
+  }
+
+  &-text {
+    @apply mr-2 hidden small:block;
+    transition: 200ms;
+  }
+
+  &-home {
+    @apply py-3 max-phone2:py-1 max-phone2:flex-grow;
+
+    svg,
+    path {
+      transition: 200ms;
+    }
+
+    &:not(.active):hover {
+      path {
+        @apply fill-primary;
+      }
+    }
+  }
+}

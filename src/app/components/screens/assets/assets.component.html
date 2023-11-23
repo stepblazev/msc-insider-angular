@@ -1,0 +1,138 @@
+<section class="container">
+    <h1>Активы</h1>
+    <p class="my-8 text-subheader-1">Выберите категорию</p>
+
+    <div class="assets-links">
+
+        <div class="assets-links__item">
+            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets')}" routerLink="/assets"
+                class="assets-links__link">
+                <h4 class="assets-links__title">
+                    Валютные пары
+                </h4>
+                <span class="assets-links__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                        <g clip-path="url(#clip0_466_9737)">
+                            <rect class="svg-stroke" x="38" y="38" width="44" height="44" rx="6" stroke="#3B3B41"
+                                stroke-width="4" />
+                            <path class="svg-fill" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M8 4H40C42.2091 4 44 5.79086 44 8V30H48V8C48 3.58172 44.4183 0 40 0H8C3.58172 0 0 3.58172 0 8V40C0 44.4183 3.58172 48 8 48H30V44H8C5.79086 44 4 42.2091 4 40V8C4 5.79086 5.79086 4 8 4Z"
+                                fill="#3B3B41" />
+                            <path class="svg-fill" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M22 12H18V16V23H16C14.8954 23 14 23.8954 14 25C14 26.1046 14.8954 27 16 27H18V29H15.5C14.6716 29 14 29.6716 14 30.5C14 31.3284 14.6716 32 15.5 32H18V36H22V32H28.5C29.3284 32 30 31.3284 30 30.5C30 29.6716 29.3284 29 28.5 29H22V27H26.5C30.6421 27 34 23.6421 34 19.5C34 15.3579 30.6421 12 26.5 12H22ZM22 23H26.5C28.433 23 30 21.433 30 19.5C30 17.567 28.433 16 26.5 16H22V23Z"
+                                fill="#3B3B41" />
+                            <path class="svg-stroke"
+                                d="M67 51H57.7368C55.1208 51 53 53.1208 53 55.7368V55.7368C53 58.3529 55.1208 60.4737 57.7368 60.4737H62.7368C65.0913 60.4737 67 62.3824 67 64.7368V64.7368C67 67.0913 65.0913 69 62.7368 69H53"
+                                stroke="#3B3B41" stroke-width="4" stroke-linecap="round" />
+                            <rect class="svg-fill" x="58" y="45" width="4" height="7" rx="2" fill="#3B3B41" />
+                            <rect class="svg-fill" x="58" y="68" width="4" height="7" rx="2" fill="#3B3B41" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_466_9737">
+                                <rect width="84" height="84" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="assets-links__item">
+            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets/stocks')}" routerLink="stocks"
+                class="assets-links__link">
+                <h4 class="assets-links__title">
+                    Акции
+                </h4>
+                <span class="assets-links__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                        <rect class="svg-stroke" x="12" y="12" width="60" height="60" rx="6" stroke="#3B3B41"
+                            stroke-width="4" />
+                        <path class="svg-stroke"
+                            d="M22 51L38.7929 34.2071C39.1834 33.8166 39.8166 33.8166 40.2071 34.2071L45.7929 39.7929C46.1834 40.1834 46.8174 40.1826 47.2079 39.7921C53.9705 33.0295 54.8231 32.1769 62 25"
+                            stroke="#3B3B41" stroke-width="4" stroke-linecap="round" />
+                        <rect class="svg-fill" x="20" y="57.5" width="43" height="4" rx="2" fill="#3B3B41" />
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="assets-links__item">
+            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets/indexes')}" routerLink="indexes"
+                class="assets-links__link">
+                <h4 class="assets-links__title">
+                    Индексы
+                </h4>
+                <span class="assets-links__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                        <rect class="svg-stroke" x="12" y="12" width="60" height="60" rx="6" stroke="#3B3B41"
+                            stroke-width="4" />
+                        <rect class="svg-fill" x="40" y="58" width="28" height="4" rx="2" transform="rotate(-90 40 58)"
+                            fill="#3B3B41" />
+                        <rect class="svg-fill" x="32" y="58" width="18" height="4" rx="2" transform="rotate(-90 32 58)"
+                            fill="#3B3B41" />
+                        <rect class="svg-fill" x="56" y="58" width="32" height="4" rx="2" transform="rotate(-90 56 58)"
+                            fill="#3B3B41" />
+                        <rect class="svg-fill" x="24" y="58" width="24" height="4" rx="2" transform="rotate(-90 24 58)"
+                            fill="#3B3B41" />
+                        <rect class="svg-fill" x="48" y="58" width="24" height="4" rx="2" transform="rotate(-90 48 58)"
+                            fill="#3B3B41" />
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="assets-links__item">
+            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets/products')}" routerLink="products"
+                class="assets-links__link">
+                <h4 class="assets-links__title">
+                    Товар
+                </h4>
+                <span class="assets-links__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                        <rect class="svg-stroke" x="12" y="12" width="60" height="60" rx="6" stroke="#3B3B41"
+                            stroke-width="4" />
+                        <rect class="svg-fill" x="30" y="60" width="16" height="4" rx="2" fill="#3B3B41" />
+                        <rect class="svg-fill" x="48" y="60" width="16" height="4" rx="2" fill="#3B3B41" />
+                        <rect class="svg-fill" x="30" y="54" width="16" height="4" rx="2" fill="#3B3B41" />
+                        <rect class="svg-fill" x="48" y="54" width="16" height="4" rx="2" fill="#3B3B41" />
+                        <rect class="svg-fill" x="48" y="48" width="16" height="4" rx="2" fill="#3B3B41" />
+                        <rect class="svg-fill" x="48" y="42" width="16" height="4" rx="2" fill="#3B3B41" />
+                        <rect class="svg-fill" x="48" y="36" width="16" height="4" rx="2" fill="#3B3B41" />
+                        <rect class="svg-fill" x="30" y="48" width="16" height="4" rx="2" fill="#3B3B41" />
+                        <circle class="svg-stroke" cx="30" cy="30" r="8" stroke="#3B3B41" stroke-width="4" />
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="assets-links__item">
+            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets/more')}" routerLink="more"
+                class="assets-links__link">
+                <h4 class="assets-links__title">
+                    Другое
+                </h4>
+                <span class="assets-links__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="84" height="84" viewBox="0 0 84 84" fill="none">
+                        <rect class="svg-stroke" x="12" y="12" width="60" height="60" rx="6" stroke="#3B3B41"
+                            stroke-width="4" />
+                        <circle class="svg-stroke" cx="30" cy="30" r="8" stroke="#3B3B41" stroke-width="4" />
+                        <circle class="svg-stroke" cx="54" cy="30" r="8" stroke="#3B3B41" stroke-width="4" />
+                        <circle class="svg-stroke" cx="54" cy="54" r="8" stroke="#3B3B41" stroke-width="4" />
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+    </div>
+
+    <section>
+        <router-outlet />
+    </section>
+    <section class="mt-[88px] tariffs">
+        <h3>Тарифные планы</h3>
+        <p class="mt-6 text-subheader-2">Выберите свой путь к успеху с нашими тарифными планами!</p>
+        <div class="mt-8 mb-12">
+            <app-tariff-list />
+        </div>
+    </section>
+</section>

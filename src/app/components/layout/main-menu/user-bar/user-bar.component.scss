@@ -1,0 +1,50 @@
+.user-bar-item {
+  @apply cursor-pointer border flex items-center px-4 py-2 bg-black1 mr-2 transition-[200ms] rounded-xl;
+
+  &__icon {
+    @apply mr-2;
+
+    rect {
+      @apply transition-[200ms];
+    }
+
+    path {
+      @apply transition-[200ms];
+    }
+  }
+
+  &__name {
+    @apply transition-[200ms] text-[14px] leading-[16px] font-bold;
+    &-group {
+      @apply flex flex-col;
+    }
+  }
+
+  &__role {
+    @apply transition-[200ms] text-caption;
+  }
+
+  &:hover,
+  &.active {
+    @apply bg-white;
+
+    .user-bar-item__name {
+      @apply text-black1;
+    }
+
+    .user-bar-item__role {
+      @apply text-primary;
+    }
+
+    .user-bar-item__icon {
+      rect {
+        @apply stroke-black1;
+      }
+
+      path {
+        @apply fill-black1;
+      }
+    }
+
+  }
+}

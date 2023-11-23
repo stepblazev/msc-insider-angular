@@ -1,0 +1,111 @@
+<form
+  (ngSubmit)="onSubmit()"
+  [formGroup]="form"
+  class="w-full"
+>
+  <div class="input-group">
+    <input
+      [ngClass]="{
+      'input-control__error': fioControlHasError && fioControl.touched,
+      'input-control__success': fioControl.valid
+     }"
+      class="input-control"
+      formControlName="fio"
+      placeholder="ФИО"
+      type="text"
+      autocomplete="name"
+      (blur)="this.authService.isOneOfAuthFormIsInvalid = !!fioControlHasError"
+    >
+
+    <div
+      *ngIf="fioControl.errors?.['minlength'] && !fioControl.errors?.['required'] && fioControl.touched"
+      class="input-control__error"
+    >
+      Минимальная длина фио 4 символа
+    </div>
+
+    <div
+      *ngIf="fioControl.errors?.['required'] && fioControl.touched"
+      class="input-control__error"
+    >
+      Поле обязательное
+    </div>
+  </div>
+
+  <div class="input-group">
+    <input
+      [ngClass]="{
+      'input-control__error': emailControlHasError && emailControl.touched,
+      'input-control__success': emailControl.valid
+     }"
+      class="input-control"
+      formControlName="email"
+      placeholder="Email"
+      type="email"
+      autocomplete="username"
+      (blur)="this.authService.isOneOfAuthFormIsInvalid = !!emailControlHasError"
+    >
+    <div
+      *ngIf="emailControl.errors?.['email'] && !emailControl.errors?.['required'] && emailControl.touched"
+      class="input-control__error"
+    >
+      Введите корректный адрес эл. почты
+    </div>
+
+    <div
+      *ngIf="emailControl.errors?.['required'] && emailControl.touched"
+      class="input-control__error"
+    >
+      Поле обязательное
+    </div>
+  </div>
+
+  <div class="input-group">
+    <input
+      [ngClass]="{
+      'input-control__error': passwordControlHasError && passwordControl.touched,
+      'input-control__success': passwordControl.valid
+     }"
+      class="input-control"
+      formControlName="password"
+      placeholder="Пароль, не менее 4 символов"
+      [type]="passwordControlType"
+      autocomplete="new-password"
+      (blur)="this.authService.isOneOfAuthFormIsInvalid = !!passwordControlHasError"
+    >
+    <control-password-eye
+      (click)="togglePasswordControlType()"
+      [isActive]="passwordControlType === 'text'"
+    />
+
+    <div
+      *ngIf="passwordControl.errors?.['pattern'] && !passwordControl.errors?.['minlength'] && passwordControl.touched"
+      class="input-control__error"
+    >
+      Пароль должен содержать хотя бы одну букву в верхнем и нижнем регистре и одну цифру
+    </div>
+
+    <div
+      *ngIf="passwordControl.errors?.['minlength'] && !passwordControl.errors?.['required'] && passwordControl.touched"
+      class="input-control__error"
+    >
+      Минимальная длина пароля 4 символа
+    </div>
+
+    <div
+      *ngIf="passwordControl.errors?.['required'] && passwordControl.touched"
+      class="input-control__error"
+    >
+      Поле обязательное
+    </div>
+  </div>
+
+  <button
+    [disabled]="form.invalid || isLoading"
+    class="mt-4 w-full"
+    type="submit"
+  >
+    <span *ngIf="!isLoading">Зарегистрироваться</span>
+    <span *ngIf="isLoading"><app-loader-indicator/></span>
+  </button>
+</form>
