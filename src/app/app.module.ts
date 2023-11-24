@@ -73,6 +73,7 @@ function initializeApp(userService: UserService) {
 })
 export class AppModule {
   constructor(private readonly _subscriptionService: SubscriptionService) {
-    _subscriptionService.fetchTariffList();
+    this._subscriptionService.fetchTariffList();
+    this._subscriptionService.fetchCurrentSubscription();
   }
 }

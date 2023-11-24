@@ -7,6 +7,7 @@ import {
   IMakeSubscriptionPayloadDTO,
   IMakeSubscriptionResponseDTO,
 } from '../dto/make-subscription.dto';
+import { ICurrentSubscriptionResponseDTO } from '../dto/current-subscription';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +21,18 @@ export class SubscriptionRepository {
       .pipe(retry(2));
   }
 
+  public getCurrentSubscription(): Observable<IMakeSubscriptionResponseDTO> {
+    return this._http
+      .get<ICurrentSubscriptionResponseDTO>(`${BASE_URL}/api/v1/subscription`)
+      .pipe(retry(2));
+  }
+
   public makeSubscription(
     payload: IMakeSubscriptionPayloadDTO
   ): Observable<IMakeSubscriptionResponseDTO> {
     return this._http
       .post<IMakeSubscriptionResponseDTO>(
-        `${BASE_URL}/api/v1/subscription/new`,
+        `${BASE_URL}/api/v1/subscription`,
         payload
       )
       .pipe(retry(2));

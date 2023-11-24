@@ -59,17 +59,16 @@ export class PopupComponent implements OnChanges, OnInit {
   ngOnChanges(changes: SimpleChanges) {
     // Убираем скролл при открытом окне
     if (changes['isOpened']) {
-      if (this.isOpened) {
-        // Сохраняем текущую ширину скроллбара
-        const scrollbarWidth: number =
-          window.innerWidth - document.documentElement.clientWidth;
-
-        document.body.style.overflow = 'hidden';
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-      } else {
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
-      }
+      //   if (this.isOpened) {
+      //     // Сохраняем текущую ширину скроллбара
+      //     const scrollbarWidth: number =
+      //       window.innerWidth - document.documentElement.clientWidth;
+      //     document.body.style.overflow = 'hidden';
+      //     document.body.style.paddingRight = `${scrollbarWidth}px`;
+      //   } else {
+      //     document.body.style.overflow = '';
+      //     document.body.style.paddingRight = '';
+      //   }
     }
   }
 }
