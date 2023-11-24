@@ -147,7 +147,8 @@
                     <span class="menu-item-text">Графики</span>
                 </a>
 
-                <a [ngClass]="{'active': isTariffsOpened}" class="menu-item" (click)="isTariffsOpened=true">
+                <a [ngClass]="{'active': _subscriptionService.isTariffPopupOpened}" class="menu-item"
+                    (click)="_subscriptionService.openTariffPopup()">
                     <svg class=" menu-item-icon" fill="none" height="24" viewBox="0 0 24 24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -166,7 +167,8 @@
     </div>
 </section>
 
-<app-popup [isOpened]="isTariffsOpened" (closeModalEvent)="isTariffsOpened=false">
+<app-popup [isOpened]="_subscriptionService.isTariffPopupOpened"
+    (closeModalEvent)="_subscriptionService.closeTariffPopup()">
     <div class="mb-6 pt-6 pb-8 border-[1px] border-gray2 rounded-bl-none rounded-3xl spliced-block-gradient--double">
         <h2 class="text-center leading-none">Тарифные планы</h2>
         <p class="mt-3 text-body-2 text-center">Выберите свой путь к успеху с нашими тарифными планами!</p>

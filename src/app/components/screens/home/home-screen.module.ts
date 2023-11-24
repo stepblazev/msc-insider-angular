@@ -5,7 +5,7 @@ import { BenefitsComponent } from './components/benefits/benefits.component';
 import { WelcomeBannerComponent } from './components/welcome-banner/welcome-banner.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TariffsComponent } from './components/tariffs/tariffs.component';
-import { TariffListComponent } from '../../others/tariff-list/tariff-list.component';
+import { TariffListModule } from '../../features/tariff-list/tariff-list.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +15,6 @@ import { TariffListComponent } from '../../others/tariff-list/tariff-list.compon
     AboutUsComponent,
     TariffsComponent,
   ],
-  imports: [CommonModule, TariffListComponent],
+  imports: [CommonModule, TariffListModule],
 })
 export class HomeScreenModule {}

@@ -20,6 +20,7 @@ import { AuthPopupModule } from './components/features/auth-popup/auth-popup.mod
 import { ChartScreenModule } from './components/screens/chart/chart-screen.module';
 import { UserService } from './modules/user/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SubscriptionService } from './modules/subscription/subscription.service';
 
 function initializeApp(userService: UserService) {
   return async () => {
@@ -70,4 +71,8 @@ function initializeApp(userService: UserService) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private readonly _subscriptionService: SubscriptionService) {
+    _subscriptionService.fetchTariffList();
+  }
+}

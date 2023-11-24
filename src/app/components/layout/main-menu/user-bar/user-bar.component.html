@@ -1,72 +1,47 @@
-<div class="phone:mb-4 desktop:mb-0 ml-2 p-2 h-[76px] border-white border rounded-xl rounded-bl-none bg-primary">
-  <div
-    *ngIf="userService.isAuthorized"
-    class="flex"
-  >
-    <a
-      class="user-bar-item"
-      routerLink="/profile"
-      [ngClass]="{'active': isActiveRoute()}"
-    >
-      <svg
-        class="user-bar-item__icon"
-        fill="none" height="40" viewBox="0 0 41 40" width="41" xmlns="http://www.w3.org/2000/svg">
-        <rect
-          height="39" rx="19.5" stroke="white" width="39" x="1" y="0.5"/>
-        <path
-          d="M30.4714 27.6875C29.186 25.4316 27.179 23.6738 24.7733 22.6972C25.9696 21.7999 26.8533 20.549 27.2992 19.1216C27.7451 17.6942 27.7305 16.1627 27.2576 14.7441C26.7847 13.3254 25.8775 12.0915 24.6643 11.2171C23.4512 10.3427 21.9937 9.87219 20.4983 9.87219C19.0029 9.87219 17.5454 10.3427 16.3322 11.2171C15.1191 12.0915 14.2118 13.3254 13.7389 14.7441C13.266 16.1627 13.2515 17.6942 13.6974 19.1216C14.1432 20.549 15.0269 21.7999 16.2233 22.6972C13.8176 23.6738 11.8105 25.4316 10.5251 27.6875C10.4455 27.8156 10.3924 27.9583 10.3691 28.1073C10.3457 28.2563 10.3525 28.4085 10.3891 28.5548C10.4258 28.7011 10.4914 28.8385 10.5822 28.9589C10.673 29.0794 10.7871 29.1803 10.9177 29.2557C11.0483 29.3312 11.1927 29.3796 11.3423 29.3981C11.492 29.4166 11.6439 29.4049 11.7889 29.3635C11.9339 29.3222 12.0692 29.2521 12.1866 29.1574C12.304 29.0628 12.4012 28.9455 12.4723 28.8125C14.1711 25.8763 17.1711 24.125 20.4983 24.125C23.8255 24.125 26.8255 25.8772 28.5242 28.8125C28.6784 29.0605 28.9231 29.2388 29.2064 29.3097C29.4897 29.3806 29.7895 29.3386 30.0423 29.1925C30.2952 29.0464 30.4814 28.8077 30.5614 28.5268C30.6415 28.246 30.6092 27.945 30.4714 27.6875ZM15.6233 17C15.6233 16.0358 15.9092 15.0933 16.4449 14.2916C16.9805 13.4899 17.7419 12.8651 18.6327 12.4961C19.5235 12.1271 20.5037 12.0306 21.4493 12.2187C22.395 12.4068 23.2636 12.8711 23.9454 13.5529C24.6272 14.2346 25.0915 15.1033 25.2796 16.0489C25.4677 16.9946 25.3712 17.9748 25.0022 18.8656C24.6332 19.7564 24.0084 20.5177 23.2067 21.0534C22.405 21.5891 21.4625 21.875 20.4983 21.875C19.2058 21.8735 17.9667 21.3594 17.0528 20.4455C16.1389 19.5316 15.6248 18.2925 15.6233 17Z"
-          fill="white"/>
-      </svg>
+<div class="phone:mb-4 desktop:mb-0 ml-2 p-2 h-[76px] border-white border rounded-xl rounded-bl-none bg-primary"
+    [ngClass]="{
+    'max-desktop:hidden': authService.authPopUpState !== EAuthPopUpState.CLOSED
+}">
+    <div *ngIf="userService.isAuthorized" class="flex">
+        <a class="user-bar-item" routerLink="/profile" [ngClass]="{'active': isActiveRoute()}">
+            <svg class="user-bar-item__icon" fill="none" height="40" viewBox="0 0 41 40" width="41"
+                xmlns="http://www.w3.org/2000/svg">
+                <rect height="39" rx="19.5" stroke="white" width="39" x="1" y="0.5" />
+                <path
+                    d="M30.4714 27.6875C29.186 25.4316 27.179 23.6738 24.7733 22.6972C25.9696 21.7999 26.8533 20.549 27.2992 19.1216C27.7451 17.6942 27.7305 16.1627 27.2576 14.7441C26.7847 13.3254 25.8775 12.0915 24.6643 11.2171C23.4512 10.3427 21.9937 9.87219 20.4983 9.87219C19.0029 9.87219 17.5454 10.3427 16.3322 11.2171C15.1191 12.0915 14.2118 13.3254 13.7389 14.7441C13.266 16.1627 13.2515 17.6942 13.6974 19.1216C14.1432 20.549 15.0269 21.7999 16.2233 22.6972C13.8176 23.6738 11.8105 25.4316 10.5251 27.6875C10.4455 27.8156 10.3924 27.9583 10.3691 28.1073C10.3457 28.2563 10.3525 28.4085 10.3891 28.5548C10.4258 28.7011 10.4914 28.8385 10.5822 28.9589C10.673 29.0794 10.7871 29.1803 10.9177 29.2557C11.0483 29.3312 11.1927 29.3796 11.3423 29.3981C11.492 29.4166 11.6439 29.4049 11.7889 29.3635C11.9339 29.3222 12.0692 29.2521 12.1866 29.1574C12.304 29.0628 12.4012 28.9455 12.4723 28.8125C14.1711 25.8763 17.1711 24.125 20.4983 24.125C23.8255 24.125 26.8255 25.8772 28.5242 28.8125C28.6784 29.0605 28.9231 29.2388 29.2064 29.3097C29.4897 29.3806 29.7895 29.3386 30.0423 29.1925C30.2952 29.0464 30.4814 28.8077 30.5614 28.5268C30.6415 28.246 30.6092 27.945 30.4714 27.6875ZM15.6233 17C15.6233 16.0358 15.9092 15.0933 16.4449 14.2916C16.9805 13.4899 17.7419 12.8651 18.6327 12.4961C19.5235 12.1271 20.5037 12.0306 21.4493 12.2187C22.395 12.4068 23.2636 12.8711 23.9454 13.5529C24.6272 14.2346 25.0915 15.1033 25.2796 16.0489C25.4677 16.9946 25.3712 17.9748 25.0022 18.8656C24.6332 19.7564 24.0084 20.5177 23.2067 21.0534C22.405 21.5891 21.4625 21.875 20.4983 21.875C19.2058 21.8735 17.9667 21.3594 17.0528 20.4455C16.1389 19.5316 15.6248 18.2925 15.6233 17Z"
+                    fill="white" />
+            </svg>
 
-      <div class="user-bar-item__name-group">
-        <span
-          class="user-bar-item__name">{{userName | truncateText:[12]}}</span>
-        <span
-          class="user-bar-item__role">{{userRole}}</span>
-      </div>
-    </a>
+            <div class="user-bar-item__name-group">
+                <span class="user-bar-item__name">{{userName | truncateText:[12]}}</span>
+                <span class="user-bar-item__role">{{userRole}}</span>
+            </div>
+        </a>
 
-    <div
-      (click)="handleLogout()"
-      class="border px-4 py-4 bg-black1 group hover:bg-white rounded-xl cursor-pointer transition-[200ms]"
-    >
-      <svg
-        fill="none" height="24" viewBox="0 0 25 24" width="25" xmlns="http://www.w3.org/2000/svg">
-        <path
-          class="transition-[200ms] group-hover:stroke-primary"
-          d="M13.5 12H22.5M22.5 12L19.167 7.99997M22.5 12L19.167 16M14.5 6.99997V5.17397C14.5 4.89735 14.4426 4.62373 14.3314 4.37042C14.2203 4.11711 14.0578 3.88961 13.8542 3.70231C13.6507 3.515 13.4104 3.37196 13.1488 3.28222C12.8871 3.19249 12.6097 3.15801 12.334 3.18097L4.334 3.84697C3.83405 3.88861 3.36801 4.11662 3.0283 4.48578C2.68859 4.85494 2.50002 5.33829 2.5 5.83997V18.16C2.50002 18.6617 2.68859 19.145 3.0283 19.5142C3.36801 19.8833 3.83405 20.1113 4.334 20.153L12.334 20.82C12.6098 20.8429 12.8873 20.8084 13.149 20.7186C13.4107 20.6288 13.651 20.4857 13.8546 20.2983C14.0582 20.1109 14.2206 19.8833 14.3317 19.6298C14.4428 19.3764 14.5001 19.1027 14.5 18.826V17"
-          stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-      </svg>
+        <div (click)="handleLogout()"
+            class="border px-4 py-4 bg-black1 group hover:bg-white rounded-xl cursor-pointer transition-[200ms]">
+            <svg fill="none" height="24" viewBox="0 0 25 24" width="25" xmlns="http://www.w3.org/2000/svg">
+                <path class="transition-[200ms] group-hover:stroke-primary"
+                    d="M13.5 12H22.5M22.5 12L19.167 7.99997M22.5 12L19.167 16M14.5 6.99997V5.17397C14.5 4.89735 14.4426 4.62373 14.3314 4.37042C14.2203 4.11711 14.0578 3.88961 13.8542 3.70231C13.6507 3.515 13.4104 3.37196 13.1488 3.28222C12.8871 3.19249 12.6097 3.15801 12.334 3.18097L4.334 3.84697C3.83405 3.88861 3.36801 4.11662 3.0283 4.48578C2.68859 4.85494 2.50002 5.33829 2.5 5.83997V18.16C2.50002 18.6617 2.68859 19.145 3.0283 19.5142C3.36801 19.8833 3.83405 20.1113 4.334 20.153L12.334 20.82C12.6098 20.8429 12.8873 20.8084 13.149 20.7186C13.4107 20.6288 13.651 20.4857 13.8546 20.2983C14.0582 20.1109 14.2206 19.8833 14.3317 19.6298C14.4428 19.3764 14.5001 19.1027 14.5 18.826V17"
+                    stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+        </div>
     </div>
-  </div>
 
-  <div
-    (click)="handleAuthPopUpToggle()"
-    *ngIf="!userService.isAuthorized"
-    [ngClass]="authService.authPopUpState !== EAuthPopUpState.CLOSED ? 'bg-white' : ''"
-    class="bg-black1 border rounded-xl px-4 py-2 flex items-center cursor-pointer group hover:bg-white transition-[200ms]"
-  >
-    <svg
-      class="mr-2"
-      fill="none"
-      height="40" viewBox="0 0 40 40"
-      width="40"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        [ngClass]="authService.authPopUpState !== EAuthPopUpState.CLOSED ? 'stroke-primary' : ''"
-        class="transition-[200ms] group-hover:stroke-primary" height="39" rx="19.5" stroke="white" width="39" x="0.5"
-        y="0.5"/>
-      <path
-        [ngClass]="authService.authPopUpState !== EAuthPopUpState.CLOSED ? 'stroke-primary' : ''"
-        class="transition-[200ms] group-hover:stroke-primary"
-        d="M27 20H18M18 20L21.333 16M18 20L21.333 24M25 15V13.174C25 12.8973 24.9426 12.6237 24.8314 12.3704C24.7203 12.1171 24.5578 11.8896 24.3542 11.7023C24.1507 11.515 23.9104 11.372 23.6488 11.2822C23.3871 11.1925 23.1097 11.158 22.834 11.181L14.834 12.507C14.3341 12.5486 13.868 12.7766 13.5283 13.1458C13.1886 13.5149 13 13.9983 13 14.5V26.007C13 26.5086 13.1886 26.992 13.5283 27.3612C13.868 27.7303 14.3341 27.9583 14.834 28L22.834 28.82C23.1098 28.8429 23.3873 28.8084 23.649 28.7186C23.9107 28.6288 24.151 28.4857 24.3546 28.2983C24.5582 28.1109 24.7206 27.8833 24.8317 27.6298C24.9428 27.3764 25.0001 27.1027 25 26.826V25"
-        stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    </svg>
+    <div (click)="handleAuthPopUpToggle()" *ngIf="!userService.isAuthorized"
+        [ngClass]="authService.authPopUpState !== EAuthPopUpState.CLOSED ? 'bg-white' : ''"
+        class="bg-black1 border rounded-xl px-4 py-2 flex items-center cursor-pointer group hover:bg-white transition-[200ms]">
+        <svg class="mr-2" fill="none" height="40" viewBox="0 0 40 40" width="40" xmlns="http://www.w3.org/2000/svg">
+            <rect [ngClass]="authService.authPopUpState !== EAuthPopUpState.CLOSED ? 'stroke-primary' : ''"
+                class="transition-[200ms] group-hover:stroke-primary" height="39" rx="19.5" stroke="white" width="39"
+                x="0.5" y="0.5" />
+            <path [ngClass]="authService.authPopUpState !== EAuthPopUpState.CLOSED ? 'stroke-primary' : ''"
+                class="transition-[200ms] group-hover:stroke-primary"
+                d="M27 20H18M18 20L21.333 16M18 20L21.333 24M25 15V13.174C25 12.8973 24.9426 12.6237 24.8314 12.3704C24.7203 12.1171 24.5578 11.8896 24.3542 11.7023C24.1507 11.515 23.9104 11.372 23.6488 11.2822C23.3871 11.1925 23.1097 11.158 22.834 11.181L14.834 12.507C14.3341 12.5486 13.868 12.7766 13.5283 13.1458C13.1886 13.5149 13 13.9983 13 14.5V26.007C13 26.5086 13.1886 26.992 13.5283 27.3612C13.868 27.7303 14.3341 27.9583 14.834 28L22.834 28.82C23.1098 28.8429 23.3873 28.8084 23.649 28.7186C23.9107 28.6288 24.151 28.4857 24.3546 28.2983C24.5582 28.1109 24.7206 27.8833 24.8317 27.6298C24.9428 27.3764 25.0001 27.1027 25 26.826V25"
+                stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+        </svg>
 
-    <span
-      [ngClass]="authService.authPopUpState !== EAuthPopUpState.CLOSED ? 'text-primary' : ''"
-      class="transition-[200ms] group-hover:text-primary select-none"
-    >Вход / Регистрация</span>
-  </div>
+        <span [ngClass]="authService.authPopUpState !== EAuthPopUpState.CLOSED ? 'text-primary' : ''"
+            class="transition-[200ms] group-hover:text-primary select-none">Вход / Регистрация</span>
+    </div>
 </div>

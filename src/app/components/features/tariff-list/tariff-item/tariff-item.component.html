@@ -1,7 +1,7 @@
 <div class="tariff">
-    <div class="tariff__head" [ngClass]="tariff.color?.head">
+    <div class="tariff__head" [ngClass]="this.tariffTheme.classes.header">
         <h4 class="tariff__name">{{tariff.name}}</h4>
-        <div class="tariff__info" *ngIf="tariff.description.hover">
+        <div class="tariff__info" *ngIf="tariff.description_hover">
             <button class="tariff__info-toggler" (mouseenter)="showHoverDescription=true"
                 (click)="showHoverDescription=true" (mouseleave)="showHoverDescription=false">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -14,34 +14,33 @@
                 opacity: showHoverDescription ? 1: 0,
                 visibility: showHoverDescription ? 'visible': 'hidden'
             }">
-                {{tariff.description.hover}}
+                {{tariff.description_hover}}
             </div>
         </div>
-        <span class="tariff__popular" *ngIf="tariff.popular && !isCurrent">
+        <!-- <span class="tariff__popular" *ngIf="tariff.popular && !isCurrent">
             Самый популярный
-        </span>
+        </span> -->
         <span class="tariff__popular tariff__popular--green" *ngIf="isCurrent">
             Ваш тариф
         </span>
     </div>
     <div class="tariff__body">
-        <p class="tariff__description">{{tariff.description.default}}</p>
+        <p class="tariff__description">{{tariff.description}}</p>
         <div class="tariff__action spliced-block-gradient">
-            <div class="tariff__expires" *ngIf="tariff.expireDate">
+            <!-- <div class="tariff__expires" *ngIf="tariff.expireDate">
                 Истекает <span class="tariff__expires-date">{{formatDate(tariff.expireDate, 'DD.MM.YYYY')}}</span>
-            </div>
+            </div> -->
             <div class="flex gap-1 justify-center flex-wrap" [ngClass]="{
-                'flex-col': !tariff.expireDate,
-                'flex-row-reverse': tariff.expireDate,
-                'items-end': tariff.expireDate,
+                'flex-col': !true && tariff,
+                'flex-row-reverse items-end': false && tariff,
             }">
                 <p class="tariff__price">{{tariff.price}} <span class="tariff__currency">₽</span></p>
                 <p class="tariff__terms" [ngClass]="{
-                    'mb-1 mr-1': tariff.expireDate,
+                    'mb-1 mr-1': false && tariff,
                 }">{{tariff.terms}}</p>
             </div>
-            <button class="mt-3 w-full" [ngClass]="tariff.color?.button">
-                {{tariff.weight}}
+            <button class="mt-3 w-full" [ngClass]="this.tariffTheme.classes.button">
+                Повысить тариф
             </button>
         </div>
     </div>

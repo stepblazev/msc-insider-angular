@@ -1,12 +1,15 @@
-import {Component} from '@angular/core';
-import {AuthService, EAuthPopUpState} from "../../../../modules/auth/auth.service";
-import {UserService} from "../../../../modules/user/user.service";
-import {Router} from "@angular/router";
+import { Component } from '@angular/core';
+import {
+  AuthService,
+  EAuthPopUpState,
+} from '../../../../modules/auth/auth.service';
+import { UserService } from '../../../../modules/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-bar',
   templateUrl: './user-bar.component.html',
-  styleUrls: ["./user-bar.component.scss"]
+  styleUrls: ['./user-bar.component.scss'],
 })
 export class UserBarComponent {
   protected readonly EAuthPopUpState = EAuthPopUpState;
@@ -14,20 +17,18 @@ export class UserBarComponent {
   constructor(
     private readonly _router: Router,
     public readonly authService: AuthService,
-    public readonly userService: UserService,
-  ) {
-  }
+    public readonly userService: UserService
+  ) {}
 
-  public isActiveRoute(): boolean
-  {
-    return this._router.url.includes("profile");
+  public isActiveRoute(): boolean {
+    return this._router.url.includes('profile');
   }
 
   public get userName(): string {
     let name = this.userService.currentUser?.name;
 
     if (!name) {
-      return "Пользователь";
+      return 'Пользователь';
     }
 
     return name;
@@ -52,5 +53,3 @@ export class UserBarComponent {
     this.authService.setAuthPopUpState(state);
   }
 }
-
-

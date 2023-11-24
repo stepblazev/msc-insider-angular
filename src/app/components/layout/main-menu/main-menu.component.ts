@@ -1,6 +1,7 @@
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { IsActiveMatchOptions, Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { SubscriptionService } from 'src/app/modules/subscription/subscription.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -9,10 +10,10 @@ import { DOCUMENT } from '@angular/common';
 })
 export class MainMenuComponent {
   @ViewChild('menuContainer') menuContainer!: ElementRef<HTMLDivElement>;
-  isTariffsOpened: boolean = false;
 
   constructor(
     private readonly router: Router,
+    public readonly _subscriptionService: SubscriptionService,
     @Inject(DOCUMENT) private readonly document: Document
   ) {
     if (typeof window !== 'undefined') {

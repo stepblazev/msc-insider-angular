@@ -1,5 +1,5 @@
 <div class="tariff-list">
-    <div class="tariff-list__item" *ngFor="let tariff of tariffs">
+    <div class="tariff-list__item" *ngFor="let tariff of _subscriptionService.tariffs">
         <app-tariff-item [tariff]="tariff" />
     </div>
 </div>
