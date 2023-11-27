@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { SubscriptionRepository } from './repository/subscription';
 import { ITariff } from './models/tariff';
 import { ISubscription } from './models/subscription';
-import { finalize } from 'rxjs';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { LOCAL_STORAGE_KEYS } from 'src/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,8 @@ export class SubscriptionService {
   public subscription: ISubscription | null = null;
 
   constructor(
-    private readonly _subscriptionRepository: SubscriptionRepository
+    private readonly _subscriptionRepository: SubscriptionRepository,
+    private readonly _localStorageService: LocalStorageService
   ) {}
 
   public openTariffPopup(): void {
@@ -27,34 +29,42 @@ export class SubscriptionService {
   }
 
   public fetchTariffList(): void {
+    this.tariffs =
+      this._localStorageService.getItem<ITariff[]>(
+        LOCAL_STORAGE_KEYS.TARIFFS
+      ) || [];
+
     this.isLoading = true;
-    this._subscriptionRepository
-      .getTariffs()
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((response) => {
-        if (response.success) {
-          this.tariffs = response.data;
-        }
-      });
+    this._subscriptionRepository.getTariffs().subscribe((response) => {
+      if (response.success) {
+        this.tariffs = response.data;
+        this._localStorageService.setItem(
+          LOCAL_STORAGE_KEYS.TARIFFS,
+          response.data
+        );
+      }
+      this.isLoading = false;
+    });
   }
 
   public fetchCurrentSubscription(): void {
+    this.subscription =
+      this._localStorageService.getItem<ISubscription>(
+        LOCAL_STORAGE_KEYS.SUBSCRIPTION
+      ) || null;
+
     this.isLoading = true;
     this._subscriptionRepository
       .getCurrentSubscription()
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
       .subscribe((response) => {
         if (response.success) {
           this.subscription = response.data || null;
+          this._localStorageService.setItem(
+            LOCAL_STORAGE_KEYS.SUBSCRIPTION,
+            this.subscription
+          );
         }
+        this.isLoading = false;
       });
   }
 
@@ -62,15 +72,15 @@ export class SubscriptionService {
     this.isLoading = true;
     this._subscriptionRepository
       .updateSubscription({ tariff_id: tariffId })
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
       .subscribe((response) => {
         if (response.success) {
           this.subscription = response.data || null;
+          this._localStorageService.setItem(
+            LOCAL_STORAGE_KEYS.SUBSCRIPTION,
+            this.subscription
+          );
         }
+        this.isLoading = false;
       });
   }
 }

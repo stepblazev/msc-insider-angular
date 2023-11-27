@@ -32,7 +32,6 @@ export class TariffItemComponent implements OnInit {
 
   updateTariff(): void {
     if (this._userService.isAuthorized) {
-      // NOTE | Тут будет логика изменения текущего тарифа пользователя
       if (confirm('Изменить тарифный план?')) {
         this._subscriptionService.fetchNewSubscription(this.tariff.id);
       }

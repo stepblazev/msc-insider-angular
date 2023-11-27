@@ -1,6 +1,6 @@
 <div class="tariff">
     <div class="tariff__head" [ngClass]="this.tariffTheme.classes.header">
-        <h4 class="tariff__name">{{tariff.name}}</h4>
+        <h4 class="tariff__name"> {{ tariff.name }}</h4>
         <div class="tariff__info" *ngIf="tariff.description_hover">
             <button class="tariff__info-toggler" (mouseenter)="showHoverDescription=true"
                 (click)="showHoverDescription=true" (mouseleave)="showHoverDescription=false">
@@ -26,7 +26,9 @@
         </span>
     </div>
     <div class="tariff__body">
-        <p class="tariff__description">{{tariff.description}}</p>
+        <p class="tariff__description">
+            {{tariff.description}}
+        </p>
         <div class="tariff__action spliced-block-gradient">
             <div class="tariff__expires" *ngIf="isCurrent()">
                 Истекает <span class="tariff__expires-date" [ngClass]="{
