@@ -1,8 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { formatDate } from 'src/app/shared/utils/format-date';
 import { ITariff } from 'src/app/modules/subscription/models/tariff';
-import { UserService } from 'src/app/modules/user/user.service';
 import { ITariffTheme, TariffThemes } from './tariff-theme';
+import { SubscriptionService } from 'src/app/modules/subscription/subscription.service';
+import {
+  AuthService,
+  EAuthPopUpState,
+} from 'src/app/modules/auth/auth.service';
+import { UserService } from 'src/app/modules/user/user.service';
+import { isWithinDays } from 'src/app/shared/utils/within-seven-days';
 
 @Component({
   selector: 'app-tariff-item',
@@ -12,20 +17,63 @@ import { ITariffTheme, TariffThemes } from './tariff-theme';
 export class TariffItemComponent implements OnInit {
   @Input() tariff: ITariff;
 
-  public isCurrent: boolean = false;
   public showHoverDescription: boolean = false;
-
   public tariffTheme: ITariffTheme;
 
-  constructor(public readonly _userService: UserService) {}
+  constructor(
+    private readonly _authService: AuthService,
+    private readonly _userService: UserService,
+    public readonly _subscriptionService: SubscriptionService
+  ) {}
 
   ngOnInit(): void {
     this.tariffTheme = TariffThemes[this.tariff.id];
-    this.isCurrent =
-      this.tariff.role_id == this._userService.currentUser?.role.getValue().id;
   }
 
-  formatDate(date: Date, template: string): string {
-    return formatDate(date, template);
+  updateTariff(): void {
+    if (this._userService.isAuthorized) {
+      // NOTE | Тут будет логика изменения текущего тарифа пользователя
+      if (confirm('Изменить тарифный план?')) {
+        this._subscriptionService.fetchNewSubscription(this.tariff.id);
+      }
+    } else {
+      if (this._subscriptionService.isTariffPopupOpened) {
+        this._subscriptionService.closeTariffPopup();
+      }
+      this._authService.setAuthPopUpState(EAuthPopUpState.LOGIN);
+    }
+  }
+
+  isWithinSevenDays(): boolean {
+    if (!this._subscriptionService.subscription?.expires_at) {
+      return false;
+    }
+    return isWithinDays(this._subscriptionService.subscription?.expires_at, 7);
+  }
+
+  isCurrent(): boolean {
+    const isCurrent: boolean =
+      this._subscriptionService.subscription?.tariff_id == this.tariff.id;
+    return isCurrent;
+  }
+
+  getButtonCaption(): string {
+    let caption: string = '';
+
+    if (!this._subscriptionService.subscription) {
+      caption = 'Повысить тариф';
+    } else {
+      const subscriptionTariffId =
+        this._subscriptionService.subscription.tariff_id;
+
+      caption =
+        subscriptionTariffId === this.tariff.id
+          ? 'Продлить подписку'
+          : subscriptionTariffId > this.tariff.id
+          ? 'Перейти'
+          : 'Повысить тариф';
+    }
+
+    return caption;
   }
 }

@@ -27,7 +27,9 @@ export class AuthRepository {
 
   public login(data: ILoginPayloadDTO): Observable<ILoginResponseDTO> {
     return this._http
-      .post<ILoginResponseDTO>(`${BASE_URL}/api/v1/auth/login`, data)
+      .post<ILoginResponseDTO>(`${BASE_URL}/api/v1/auth/login`, data, {
+        withCredentials: true,
+      })
       .pipe(retry(2));
   }
 
@@ -36,7 +38,8 @@ export class AuthRepository {
   ): Observable<IResetPasswordStartResponseDTO> {
     return this._http.post<IResetPasswordStartResponseDTO>(
       `${BASE_URL}/api/v1/password/email`,
-      data
+      data,
+      { withCredentials: true }
     );
   }
 
@@ -46,7 +49,8 @@ export class AuthRepository {
     return this._http
       .post<IResetPasswordStartResponseDTO>(
         `${BASE_URL}/api/v1/password/reset`,
-        data
+        data,
+        { withCredentials: true }
       )
       .pipe(retry(2));
   }
@@ -55,14 +59,19 @@ export class AuthRepository {
     return this._http
       .post<IRegisterResponseDTO>(
         `${BASE_URL}/api/v1/register`,
-        this._authMapper.registerPayloadToRequest(data)
+        this._authMapper.registerPayloadToRequest(data),
+        { withCredentials: true }
       )
       .pipe(retry(1));
   }
 
   public logout() {
     this._http
-      .post<IRegisterResponseDTO>(`${BASE_URL}/api/v1/auth/logout`, {})
+      .post<IRegisterResponseDTO>(
+        `${BASE_URL}/api/v1/auth/logout`,
+        {},
+        { withCredentials: true }
+      )
       .pipe(retry(1))
       .subscribe();
   }

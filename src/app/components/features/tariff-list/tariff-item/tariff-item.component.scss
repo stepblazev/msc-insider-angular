@@ -12,7 +12,7 @@
     left: 50%;
     bottom: 0;
     transform: translate(-50%, 50%);
-    text-wrap: nowrap;
+    white-space: nowrap;
 
     &--green {
       @apply bg-greenPrimary;
@@ -54,6 +54,7 @@
 
   &__price {
     @apply text-numeric-2 text-center;
+    white-space: nowrap;
   }
 
   &__currency {
@@ -65,10 +66,10 @@
   }
 
   &__expires {
-    @apply mb-5 flex justify-center items-center gap-2 text-body-3;
+    @apply mb-5 mt-[-0.5rem] flex justify-center items-center gap-2 text-body-3;
 
     &-date {
-      @apply px-3 py-1 bg-error rounded-2xl;
+      @apply px-3 py-1 bg-greenPrimary rounded-2xl;
     }
   }
 }

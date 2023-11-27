@@ -52,7 +52,22 @@ export class SubscriptionService {
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        if (response.success) {
+          this.subscription = response.data || null;
+        }
+      });
+  }
+
+  public fetchNewSubscription(tariffId: number): void {
+    this.isLoading = true;
+    this._subscriptionRepository
+      .updateSubscription({ tariff_id: tariffId })
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe((response) => {
         if (response.success) {
           this.subscription = response.data || null;
         }

@@ -4,6 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-signals',
   templateUrl: './signals.component.html',
 })
-export class SignalsComponent {
-
-}
+export class SignalsComponent {}

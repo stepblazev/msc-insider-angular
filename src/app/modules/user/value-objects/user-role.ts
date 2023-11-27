@@ -10,7 +10,7 @@ enum PossibleRoles {
 
 export { PossibleRoles as UserRoleLevels };
 
-interface IRole {
+export interface IRole {
   id: number;
   name: string;
   slug: PossibleRoles;

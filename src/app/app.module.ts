@@ -22,10 +22,17 @@ import { UserService } from './modules/user/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubscriptionService } from './modules/subscription/subscription.service';
 
-function initializeApp(userService: UserService) {
+function initializeApp(
+  userService: UserService,
+  subscriptionService: SubscriptionService
+) {
   return async () => {
     if (typeof window !== 'undefined') {
       await userService.updateAuthorize();
+      subscriptionService.fetchTariffList();
+      if (userService.isAuthorized) {
+        subscriptionService.fetchCurrentSubscription();
+      }
     }
   };
 }
@@ -66,14 +73,9 @@ function initializeApp(userService: UserService) {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       multi: true,
-      deps: [UserService],
+      deps: [UserService, SubscriptionService],
     },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor(private readonly _subscriptionService: SubscriptionService) {
-    this._subscriptionService.fetchTariffList();
-    this._subscriptionService.fetchCurrentSubscription();
-  }
-}
+export class AppModule {}

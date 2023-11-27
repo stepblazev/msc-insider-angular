@@ -9,6 +9,7 @@ import { lastValueFrom } from 'rxjs';
 import { AuthRepository } from '../auth/repository/auth';
 import { ELoadingStatus } from '../../core/loading-status';
 import { IUpdateUserDataDTO } from './dto/profile-edit.dto';
+import { SubscriptionService } from '../subscription/subscription.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,8 @@ export class UserService {
   constructor(
     private readonly _localStorageService: LocalStorageService,
     private readonly _userRepository: UserRepository,
-    private readonly _authRepository: AuthRepository
+    private readonly _authRepository: AuthRepository,
+    private readonly _subscriptionService: SubscriptionService
   ) {}
 
   public async authorize(user: IUserAuthPersistenceModel) {
@@ -30,6 +32,8 @@ export class UserService {
 
     this.isAuthorized = true;
     this.currentUser = UserSerializer.authUserToModel(user);
+
+    this._subscriptionService.fetchCurrentSubscription();
   }
 
   public async updateAuthorize() {
@@ -93,5 +97,7 @@ export class UserService {
 
     this._localStorageService.removeItem(LOCAL_STORAGE_KEYS.USER);
     this._localStorageService.removeItem(LOCAL_STORAGE_KEYS.AUTHORIZED);
+
+    this._subscriptionService.subscription = null;
   }
 }
