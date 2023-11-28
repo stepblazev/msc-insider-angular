@@ -3,19 +3,19 @@
   transition: visibility 0.3s ease;
 
   &__backdrop {
-    @apply absolute left-0 top-0 w-full h-full max-small:hidden;
-    background-color: rgba(14, 14, 21, 0.7);
     backdrop-filter: blur(4px);
+    @apply absolute left-0 top-0 w-full h-full;
+    background-color: rgba(14, 14, 21, 0.7);
   }
 
   &__container {
-    @apply overflow-y-auto;
+    @apply overflow-y-auto p-2;
     max-height: 100vh;
     max-height: 100dvh;
   }
 
   &__window {
-    @apply relative w-full z-50 bg-black1 p-10 pb-12 pr-16 max-small:pt-16 max-small:p-4 small:rounded-3xl border-gray2 border-[1px];
+    @apply relative w-full z-50 bg-black1 p-10 pb-12 pr-16 max-small:pt-16 max-small:p-4 rounded-3xl border-gray2 border-[1px] overflow-x-hidden;
   }
 
   &__close {

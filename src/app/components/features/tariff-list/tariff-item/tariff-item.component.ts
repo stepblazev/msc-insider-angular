@@ -8,6 +8,7 @@ import {
 } from 'src/app/modules/auth/auth.service';
 import { UserService } from 'src/app/modules/user/user.service';
 import { isWithinDays } from 'src/app/shared/utils/within-seven-days';
+import { ConfirmationPopupService } from 'src/app/services/confirmation-popup.service';
 
 @Component({
   selector: 'app-tariff-item',
@@ -23,6 +24,7 @@ export class TariffItemComponent implements OnInit {
   constructor(
     private readonly _authService: AuthService,
     private readonly _userService: UserService,
+    private readonly _confirmationPopupService: ConfirmationPopupService,
     public readonly _subscriptionService: SubscriptionService
   ) {}
 
@@ -32,9 +34,16 @@ export class TariffItemComponent implements OnInit {
 
   updateTariff(): void {
     if (this._userService.isAuthorized) {
-      if (confirm('Изменить тарифный план?')) {
-        this._subscriptionService.fetchNewSubscription(this.tariff.id);
-      }
+      this._confirmationPopupService
+        .confirm({
+          title: 'Подтвердите действие',
+          message: `Перейти на тарифный план "${this.tariff.name}"?`,
+        })
+        .subscribe((answer) => {
+          if (answer) {
+            this._subscriptionService.fetchNewSubscription(this.tariff.id);
+          }
+        });
     } else {
       if (this._subscriptionService.isTariffPopupOpened) {
         this._subscriptionService.closeTariffPopup();

@@ -21,6 +21,7 @@ import { ChartScreenModule } from './components/screens/chart/chart-screen.modul
 import { UserService } from './modules/user/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubscriptionService } from './modules/subscription/subscription.service';
+import { ConfirmationPopupComponent } from './components/ui/confirmation-popup/confirmation-popup.component';
 
 function initializeApp(
   userService: UserService,
@@ -45,6 +46,7 @@ function initializeApp(
     HttpClientModule,
     BrowserAnimationsModule,
 
+    ConfirmationPopupComponent,
     NotifierModule.withConfig({
       position: {
         horizontal: {

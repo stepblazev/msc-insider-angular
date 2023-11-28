@@ -1,26 +1,27 @@
 <div class="container phone:mb-8 desktop:mb-20">
     <div class="flex flex-row justify-between max-laptop:flex-col">
         <div
-            class="pt-6 pb-14 px-12 rounded-bl-none rounded-3xl border-[1px] border-gray3 max-laptop:mb-2 laptop:mr-2 w-full spliced-block-gradient-long relative">
+            class="pt-6 pb-14 small:px-12 px-6 rounded-bl-none rounded-3xl border-[1px] border-gray3 max-laptop:mb-2 laptop:mr-2 w-full spliced-block-gradient-long relative">
             <h2 class="mb-4">О нас</h2>
-            <p class="text-body-1 mb-4 max-w-[447px]">
+            <p class="small:text-body-1 text-body-2 mb-4 max-w-[447px]">
                 Наш сайт предлагает высококачественные аналитические данные, экспертные анализы и актуальную информацию,
                 чтобы помочь вам достичь финансового успеха нарынке акций.
             </p>
-            <p class="text-body-1 max-w-[447px]">Инвестируйте с уверенностью и знанием благодаря нашим надёжным отчётам.
+            <p class="small:text-body-1 text-body-2 max-w-[447px]">Инвестируйте с уверенностью и знанием благодаря нашим
+                надёжным отчётам.
             </p>
 
             <img src="./assets/images/home/about-us.svg" alt="#" class="absolute top-7 right-7 max-desktop:hidden">
         </div>
 
-        <div class="laptop:w-1/2 flex laptop:flex-col max-laptop:justify-between max-tablet:flex-col">
+        <div class="laptop:w-1/2 flex laptop:flex-col max-laptop:justify-between max-small:flex-col">
             <div
-                class="px-8 py-10 rounded-bl-none rounded-3xl border-[1px] border-gray3 laptop:mb-2 spliced-block-gradient--edge tablet:max-laptop:mr-2 max-tablet:mb-2">
+                class="small:px-8 px-6 py-10 rounded-bl-none rounded-3xl border-[1px] border-gray3 laptop:mb-2 spliced-block-gradient--edge small:max-laptop:mr-2 max-small:mb-2">
                 <h4>Подпишитесь сейчас и получите доступ к эксклюзивной информации!</h4>
             </div>
 
             <div
-                class="px-16 py-[58px] flex items-center justify-center rounded-tr-none rounded-3xl border-[1px] border-gray3 spliced-block-gradient">
+                class="small:px-16 small:py-[58px] p-8 flex items-center justify-center rounded-tr-none rounded-3xl border-[1px] border-gray3 spliced-block-gradient">
                 <button class="w-full flex items-center justify-between" (click)="handleSubscribe()">
                     <span>Подписаться</span>
 

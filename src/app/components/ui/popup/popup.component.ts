@@ -1,11 +1,13 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnChanges,
   OnInit,
   Output,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -37,7 +39,7 @@ import {
     ]),
   ],
 })
-export class PopupComponent implements OnChanges, OnInit {
+export class PopupComponent implements OnInit {
   @Input() isOpened: boolean = false;
   @Output() closeModalEvent = new EventEmitter();
 
@@ -54,21 +56,5 @@ export class PopupComponent implements OnChanges, OnInit {
         this.closeModal();
       }
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    // Убираем скролл при открытом окне
-    if (changes['isOpened']) {
-      //   if (this.isOpened) {
-      //     // Сохраняем текущую ширину скроллбара
-      //     const scrollbarWidth: number =
-      //       window.innerWidth - document.documentElement.clientWidth;
-      //     document.body.style.overflow = 'hidden';
-      //     document.body.style.paddingRight = `${scrollbarWidth}px`;
-      //   } else {
-      //     document.body.style.overflow = '';
-      //     document.body.style.paddingRight = '';
-      //   }
-    }
   }
 }

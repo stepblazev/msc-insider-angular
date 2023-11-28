@@ -1,0 +1,11 @@
+<app-popup [isOpened]="confirmationPopupService.isConfirmOpened"
+    (closeModalEvent)="confirmationPopupService.closeConfirm()">
+    <div class="confirm">
+        <h4 class="confirm__title">{{ confirmationPopupService.confirmData.title }}</h4>
+        <p class="confirm__message">{{ confirmationPopupService.confirmData.message }}</p>
+        <div class="confirm__controls">
+            <button class="confirm__confirm" (click)="confirm(true)">Подтвердить</button>
+            <button class="confirm__cancel button--gray" (click)="confirm(false)">Отменить</button>
+        </div>
+    </div>
+</app-popup>

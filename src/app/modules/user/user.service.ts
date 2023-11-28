@@ -55,10 +55,9 @@ export class UserService {
     );
     if (user) {
       this.currentUser = UserSerializer.authUserToModel(user);
-    } else {
-      const userData = (await lastValueFrom(this._userRepository.me())).data;
-      this.currentUser = UserSerializer.meUserToModel(userData);
     }
+    const userData = (await lastValueFrom(this._userRepository.me())).data;
+    this.currentUser = UserSerializer.meUserToModel(userData);
 
     this.loadingStatus = ELoadingStatus.LOADED;
   }

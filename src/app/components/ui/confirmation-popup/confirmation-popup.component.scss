@@ -1,0 +1,22 @@
+.confirm {
+  @apply small:mb-[-1rem] small:ml-[-1rem] max-w-[600px];
+
+  &__title {
+  }
+
+  &__message {
+    @apply mt-3 text-body-2;
+  }
+
+  &__controls {
+    @apply mt-6 small:mr-[-2.75rem] small:mb-[-1.75rem] flex justify-end;
+  }
+
+  &__confirm {
+    @apply mr-3 flex-grow;
+  }
+
+  &__cancel {
+    @apply flex-grow;
+  }
+}
