@@ -1,0 +1,13 @@
+.select {
+  @apply relative;
+
+  &__current {
+  }
+
+  &__options {
+    @apply absolute top-full left-0 w-full;
+  }
+
+  &__option {
+  }
+}

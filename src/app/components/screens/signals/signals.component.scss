@@ -1,0 +1,7 @@
+.signals {
+  @apply desktop:flex mb-12;
+
+  &__filter {
+    @apply mb-6 mr-6 flex desktop:flex-col small:flex-row flex-col;
+  }
+}

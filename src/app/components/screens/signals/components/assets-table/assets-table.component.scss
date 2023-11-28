@@ -1,0 +1,53 @@
+.table {
+  @apply w-full flex flex-col rounded-2xl bg-gray1 text-left overflow-hidden;
+
+  &--unavalible {
+    @apply bg-none;
+  }
+
+  &__row {
+    @apply relative flex w-full px-8 py-4 text-body-1 pr-12 max-laptop:flex-col;
+
+    &:not(:last-child):not(:first-child) {
+      @apply border-b-[1px] border-gray4;
+    }
+
+    &--header {
+      @apply bg-gray3 text-body-2 max-laptop:hidden;
+    }
+  }
+
+  &__col {
+    @apply font-normal flex items-center;
+
+    &-type {
+      @apply laptop:w-[28%];
+    }
+
+    &-name {
+      @apply laptop:w-[30%] laptop:overflow-hidden laptop:overflow-ellipsis;
+    }
+
+    &-rsi {
+      @apply laptop:w-[21%] laptop:justify-center text-center laptop:px-10;
+    }
+  }
+
+  &__more {
+    all: unset;
+    transition: background 0.2s ease;
+    @apply w-full px-8 py-4 cursor-pointer text-center text-button;
+
+    &:hover {
+      @apply bg-gray3;
+    }
+
+    &:active {
+      @apply bg-gray1;
+    }
+  }
+}
+
+.indicator {
+  @apply w-[24px] h-[12px] rounded-xl;
+}

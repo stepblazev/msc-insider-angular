@@ -4,6 +4,7 @@ import { ITariff } from './models/tariff';
 import { ISubscription } from './models/subscription';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { LOCAL_STORAGE_KEYS } from 'src/constants';
+import { NotifierService } from 'angular-notifier';
 
 @Injectable({
   providedIn: 'root',

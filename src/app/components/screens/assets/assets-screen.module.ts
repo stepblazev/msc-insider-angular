@@ -8,6 +8,7 @@ import { AssetsIndexesComponent } from './assets-indexes/assets-indexes.componen
 import { AssetsProductsComponent } from './assets-products/assets-products.component';
 import { AssetsMoreComponent } from './assets-more/assets-more.component';
 import { TariffListModule } from '../../features/tariff-list/tariff-list.module';
+import { FavoritesModule } from 'src/app/modules/favorites/favorites.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,12 @@ import { TariffListModule } from '../../features/tariff-list/tariff-list.module'
     AssetsProductsComponent,
     AssetsMoreComponent,
   ],
-  imports: [CommonModule, TariffListModule, RouterLink, RouterOutlet],
+  imports: [
+    CommonModule,
+    TariffListModule,
+    FavoritesModule,
+    RouterLink,
+    RouterOutlet,
+  ],
 })
 export class AssetsScreenModule {}

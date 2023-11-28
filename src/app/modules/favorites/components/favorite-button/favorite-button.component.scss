@@ -1,0 +1,20 @@
+.favorite {
+  all: unset;
+  @apply small:w-[24px] small:h-[24px] w-[32px] h-[32px] absolute small:top-[50%] top-0 right-8 small:translate-y-[-50%] cursor-pointer flex justify-center items-center;
+
+  &--checked .svg-fill {
+    // @apply fill-greenPrimary;
+  }
+
+  svg {
+    @apply w-full h-full;
+  }
+
+  &:not(.favorite--checked):hover .svg-fill {
+    @apply fill-white;
+  }
+
+  .svg-fill {
+    transition: all 0.2s ease;
+  }
+}

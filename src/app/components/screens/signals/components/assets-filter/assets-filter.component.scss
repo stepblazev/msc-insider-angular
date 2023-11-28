@@ -1,0 +1,20 @@
+.filter {
+  @apply w-[342px];
+
+  &__input {
+  }
+
+  &__checkbox {
+    @apply mt-6 pl-4 py-3 pr-6 rounded-xl border-[1px] flex justify-between items-center;
+    transition: border-color 0.2s ease;
+  }
+
+  &__reset {
+    all: unset;
+    @apply text-body-2 text-greenPrimary cursor-pointer;
+  }
+
+  &__additional {
+    @apply mt-4 flex flex-col gap-4;
+  }
+}

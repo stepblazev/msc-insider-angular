@@ -1,0 +1,10 @@
+<div class="select">
+    <button class="select__current" (click)="openOptions()">{{ current }}</button>
+    <ul *ngIf="isOptionsOpened" class="select__options">
+        <li class="select__option">Все активы</li>
+        <li class="select__option">Акции</li>
+        <li class="select__option">Индексы</li>
+        <li class="select__option">Валютные пары</li>
+        <li class="select__option">Товары</li>
+    </ul>
+</div>

@@ -163,12 +163,9 @@ button:disabled {
   padding: 0 20px;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 .light-ellipse {
   &::after {
+    display: none; // todo
     content: "";
 
     position: absolute;
