@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="chart">
+        <div echarts [options]="options" [merge]="updateOptions" [loading]="loading" class="demo-chart"></div>
+        <div class=" pt-8 mt-8 border-t-[1px] border-gray3">
+            <p class="w-[60%]">Индикатор технического анализа, показывающий
+                соотношение положительных и отрицательных изменений
+                цены финансового инструмента. Метрика которая позволяет улавливать когда Инсайдеры заходят сильно в лонг
+                или в шорт.</p>
+        </div>
+    </div>
+
+    <div class="mt-8 flex justify-center gap-3">
+        <button (click)="showLoading()" class="button--error">Включить загрузку</button>
+    </div>
+</div>

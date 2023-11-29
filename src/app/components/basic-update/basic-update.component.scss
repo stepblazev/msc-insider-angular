@@ -1,0 +1,11 @@
+.demo-chart {
+  @apply h-[537px] bg-black1;
+}
+
+.chart {
+  @apply overflow-hidden p-6 rounded-lg bg-gray1;
+}
+
+.tooltip {
+  @apply rounded-2xl rounded-bl-none;
+}

@@ -6,6 +6,8 @@ import { WelcomeBannerComponent } from './components/welcome-banner/welcome-bann
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TariffsComponent } from './components/tariffs/tariffs.component';
 import { TariffListModule } from '../../features/tariff-list/tariff-list.module';
+import { BasicUpdateComponent } from '../../basic-update/basic-update.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,14 @@ import { TariffListModule } from '../../features/tariff-list/tariff-list.module'
     BenefitsComponent,
     AboutUsComponent,
     TariffsComponent,
+    BasicUpdateComponent,
   ],
-  imports: [CommonModule, TariffListModule],
+  imports: [
+    CommonModule,
+    TariffListModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
+  ],
 })
 export class HomeScreenModule {}
