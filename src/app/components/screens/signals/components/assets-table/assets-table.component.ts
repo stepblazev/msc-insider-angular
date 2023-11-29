@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ISignal } from '../../signals.component';
+import { ISignal } from '../../services/assets-filter.service';
 
 @Component({
   selector: 'app-assets-table',

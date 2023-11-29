@@ -4,7 +4,7 @@
             <h4>Доступные вам</h4>
         </div>
         <div class="assets__list">
-            <a href="/chart" class="assets__item">
+            <a href="javascript:void(0)" class="assets__item">
                 <div class="flex flex-grow items-start">
                     <span class="assets__item-title">RUB/USD</span>
                     <span class="assets__item-icon">
@@ -17,7 +17,9 @@
                 <div class="flex items-center small:relative">
                     <span class="assets__item-value">91,3921</span>
                     <span class="assets__item-change">- 91,39 (- 91,39%)</span>
-                    <app-favorite-button [assetId]="0" />
+                    <div class="assets__item-favorite">
+                        <app-favorite-button [assetId]="0" />
+                    </div>
                 </div>
             </a>
         </div>

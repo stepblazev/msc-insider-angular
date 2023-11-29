@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-import { ESignalTypes } from '../../signals.component';
-
-export interface IAssetsFilter {
-  name: string;
-  type: ESignalTypes;
-  RSI: 'юр' | 'физ';
-}
+import { AssetsFilterService } from '../../services/assets-filter.service';
 
 @Component({
   selector: 'app-assets-filter',
@@ -15,8 +9,28 @@ export interface IAssetsFilter {
 export class AssetsFilterComponent {
   public isAdditionalOpened: boolean = false;
 
+  // temp
+  public inputValues: string[] = [
+    'MOEX',
+    'MOELIS & COMPANY',
+    'A.P.MOELL.-M.NAM A DK1000',
+    'LVMH-MOET HENNESSY LOUIS VUITTON',
+    'AP MOELLER-MAERSK AS',
+    'MOELIS & COMPANY',
+    'A.P.MOELL.-M.NAM A DK1000',
+    'LVMH-MOET HENNESSY LOUIS VUITTON',
+    'AP MOELLER-MAERSK AS',
+  ];
+
+  constructor(public _assetsFilterService: AssetsFilterService) {}
+
   setIsAdditionalOpened(state: boolean) {
     this.isAdditionalOpened = state;
+  }
+
+  setFilterName(newName: string) {
+    const oldFilter = this._assetsFilterService.filter;
+    this._assetsFilterService.setFilter({ ...oldFilter, name: newName });
   }
 
   resetFilter() {

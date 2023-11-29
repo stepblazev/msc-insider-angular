@@ -1,11 +1,11 @@
 .filter {
-  @apply w-[342px];
+  @apply w-full;
 
-  &__input {
+  &__search {
   }
 
   &__checkbox {
-    @apply mt-6 pl-4 py-3 pr-6 rounded-xl border-[1px] flex justify-between items-center;
+    @apply mt-6 pl-4 py-4 pr-6 rounded-xl border-[1px] flex justify-between items-center;
     transition: border-color 0.2s ease;
   }
 

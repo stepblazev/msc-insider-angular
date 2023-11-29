@@ -1,0 +1,57 @@
+.search {
+  @apply relative;
+
+  &__input {
+    @apply py-4 pl-12 pr-10 w-full outline-none rounded-xl border-[1px] border-gray4 bg-gray1 text-body-2;
+    transition: all 0.2s ease;
+
+    &:focus {
+      @apply border-white bg-gray3;
+
+      & + .search__icon .svg-stroke {
+        @apply stroke-white;
+      }
+    }
+  }
+
+  &__icon {
+    @apply absolute left-4 top-1/2 translate-y-[-50%] w-[24px] h-[24px];
+
+    .svg-stroke {
+      transition: stroke 0.2s ease;
+    }
+  }
+
+  &__clear {
+    @apply absolute right-4 top-1/2 translate-y-[-50%] cursor-pointer;
+  }
+
+  &__values {
+    @apply absolute top-full left-0 w-full mt-1 p-2 z-10 rounded-lg border-[1px] border-gray4 backdrop-blur-lg;
+    background-color: rgba(39, 40, 46, 0.6);
+  }
+
+  &__list {
+    @apply max-h-[174px] py-1 px-2 overflow-y-auto;
+
+    &::-webkit-scrollbar {
+      @apply w-1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      @apply ml-1 bg-white rounded-lg;
+    }
+  }
+
+  &__item {
+    @apply text-body-2 whitespace-nowrap overflow-hidden overflow-ellipsis cursor-pointer;
+
+    &:not(:last-child) {
+      @apply mb-4;
+    }
+  }
+
+  &__matches {
+    @apply text-greenPrimary;
+  }
+}

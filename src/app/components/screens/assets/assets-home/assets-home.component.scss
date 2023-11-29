@@ -69,6 +69,10 @@
     &-change {
       @apply text-numeric-6 small:mr-12 py-1 px-2 rounded-3xl bg-error text-center;
     }
+
+    &-favorite {
+      @apply absolute small:top-[50%] top-0 right-0 small:translate-y-[-50%];
+    }
   }
 
   &__more {
@@ -77,26 +81,5 @@
     &:hover {
       @apply bg-primary bg-opacity-30;
     }
-  }
-}
-
-.favorite {
-  all: unset;
-  @apply small:w-[24px] small:h-[24px] w-[32px] h-[32px] absolute small:top-[50%] top-0 right-0 small:translate-y-[-50%] cursor-pointer flex justify-center items-center;
-
-  svg {
-    @apply w-full h-full;
-  }
-
-  &--checked .svg-fill {
-    @apply fill-greenPrimary;
-  }
-
-  &:not(.favorite--checked):hover .svg-fill {
-    @apply fill-white;
-  }
-
-  .svg-fill {
-    transition: all 0.2s ease;
   }
 }

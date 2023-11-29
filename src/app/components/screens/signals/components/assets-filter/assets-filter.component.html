@@ -1,6 +1,6 @@
 <form class="filter">
-    <div class="filter__input">
-        <input type="text" class="w-full p-3 outline-none text-black1" placeholder="Поиск актива">
+    <div class="filter__search">
+        <app-search-bar [possibleValues]="inputValues" />
     </div>
     <div class="filter__checkbox" [ngClass]="{'border-greenPrimary': isAdditionalOpened}">
         <app-checkbox elementId="FILTER_CHECKBOX" label="Фильтры" [checked]="isAdditionalOpened"
@@ -8,18 +8,7 @@
         <button *ngIf="isAdditionalOpened" class="filter__reset" (click)="resetFilter()">Сбросить все</button>
     </div>
     <div *ngIf="isAdditionalOpened" class="filter__additional">
-        <div>
-            <select class="w-full text-primary p-1">
-                <option value="ALL" selected>Все активы</option>
-                <option value="CURRENCY">Валютные пары</option>
-                <option value="PRODUCTS">Товары</option>
-            </select>
-        </div>
-        <div>
-            <select class="w-full text-primary p-1">
-                <option value="FIZ" selected>Сигналы для физ. лиц</option>
-                <option value="YUR">Сигналы для юр. лиц</option>
-            </select>
-        </div>
+        <app-select [options]="_assetsFilterService.filter.type" [current]="_assetsFilterService.filter.type[0]" />
+        <app-select [options]="_assetsFilterService.filter.RSI" [current]="_assetsFilterService.filter.RSI[0]" />
     </div>
 </form>

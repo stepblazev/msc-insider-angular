@@ -1,10 +1,19 @@
 <div class="select">
-    <button class="select__current" (click)="openOptions()">{{ current }}</button>
+    <div class="select__current" [ngClass]="{'select__current--opened': isOptionsOpened}"
+        (click)="setIsOptionsOpened(!isOptionsOpened)">
+        {{ current.label }}
+        <span class="select__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                    d="M12.0008 15L8.46544 11.4655C8.07468 11.0748 8.07476 10.4413 8.4656 10.0507C8.85622 9.66036 9.48929 9.66047 9.87977 10.051L12.0008 12.172L14.1218 10.051C14.5123 9.66049 15.1454 9.66038 15.5361 10.0507C15.9269 10.4413 15.927 11.0748 15.5363 11.4655L12.0008 15.001V15Z"
+                    fill="white" />
+            </svg>
+        </span>
+    </div>
     <ul *ngIf="isOptionsOpened" class="select__options">
-        <li class="select__option">Все активы</li>
-        <li class="select__option">Акции</li>
-        <li class="select__option">Индексы</li>
-        <li class="select__option">Валютные пары</li>
-        <li class="select__option">Товары</li>
+        <li class="select__option" [ngClass]="{'select__option--current': option == current}"
+            *ngFor="let option of options" (click)="setOption(option)">
+            {{ option.label }}
+        </li>
     </ul>
 </div>

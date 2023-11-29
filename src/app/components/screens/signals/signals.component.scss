@@ -1,7 +1,27 @@
 .signals {
-  @apply desktop:flex mb-12;
+  @apply desktop:flex mb-8 pb-8 border-b-[1px] border-gray2;
+
+  &__left {
+    @apply mb-6 small:mr-6 flex desktop:flex-col small:flex-row flex-col;
+  }
 
   &__filter {
-    @apply mb-6 mr-6 flex desktop:flex-col small:flex-row flex-col;
+    @apply desktop:w-[342px] laptop:w-[600px] small:w-[342px] max-small:mb-6;
+  }
+
+  &__examples {
+    @apply max-desktop:ml-6 max-small:ml-0 desktop:mt-6 desktop:pt-6 desktop:border-t-[1px] border-gray4;
+
+    &-item {
+      @apply text-body-3 flex items-center;
+
+      &:not(:first-child) {
+        @apply mt-3;
+      }
+    }
+
+    &-indicator {
+      @apply mr-2 w-6 h-3 rounded-xl;
+    }
   }
 }

@@ -11,7 +11,7 @@ export class FavoriteButtonComponent {
 
   constructor() {}
 
-  toggleFavorite(event: MouseEvent) {
+  toggleFavorite() {
     this.checked = !this.checked;
   }
 }

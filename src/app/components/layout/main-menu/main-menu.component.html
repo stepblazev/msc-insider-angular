@@ -5,7 +5,7 @@
     <div class="m-auto w-full">
         <div class="flex flex-col-reverse desktop:flex-row items-center justify-center">
             <nav
-                class="flex flex-row items-center max-phone2:flex-wrap max-phone2:w-full p-2 border-white phone2:border max-phone2:border-t-[1px] phone2:rounded-xl phone2:rounded-bl-none bg-primary">
+                class="menu-nav flex flex-row items-center max-phone2:flex-wrap max-phone2:w-full p-2 border-white phone2:border max-phone2:border-t-[1px] phone2:rounded-xl phone2:rounded-bl-none">
                 <a [ngClass]="{'active': isActive('/')}" class="menu-item menu-item-home" routerLink="'/'"
                     (click)="scrollToTop()">
                     <svg *ngIf="!isActive('/')" fill="none" height="32" viewBox="0 0 76 32" width="76"

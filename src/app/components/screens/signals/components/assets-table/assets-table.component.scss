@@ -3,10 +3,15 @@
 
   &--unavalible {
     @apply bg-none;
+    background: none !important;
+
+    .table__row:not(.table__row--header) {
+      @apply text-gray4;
+    }
   }
 
   &__row {
-    @apply relative flex w-full px-8 py-4 text-body-1 pr-12 max-laptop:flex-col;
+    @apply relative flex w-full px-8 py-4 pr-12 max-phone2:p-4 text-body-1 max-laptop:flex-col;
 
     &:not(:last-child):not(:first-child) {
       @apply border-b-[1px] border-gray4;
@@ -30,6 +35,10 @@
 
     &-rsi {
       @apply laptop:w-[21%] laptop:justify-center text-center laptop:px-10;
+    }
+
+    &-favorite {
+      @apply absolute laptop:right-8 right-4 max-laptop:top-4;
     }
   }
 

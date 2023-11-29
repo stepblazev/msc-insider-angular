@@ -1,27 +1,46 @@
 <section class="container">
-    <h1>Сигналы</h1>
+    <h1 class="leading-none mb-9 pt-6">Сигналы</h1>
     <div class="signals">
-        <div class="signals__filter">
-            <app-assets-filter />
-            <div class="max-desktop:ml-6 desktop:mt-6 desktop:pt-6 desktop:border-t-[1px] border-gray4">
-                <ul class="text-body-3">
-                    <li class="flex items-center">
-                        <div class="mr-2 w-6 h-3 rounded-xl bg-greenPrimary"></div> – сигнал к покупке, актив перепродан
+        <div class="signals__left">
+            <div class="signals__filter">
+                <app-assets-filter />
+            </div>
+            <div class="signals__examples">
+                <ul>
+                    <li class="signals__examples-item">
+                        <div class="signals__examples-indicator bg-greenPrimary"></div> – сигнал к покупке, актив
+                        перепродан
                     </li>
-                    <li class="mt-3 flex items-center">
-                        <div class="mr-2 w-6 h-3 rounded-xl bg-error"></div> – сигнал к продаже, актив перекуплен
+                    <li class="signals__examples-item">
+                        <div class="signals__examples-indicator bg-error"></div> – сигнал к продаже, актив перекуплен
                     </li>
-                    <li class="mt-3 flex items-center">
-                        <div class="mr-2 w-6 h-3 rounded-xl bg-primary"></div> – нейтральное положение игроков
+                    <li class="signals__examples-item">
+                        <div class="signals__examples-indicator bg-primary"></div> – нейтральное положение игроков
                     </li>
-                    <li class="mt-3 flex items-center">
-                        <div class="mr-2 w-6 h-3 rounded-xl bg-gray4"></div> – недоступный
+                    <li class="signals__examples-item">
+                        <div class="signals__examples-indicator bg-gray4"></div> – недоступный
                     </li>
                 </ul>
             </div>
         </div>
         <div class="flex-grow">
-            <app-assets-table [signals]="signals" />
+            <app-assets-table [signals]="_assetsFilterService.signals" />
         </div>
     </div>
+    <div class="signals">
+        <div class="signals__filter">
+            <h4>Недоступные</h4>
+            <button class="mt-4">Разблокировать</button>
+        </div>
+        <div class="flex-grow">
+            <app-assets-table [signals]="_assetsFilterService.signals" [unavalible]="true" />
+        </div>
+    </div>
+    <section class="mt-[88px] tariffs">
+        <h3>Тарифные планы</h3>
+        <p class="mt-6 text-subheader-2">Выберите свой путь к успеху с нашими тарифными планами!</p>
+        <div class="mt-8 mb-12">
+            <app-tariff-list />
+        </div>
+    </section>
 </section>
