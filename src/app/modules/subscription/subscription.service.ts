@@ -18,7 +18,8 @@ export class SubscriptionService {
 
   constructor(
     private readonly _subscriptionRepository: SubscriptionRepository,
-    private readonly _localStorageService: LocalStorageService
+    private readonly _localStorageService: LocalStorageService,
+    private readonly _notifierService: NotifierService
   ) {}
 
   public openTariffPopup(): void {
@@ -43,6 +44,12 @@ export class SubscriptionService {
           LOCAL_STORAGE_KEYS.TARIFFS,
           response.data
         );
+      } else if (response.error) {
+        console.error(response.error);
+        this._notifierService.notify(
+          'error',
+          'Не удалось загрузить список тарифов'
+        );
       }
       this.isLoading = false;
     });
@@ -64,6 +71,12 @@ export class SubscriptionService {
             LOCAL_STORAGE_KEYS.SUBSCRIPTION,
             this.subscription
           );
+        } else if (response.error) {
+          console.error(response.error);
+          this._notifierService.notify(
+            'error',
+            'Не удалось загрузить ваш тариф'
+          );
         }
         this.isLoading = false;
       });
@@ -80,7 +93,14 @@ export class SubscriptionService {
             LOCAL_STORAGE_KEYS.SUBSCRIPTION,
             this.subscription
           );
+        } else if (response.error) {
+          console.error(response.error);
+          this._notifierService.notify(
+            'error',
+            'Не удалось загрузить ваш тариф'
+          );
         }
+
         this.isLoading = false;
       });
   }

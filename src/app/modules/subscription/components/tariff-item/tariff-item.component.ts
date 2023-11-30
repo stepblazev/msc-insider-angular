@@ -65,6 +65,13 @@ export class TariffItemComponent implements OnInit {
     return isCurrent;
   }
 
+  isCurrentFree(): boolean {
+    const isCurrentFree: boolean =
+      !this._subscriptionService.subscription &&
+      this.tariff.role.slug == 'free';
+    return isCurrentFree;
+  }
+
   getButtonCaption(): string {
     let caption: string = '';
 

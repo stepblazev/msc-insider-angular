@@ -55,8 +55,4 @@ export class MainMenuComponent {
   public isActiveRoute(path: string): boolean {
     return this.router.url.includes(path);
   }
-
-  public scrollToTop(): void {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }
 }

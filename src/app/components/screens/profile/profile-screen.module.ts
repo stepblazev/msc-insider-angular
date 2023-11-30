@@ -7,7 +7,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { ProfileHomeComponent } from './profile-home/profile-home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthFormModule } from '../../features/auth-form/auth-form.module';
-import { TariffListModule } from '../../features/tariff-list/tariff-list.module';
+import { SubscriptionModule } from 'src/app/modules/subscription/subscription.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { TariffListModule } from '../../features/tariff-list/tariff-list.module'
     FormsModule,
     ReactiveFormsModule,
     AuthFormModule,
-    TariffListModule,
+    SubscriptionModule,
   ],
 })
 export class ProfileScreenModule {}

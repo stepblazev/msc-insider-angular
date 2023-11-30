@@ -6,4 +6,4 @@ export interface IMakeSubscriptionPayloadDTO {
 }
 
 export interface IMakeSubscriptionResponseDTO
-  extends IBaseHttpResponse<ISubscription> {}
+  extends IBaseHttpResponse<ISubscription | null> {}

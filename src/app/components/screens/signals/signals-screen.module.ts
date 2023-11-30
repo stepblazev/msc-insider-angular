@@ -7,14 +7,14 @@ import { CheckboxComponent } from '../../ui/controls/checkbox/checkbox.component
 import { AssetsFilterComponent } from './components/assets-filter/assets-filter.component';
 import { SelectComponent } from '../../ui/controls/select/select.component';
 import { SearchBarComponent } from '../../ui/controls/search-bar/search-bar.component';
-import { TariffListModule } from '../../features/tariff-list/tariff-list.module';
+import { SubscriptionModule } from 'src/app/modules/subscription/subscription.module';
 
 @NgModule({
   declarations: [SignalsComponent, AssetsFilterComponent, AssetsTableComponent],
   imports: [
     CommonModule,
     FavoritesModule,
-    TariffListModule,
+    SubscriptionModule,
     CheckboxComponent,
     SelectComponent,
     SearchBarComponent,

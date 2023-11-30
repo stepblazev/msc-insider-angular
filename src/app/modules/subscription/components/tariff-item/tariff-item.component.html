@@ -17,11 +17,10 @@
                 {{tariff.description_hover}}
             </div>
         </div>
-        <span class="tariff__popular tariff__popular--green"
-            *ngIf="!_subscriptionService.subscription && tariff.id == 3">
+        <span class="tariff__popular" *ngIf="tariff.id == 3 && !isCurrent()">
             Самый популярный
         </span>
-        <span class="tariff__popular tariff__popular--green" *ngIf="isCurrent()">
+        <span class="tariff__popular tariff__popular--green" *ngIf="isCurrent() || isCurrentFree()">
             Ваш тариф
         </span>
     </div>
@@ -43,7 +42,8 @@
                     'mb-1 mr-1': isCurrent(),
                 }">{{tariff.terms}}</p>
             </div>
-            <button class="mt-3 w-full" [ngClass]="this.tariffTheme.classes.button" (click)="updateTariff()">
+            <button class="mt-3 w-full" *ngIf="!(isCurrentFree())" [ngClass]="this.tariffTheme.classes.button"
+                (click)="updateTariff()">
                 {{ getButtonCaption() }}
             </button>
         </div>

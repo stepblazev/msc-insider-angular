@@ -23,8 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubscriptionService } from './modules/subscription/subscription.service';
 import { ConfirmationPopupComponent } from './components/ui/confirmation-popup/confirmation-popup.component';
 
-import { NgxEchartsModule } from 'ngx-echarts';
-
 function initializeApp(
   userService: UserService,
   subscriptionService: SubscriptionService

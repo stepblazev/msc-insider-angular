@@ -1,99 +1,176 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import type { EChartsOption } from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @Component({
+  standalone: true,
   selector: 'app-basic-update',
   templateUrl: './basic-update.component.html',
   styleUrls: ['./basic-update.component.scss'],
+  imports: [CommonModule, NgxEchartsModule],
 })
 export class BasicUpdateComponent implements OnInit {
   options: EChartsOption;
-  updateOptions: EChartsOption;
 
   public loading: boolean = false;
+  public loadingOpt: any = {};
 
   constructor() {}
 
   ngOnInit(): void {
-    this.options = {
-      color: '#1BCD54',
-      backgroundColor: '#0E0E15',
-      title: {
-        text: 'Аналитика',
-        show: false,
-      },
-      tooltip: {
-        padding: 24,
-        borderRadius: 16,
-        backgroundColor: 'rgba(39, 40, 46, 0.60)',
-        borderColor: '#1BCD54',
-        extraCssText:
-          'box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.30); backdrop-filter: blur(16px);',
-        textStyle: {
-          color: '#FFF',
-          fontSize: 16,
-        },
-        trigger: 'axis',
-        axisPointer: {
-          animation: true,
-        },
-      },
-      xAxis: {
-        type: 'time',
-        min: new Date('2014-01-01').getTime(),
-        max: new Date('2023-12-31').getTime(),
-        axisLabel: {
-          color: 'white',
-        },
-      },
-      yAxis: {
-        type: 'value',
-        boundaryGap: [0, '10%'],
-        axisLabel: {
-          color: 'white',
-        },
-      },
-      series: [
-        {
-          name: 'Test',
-          type: 'line',
-          showSymbol: false,
-          areaStyle: {
-            color: 'rgba(112, 255, 0, 0.28)',
-          },
-          data: [
-            [new Date('2014-01-01').getTime(), 25000],
-            [new Date('2014-06-01').getTime(), 25000],
-            [new Date('2015-01-01').getTime(), 40000],
-            [new Date('2015-06-01').getTime(), 55000],
-            [new Date('2016-01-01').getTime(), 33000],
-            [new Date('2016-06-01').getTime(), 70000],
-            [new Date('2017-01-01').getTime(), 65000],
-            [new Date('2017-06-01').getTime(), 80000],
-            [new Date('2018-01-01').getTime(), 75000],
-            [new Date('2018-06-01').getTime(), 90000],
-            [new Date('2019-01-01').getTime(), 120000],
-            [new Date('2019-06-01').getTime(), 100000],
-            [new Date('2020-01-01').getTime(), 130000],
-            [new Date('2020-06-01').getTime(), 110000],
-            [new Date('2021-01-01').getTime(), 200000],
-            [new Date('2021-06-01').getTime(), 120000],
-            [new Date('2022-01-01').getTime(), 140000],
-            [new Date('2022-06-01').getTime(), 75000],
-            [new Date('2023-01-01').getTime(), 90000],
-            [new Date('2023-06-01').getTime(), 60000],
-            [new Date('2024-01-01').getTime(), 90000],
-          ],
-        },
-      ],
+    this.updateChartData();
+
+    this.loadingOpt = {
+      text: 'Загрузка данных',
+      color: '#70FF00',
+      textColor: '#FFF',
+      fontSize: 18,
+      fontFamily: 'Inter',
+      fontWeight: 'bold',
+      maskColor: 'rgba(0, 0, 0, 0.8)',
     };
   }
 
   showLoading() {
     this.loading = true;
-
     setTimeout(() => {
+      this.updateChartData();
       this.loading = false;
-    }, 2000);
+    }, 1000);
+  }
+
+  updateChartData() {
+    this.options = {
+      color: '#70FF00',
+      textStyle: {
+        fontSize: 14,
+        fontFamily: 'Inter',
+      },
+      grid: {
+        left: -35,
+        right: 0,
+        top: 30,
+        bottom: 0,
+        containLabel: true,
+        backgroundColor: '#0E0E15',
+      },
+      title: {
+        text: 'Аналитика',
+        show: false,
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          animation: true,
+        },
+        confine: true,
+        padding: 24,
+        backgroundColor: 'rgba(39, 40, 46, 0.60)',
+        borderColor: '#1BCD54',
+        position: (point, params, dom, rect, size) => {
+          return [point[0] + 5, point[1] - size.contentSize[1] - 5];
+        },
+        extraCssText:
+          'box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.30); backdrop-filter: blur(16px); border-radius: 16px 16px 16px 0',
+        textStyle: {
+          color: '#FFF',
+          fontSize: 16,
+        },
+      },
+      xAxis: {
+        type: 'time',
+        min: new Date('2014-01-01').getTime(),
+        max: new Date('2023-01-01').getTime(),
+        axisLabel: {
+          color: 'white',
+          verticalAlign: 'top',
+          align: 'center',
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#FFF',
+          },
+        },
+        axisPointer: {
+          show: true,
+          lineStyle: {
+            color: '#577775',
+            type: 'solid',
+          },
+        },
+        position: 'bottom',
+      },
+      yAxis: {
+        type: 'value',
+        interval: 1000,
+        offset: -10,
+        boundaryGap: [0, '10%'],
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: '#CFCFD0',
+            opacity: 0.25,
+          },
+        },
+        axisLabel: {
+          color: 'white',
+          verticalAlign: 'bottom',
+          align: 'left',
+        },
+      },
+      series: [
+        {
+          name: 'USD/RUB',
+          type: 'line',
+          showSymbol: false,
+          areaStyle: {
+            color: {
+              type: 'linear',
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [
+                { offset: 0, color: 'rgba(112, 255, 0, 0.28)' },
+                { offset: 1, color: 'rgba(112, 255, 0, 0.00)' },
+              ],
+            },
+          },
+          symbolSize: 8,
+          emphasis: {
+            itemStyle: {
+              borderColor: 'rgba(27, 205, 84, 0.30)',
+              borderWidth: 13,
+              color: '#1BCD54',
+            },
+          },
+          data: this.generateData(),
+        },
+      ],
+    };
+  }
+
+  generateData() {
+    const data = [];
+    let currentDate = new Date('2014-01-01');
+
+    while (currentDate <= new Date('2023-01-01')) {
+      let value;
+      const randomVariability = Math.random();
+
+      if (randomVariability < 0.05) {
+        value = Math.floor(Math.random() * (4500 - 3000 + 1)) + 3000;
+      } else if (randomVariability < 0.1) {
+        value = Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000;
+      } else {
+        value = Math.floor(Math.random() * (3000 - 2000 + 1)) + 2000;
+      }
+
+      data.push([currentDate.getTime(), value]);
+      currentDate.setMonth(currentDate.getMonth() + 1);
+    }
+
+    return data;
   }
 }

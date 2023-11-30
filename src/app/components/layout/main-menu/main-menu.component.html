@@ -6,8 +6,7 @@
         <div class="flex flex-col-reverse desktop:flex-row items-center justify-center">
             <nav
                 class="menu-nav flex flex-row items-center max-phone2:flex-wrap max-phone2:w-full p-2 border-white phone2:border max-phone2:border-t-[1px] phone2:rounded-xl phone2:rounded-bl-none">
-                <a [ngClass]="{'active': isActive('/')}" class="menu-item menu-item-home" routerLink="'/'"
-                    (click)="scrollToTop()">
+                <a [ngClass]="{'active': isActive('/')}" class="menu-item menu-item-home" routerLink="'/'">
                     <svg *ngIf="!isActive('/')" fill="none" height="32" viewBox="0 0 76 32" width="76"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -110,8 +109,7 @@
                     </svg>
                 </a>
 
-                <a [ngClass]="{'active': isActiveRoute('/assets')}" class="menu-item" routerLink="/assets"
-                    (click)="scrollToTop()">
+                <a [ngClass]="{'active': isActiveRoute('/assets')}" class="menu-item" routerLink="/assets">
                     <svg class="menu-item-icon" fill="none" height="24" viewBox="0 0 24 24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
                         <rect height="18" rx="4" stroke="white" stroke-width="2" width="18" x="3" y="3" />
@@ -123,8 +121,7 @@
                     <span class="menu-item-text">Активы</span>
                 </a>
 
-                <a [ngClass]="{'active': isActive('/signals')}" class="menu-item" routerLink="/signals"
-                    (click)="scrollToTop()">
+                <a [ngClass]="{'active': isActive('/signals')}" class="menu-item" routerLink="/signals">
                     <svg class="menu-item-icon" fill="none" height="24" viewBox="0 0 24 24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -135,8 +132,7 @@
                     <span class="menu-item-text">Сигналы</span>
                 </a>
 
-                <a [ngClass]="{'active': isActive('/chart')}" class="menu-item" routerLink="/chart"
-                    (click)="scrollToTop()">
+                <a [ngClass]="{'active': isActive('/chart')}" class="menu-item" routerLink="/chart">
                     <svg class="menu-item-icon" fill="none" height="24" viewBox="0 0 24 24" width="24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path

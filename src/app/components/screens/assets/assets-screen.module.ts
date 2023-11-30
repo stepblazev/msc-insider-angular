@@ -7,8 +7,8 @@ import { AssetsStocksComponent } from './assets-stocks/assets-stocks.component';
 import { AssetsIndexesComponent } from './assets-indexes/assets-indexes.component';
 import { AssetsProductsComponent } from './assets-products/assets-products.component';
 import { AssetsMoreComponent } from './assets-more/assets-more.component';
-import { TariffListModule } from '../../features/tariff-list/tariff-list.module';
 import { FavoritesModule } from 'src/app/modules/favorites/favorites.module';
+import { SubscriptionModule } from 'src/app/modules/subscription/subscription.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { FavoritesModule } from 'src/app/modules/favorites/favorites.module';
   ],
   imports: [
     CommonModule,
-    TariffListModule,
+    SubscriptionModule,
     FavoritesModule,
     RouterLink,
     RouterOutlet,
