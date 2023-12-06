@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import type { EChartsOption } from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { getLoadingOptions } from 'src/app/modules/chart/chart-themes';
 
 @Component({
   standalone: true,
@@ -13,6 +14,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 export class BasicUpdateComponent implements OnInit {
   options: EChartsOption;
 
+  public fullscreen: boolean = false;
   public loading: boolean = false;
   public loadingOpt: any = {};
 
@@ -20,16 +22,7 @@ export class BasicUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateChartData();
-
-    this.loadingOpt = {
-      text: 'Загрузка данных',
-      color: '#70FF00',
-      textColor: '#FFF',
-      fontSize: 18,
-      fontFamily: 'Inter',
-      fontWeight: 'bold',
-      maskColor: 'rgba(0, 0, 0, 0.8)',
-    };
+    this.loadingOpt = getLoadingOptions('red', 'Загрузка данных графика');
   }
 
   showLoading() {

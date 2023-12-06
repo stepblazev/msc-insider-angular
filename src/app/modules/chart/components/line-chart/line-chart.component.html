@@ -1,0 +1,7 @@
+<div class="chart" [ngClass]="{
+    'chart--fullscreen': chartServive.fullscreen
+}">
+    <button *ngIf="chartServive.fullscreen" class="chart__close">На весь экран</button>
+    <div class="chart__canvas" echarts [options]="chartServive.options" [loading]="chartServive.loading"
+        [loadingOpts]="chartServive.loadingOptions"></div>
+</div>

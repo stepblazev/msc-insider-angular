@@ -1,5 +1,14 @@
+.chart-container {
+  @apply h-[537px];
+  transition: all 0.2s ease;
+
+  &.fullscreen {
+    @apply h-full w-full fixed top-0 left-0 z-50;
+  }
+}
+
 .demo-chart {
-  @apply h-[537px] bg-black1;
+  @apply h-full w-full bg-black1;
 }
 
 .chart {

@@ -1,6 +1,10 @@
 <div class="container">
     <div class="chart">
-        <div echarts #echart [options]="options" [loading]="loading" [loadingOpts]="loadingOpt" class="demo-chart">
+        <div class="chart-container" [ngClass]="{
+            'fullscreen': fullscreen
+        }">
+            <div echarts [options]="options" [loading]="loading" [loadingOpts]="loadingOpt" class="demo-chart">
+            </div>
         </div>
         <div class=" pt-8 mt-8 border-t-[1px] border-gray3">
             <p class="w-[60%]">Индикатор технического анализа, показывающий
@@ -10,6 +14,7 @@
         </div>
         <div class="mt-6 flex justify-end gap-3">
             <button (click)="showLoading()" class="button--error">Обновить данные</button>
+            <button (click)="fullscreen=true" class="button--error">На весь экран</button>
         </div>
     </div>
 </div>
