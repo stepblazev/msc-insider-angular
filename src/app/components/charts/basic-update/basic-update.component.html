@@ -1,0 +1,17 @@
+<div class="chart-container">
+    <div echarts [options]="options" [loading]="loading" [loadingOpts]="loadingOpt" class="demo-chart">
+    </div>
+</div>
+<div class="flex items-center justify-between py-6">
+    <div class="w-[220px]">
+        <app-select [options]="typesOptions" [current]="currentType" (valueChanged)="changeType($event)" />
+    </div>
+    <div *ngIf="currentType.value=='solid'" class="flex gap-3">
+        <button (click)="this.color='#FF6CB3'; showLoading();" class="border-[#FF6CB3] flex-grow">Розовый</button>
+        <button (click)="this.color='#5599FF'; showLoading();" class="border-[#5599FF] flex-grow">Синий</button>
+        <button (click)="this.color='#FF5C00'; showLoading();" class="border-[#FF5C00] flex-grow">Оранжевый</button>
+        <button (click)="this.color='#70FF00'; showLoading();" class="border-[#70FF00] flex-grow">Зеленый</button>
+        <button (click)="this.color='#7C5BFF'; showLoading();" class="border-[#7C5BFF] flex-grow">Фиолетовый</button>
+        <button (click)="this.color='#DBFF00'; showLoading();" class="border-[#DBFF00] flex-grow">Желтый</button>
+    </div>
+</div>

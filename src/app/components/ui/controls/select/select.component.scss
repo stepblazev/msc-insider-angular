@@ -2,7 +2,7 @@
   @apply relative select-none cursor-pointer;
 
   &__current {
-    @apply py-[10px] px-3 border-[1px] border-white rounded-lg bg-gray1 text-body-2;
+    @apply py-[10px] pr-8 px-3 border-[1px] border-white rounded-lg bg-gray1 text-body-2;
     transition: border-color 0.2s ease;
 
     &--opened {

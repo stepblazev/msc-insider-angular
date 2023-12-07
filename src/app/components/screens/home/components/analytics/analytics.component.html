@@ -1,0 +1,66 @@
+<div class="container phone:mb-8 desktop:mb-20">
+    <div class="analytics">
+        <h2 class="analytics__title">Аналитика</h2>
+        <div class="analytics__top">
+            <app-tabs-select [options]="typeOptions" [current]="currentType" (valueChanged)="changeType($event)" />
+            <button class="button--white analytics__link" routerLink="/chart">Все активы</button>
+        </div>
+        <div class="analytics__container">
+            <div class="mb-6 pb-6 flex justify-between border-b-[1px] border-gray3">
+                <div class="tabs">
+                    <div class="tabs__item">Позиции физических лиц</div>
+                    <div class="tabs__item">Позиции юридических лиц</div>
+                    <div class="tabs__item">RSI</div>
+                    <div class="tabs__item tabs__item--selected">Фьючерс</div>
+                </div>
+                <div class="w-[220px]">
+                    <app-select [options]="payerTypes" [current]="currentPayerType"
+                        (valueChanged)="changePayerType($event)" />
+                </div>
+            </div>
+            <div class="mb-4 pt-6">
+
+            </div>
+            <div class="mb-6">
+                <app-basic-update />
+            </div>
+            <div class="pb-8 border-b-[1px] border-gray3">
+                <div class="periods">
+                    <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+                        <div class="periods__item">
+                            <span class="periods__label">7 дней</span>
+                            <span class="periods__value">(-2,52%)</span>
+                        </div>
+                    </div>
+                    <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+                        <div class="periods__item">
+                            <span class="periods__label">1 месяц</span>
+                            <span class="periods__value periods__value--success">(+3,09%)</span>
+                        </div>
+                    </div>
+                    <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+                        <div class="periods__item">
+                            <span class="periods__label">6 месяцев</span>
+                            <span class="periods__value periods__value--success">(+14,93%)</span>
+                        </div>
+                    </div>
+                    <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+                        <div class="periods__item">
+                            <span class="periods__label">1 год</span>
+                            <span class="periods__value periods__value--success">(+32,69%)</span>
+                        </div>
+                    </div>
+                    <div class="p-2 tablet:w-[20%] w-full">
+                        <div class="periods__item periods__item--selected">
+                            <span class="periods__label">За всё время</span>
+                            <span class="periods__value periods__value--success">(+475,69%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="analytics__description">Индикатор технического анализа, показывающий соотношение
+                положительных и отрицательных изменений цены финансового инструмента. Метрика которая позволяет
+                улавливать когда Инсайдеры заходят сильно в лонг или в шорт.</p>
+        </div>
+    </div>
+</div>

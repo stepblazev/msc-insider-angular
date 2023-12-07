@@ -40,7 +40,7 @@ h5 {
 
 button {
   @apply px-[24px] h-12 flex justify-center items-center border-[1px] border-greenPrimary rounded-3xl;
-  transition: 200ms;
+  transition: all 0.2s ease;
 
   font-family: Gilroy, sans-serif;
   font-size: 16px;
@@ -53,10 +53,14 @@ button {
   &.button--error {
     @apply border-error;
   }
+
+  &.button--white {
+    @apply bg-white border-white text-black1;
+  }
 }
 
 button:hover {
-  @apply bg-greenPrimary;
+  @apply bg-greenPrimary border-greenPrimary text-white;
 
   &.button--error {
     @apply bg-error;

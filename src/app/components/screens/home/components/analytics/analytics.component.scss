@@ -1,0 +1,71 @@
+.analytics {
+  &__title {
+    @apply mb-4;
+  }
+
+  &__link {
+    @apply w-[220px];
+  }
+
+  &__top {
+    @apply flex justify-between items-center;
+  }
+
+  &__container {
+    @apply mt-6 phone2:p-6 p-3 phone2:pb-10 pb-6 rounded-lg border-[1px] border-gray3 bg-gray1;
+  }
+
+  &__description {
+    @apply mt-6 small:w-[65%] text-body-2;
+  }
+}
+
+// NOTE вынести
+.tabs {
+  @apply flex select-none;
+
+  &__item {
+    @apply py-[10px] px-6 rounded-lg border-[1px] border-gray3 cursor-pointer;
+    transition: all 0.2s ease;
+
+    &:not(:last-child) {
+      @apply mr-4;
+    }
+
+    &:not(.tabs__item--selected):hover {
+      @apply border-white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &--selected {
+      @apply bg-white border-white text-black1;
+    }
+  }
+}
+
+.periods {
+  @apply flex flex-wrap m-[-0.5rem];
+
+  &__item {
+    @apply phone2:py-4 py-2 phone2:px-[26px] px-3 rounded-xl border-[1px] border-gray3 flex phone2:flex-col phone2:justify-center justify-between items-center cursor-pointer;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &--selected {
+      @apply border-white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__label {
+    @apply phone2:mb-2 max-phone2:mr-2 text-body-2;
+  }
+
+  &__value {
+    @apply text-body-2 font-semibold text-error;
+
+    &--success {
+      @apply text-greenPrimary;
+    }
+  }
+}
