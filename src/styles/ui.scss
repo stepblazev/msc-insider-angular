@@ -55,12 +55,12 @@ button {
   }
 
   &.button--white {
-    @apply bg-white border-white text-black1;
+    @apply bg-white border-none text-black1;
   }
 }
 
 button:hover {
-  @apply bg-greenPrimary border-greenPrimary text-white;
+  @apply bg-greenPrimary;
 
   &.button--error {
     @apply bg-error;
@@ -68,6 +68,10 @@ button:hover {
 
   &.button--gray {
     @apply bg-gray3;
+  }
+
+  &.button--white {
+    @apply text-white;
   }
 }
 

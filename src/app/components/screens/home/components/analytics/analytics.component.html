@@ -1,66 +1,99 @@
 <div class="container phone:mb-8 desktop:mb-20">
-    <div class="analytics">
-        <h2 class="analytics__title">Аналитика</h2>
-        <div class="analytics__top">
-            <app-tabs-select [options]="typeOptions" [current]="currentType" (valueChanged)="changeType($event)" />
-            <button class="button--white analytics__link" routerLink="/chart">Все активы</button>
+    <h2 class="mb-4">Аналитика</h2>
+    <div class="mb-6 flex justify-between items-center">
+        <app-tabs-select [options]="typeOptions" [current]="currentType" (valueChanged)="changeType($event)" />
+        <button class="button--white w-[220px]" routerLink="/chart">Все активы</button>
+    </div>
+    <div class="analytics" [ngClass]="{
+        'analytics--fulscreen': fullscreen
+    }">
+        <div class="mb-6 pb-6 flex justify-between border-b-[1px] border-gray3">
+            <app-tabs-select-small [options]="chartTypeOptions" [current]="currentChartType"
+                (valueChanged)="changeChartType($event)" />
+            <div class="w-[220px]">
+                <app-select [options]="payerTypes" [current]="currentPayerType"
+                    (valueChanged)="changePayerType($event)" />
+            </div>
         </div>
-        <div class="analytics__container">
-            <div class="mb-6 pb-6 flex justify-between border-b-[1px] border-gray3">
-                <div class="tabs">
-                    <div class="tabs__item">Позиции физических лиц</div>
-                    <div class="tabs__item">Позиции юридических лиц</div>
-                    <div class="tabs__item">RSI</div>
-                    <div class="tabs__item tabs__item--selected">Фьючерс</div>
-                </div>
-                <div class="w-[220px]">
-                    <app-select [options]="payerTypes" [current]="currentPayerType"
-                        (valueChanged)="changePayerType($event)" />
-                </div>
-            </div>
-            <div class="mb-4 pt-6">
-
-            </div>
-            <div class="mb-6">
-                <app-basic-update />
-            </div>
-            <div class="pb-8 border-b-[1px] border-gray3">
-                <div class="periods">
-                    <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
-                        <div class="periods__item">
-                            <span class="periods__label">7 дней</span>
-                            <span class="periods__value">(-2,52%)</span>
-                        </div>
-                    </div>
-                    <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
-                        <div class="periods__item">
-                            <span class="periods__label">1 месяц</span>
-                            <span class="periods__value periods__value--success">(+3,09%)</span>
-                        </div>
-                    </div>
-                    <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
-                        <div class="periods__item">
-                            <span class="periods__label">6 месяцев</span>
-                            <span class="periods__value periods__value--success">(+14,93%)</span>
-                        </div>
-                    </div>
-                    <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
-                        <div class="periods__item">
-                            <span class="periods__label">1 год</span>
-                            <span class="periods__value periods__value--success">(+32,69%)</span>
-                        </div>
-                    </div>
-                    <div class="p-2 tablet:w-[20%] w-full">
-                        <div class="periods__item periods__item--selected">
-                            <span class="periods__label">За всё время</span>
-                            <span class="periods__value periods__value--success">(+475,69%)</span>
-                        </div>
-                    </div>
+        <div class="mb-4 flex justify-between items-center">
+            <div class="assets">
+                <h4 class="assets__picker">
+                    USD/RUB - Доллар США / Российский рубль
+                </h4>
+                <div class="assets__stats">
+                    <span class="assets__stats-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect width="24" height="24" rx="12" transform="matrix(1 0 0 -1 0 24)" fill="#14913C" />
+                            <path d="M12 6.5L17.1962 15.5H6.80385L12 6.5Z" fill="white" />
+                        </svg>
+                    </span>
+                    <span class="assets__stats-value">
+                        118 924.56 ₽
+                    </span>
+                    <span class="assets__stats-change">
+                        + 93 924.56 (+475,69%)
+                    </span>
                 </div>
             </div>
-            <p class="analytics__description">Индикатор технического анализа, показывающий соотношение
-                положительных и отрицательных изменений цены финансового инструмента. Метрика которая позволяет
-                улавливать когда Инсайдеры заходят сильно в лонг или в шорт.</p>
+            <label for="FULLSCREEN" class="analytics__fullscreen">
+                <input type="checkbox" [(ngModel)]="fullscreen" id="FULLSCREEN" hidden />
+                <span class="analytics__fullscreen-label">{{ fullscreen ? "Свернуть" : "На весь экран" }}</span>
+                <span class="analytics__fullscreen-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 12V3H12M12 21H3V12" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        <rect x="9" y="9" width="6" height="6" rx="1" fill="white" />
+                    </svg>
+                </span>
+            </label>
         </div>
+        <div class="mb-6">
+            <app-basic-update [currentType]="currentChartType.value" />
+        </div>
+        <div class="pb-8 border-b-[1px] border-gray3">
+            <div class="periods flex-grow">
+                <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+                    <div class="periods__item">
+                        <span class="periods__label">7 дней</span>
+                        <span class="periods__value">(-2,52%)</span>
+                    </div>
+                </div>
+                <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+                    <div class="periods__item">
+                        <span class="periods__label">1 месяц</span>
+                        <span class="periods__value periods__value--success">(+3,09%)</span>
+                    </div>
+                </div>
+                <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+                    <div class="periods__item">
+                        <span class="periods__label">6 месяцев</span>
+                        <span class="periods__value periods__value--success">(+14,93%)</span>
+                    </div>
+                </div>
+                <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+                    <div class="periods__item">
+                        <span class="periods__label">1 год</span>
+                        <span class="periods__value periods__value--success">(+32,69%)</span>
+                    </div>
+                </div>
+                <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+                    <div class=" periods__item periods__item--selected">
+                        <span class="periods__label">За всё время</span>
+                        <span class="periods__value periods__value--success">(+475,69%)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 flex items-center">
+            <div class="flex-grow">
+                <app-date-input label="От ДД.ММ.ГГГГ" />
+            </div>
+            <span class="mx-1">-</span>
+            <div class="flex-grow">
+                <app-date-input label="До ДД.ММ.ГГГГ" />
+            </div>
+        </div>
+        <p class="analytics__description">Индикатор технического анализа, показывающий соотношение
+            положительных и отрицательных изменений цены финансового инструмента. Метрика которая позволяет
+            улавливать когда Инсайдеры заходят сильно в лонг или в шорт.</p>
     </div>
 </div>

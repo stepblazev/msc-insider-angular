@@ -12,6 +12,9 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { TabsSelectComponent } from '../../ui/tabs-select/tabs-select.component';
 import { RouterLink } from '@angular/router';
 import { SelectComponent } from '../../ui/controls/select/select.component';
+import { TabsSelectSmallComponent } from '../../ui/tabs-select-small/tabs-select-small.component';
+import { FormsModule } from '@angular/forms';
+import { DateInputComponent } from '../../ui/controls/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,15 @@ import { SelectComponent } from '../../ui/controls/select/select.component';
     AnalyticsComponent,
   ],
   imports: [
+    DateInputComponent,
     SelectComponent,
     RouterLink,
     TabsSelectComponent,
+    TabsSelectSmallComponent,
     BasicUpdateComponent,
     CommonModule,
     SubscriptionModule,
+    FormsModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),

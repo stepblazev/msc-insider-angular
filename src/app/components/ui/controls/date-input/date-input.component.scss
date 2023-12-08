@@ -1,0 +1,26 @@
+.date {
+  @apply relative cursor-text rounded-xl border-[1px] border-white overflow-hidden;
+
+  input {
+    @apply w-full px-4 pb-5 pt-9 text-body-2 text-white bg-gray1 outline-none;
+    transition: all 0.2s ease;
+
+    &:focus {
+      @apply text-white bg-gray3;
+    }
+
+    &:focus + .date__label,
+    &:valid + .date__label {
+      @apply text-body-3 top-3 translate-y-0;
+    }
+
+    &:focus + .date__label {
+      @apply text-white;
+    }
+  }
+
+  &__label {
+    @apply absolute top-1/2 translate-y-[-50%] left-4 text-body-2 text-gray2 whitespace-nowrap;
+    transition: all 0.2s ease;
+  }
+}

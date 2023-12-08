@@ -1,44 +1,61 @@
 .analytics {
-  &__title {
-    @apply mb-4;
-  }
+  @apply phone2:p-6 p-3 phone2:pb-10 pb-6 rounded-lg border-[1px] border-gray3 bg-gray1;
 
-  &__link {
-    @apply w-[220px];
-  }
-
-  &__top {
-    @apply flex justify-between items-center;
-  }
-
-  &__container {
-    @apply mt-6 phone2:p-6 p-3 phone2:pb-10 pb-6 rounded-lg border-[1px] border-gray3 bg-gray1;
+  &--fulscreen {
+    @apply fixed top-0 left-0 w-[100vw] h-[100vh] overflow-y-auto z-[100] rounded-none;
   }
 
   &__description {
     @apply mt-6 small:w-[65%] text-body-2;
   }
-}
 
-// NOTE вынести
-.tabs {
-  @apply flex select-none;
-
-  &__item {
-    @apply py-[10px] px-6 rounded-lg border-[1px] border-gray3 cursor-pointer;
+  &__fullscreen {
+    @apply py-2 px-3 flex items-center cursor-pointer border-gray3 border-[1px] rounded;
     transition: all 0.2s ease;
 
-    &:not(:last-child) {
-      @apply mr-4;
-    }
-
-    &:not(.tabs__item--selected):hover {
+    &:hover {
       @apply border-white;
       background: rgba(255, 255, 255, 0.1);
     }
 
-    &--selected {
-      @apply bg-white border-white text-black1;
+    &-label {
+      @apply mr-2;
+    }
+
+    &-icon {
+      @apply w-6 h-6;
+
+      svg {
+        @apply w-full h-full;
+      }
+    }
+  }
+}
+
+.assets {
+  @apply flex items-center rounded-xl border-[1px] border-gray3 py-[6px] px-4;
+
+  &__picker {
+    @apply pr-3 cursor-pointer select-none;
+  }
+
+  &__stats {
+    @apply pl-3 flex items-center border-l-[1px] border-gray3;
+
+    &-icon {
+      @apply mr-2 w-6 h-6;
+
+      svg {
+        @apply w-full h-full;
+      }
+    }
+
+    &-value {
+      @apply mr-2 text-numeric-3;
+    }
+
+    &-change {
+      @apply px-2 py-1 rounded-full bg-error text-body-3;
     }
   }
 }
@@ -58,7 +75,7 @@
   }
 
   &__label {
-    @apply phone2:mb-2 max-phone2:mr-2 text-body-2;
+    @apply phone2:mb-2 max-phone2:mr-2 text-body-2 whitespace-nowrap;
   }
 
   &__value {

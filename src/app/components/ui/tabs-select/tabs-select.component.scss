@@ -1,5 +1,5 @@
 .tabs {
-  @apply flex select-none;
+  @apply flex flex-wrap select-none;
 
   &__item {
     @apply py-4 px-8 rounded-lg border-gray3 bg-gray1 border-[1px] text-body-2 cursor-pointer;

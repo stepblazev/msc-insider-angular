@@ -1,0 +1,5 @@
+<div class="date" (click)="inputElement.nativeElement.focus()">
+    <input #input type="text" (input)="onInputChange($event)" (keypress)="numberOnly($event)" [value]="value"
+        maxlength="10" required />
+    <span class="date__label">{{ label }}</span>
+</div>

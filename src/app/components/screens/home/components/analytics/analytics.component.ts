@@ -4,7 +4,7 @@ import { ITabSelectOption } from 'src/app/components/ui/tabs-select/tabs-select.
 
 const assetsTypeOptions: ITabSelectOption<string>[] = [
   {
-    label: 'Валютная пара',
+    label: 'Валютные пары',
     value: 'currency',
   },
   {
@@ -22,6 +22,25 @@ const assetsTypeOptions: ITabSelectOption<string>[] = [
   {
     label: 'Другие',
     value: 'others',
+  },
+];
+
+const chartTypeOptions: ITabSelectOption<string>[] = [
+  {
+    label: 'Позиции физических лиц',
+    value: 'fiz',
+  },
+  {
+    label: 'Позиции юридических лиц',
+    value: 'yur',
+  },
+  {
+    label: 'RSI',
+    value: 'rsi',
+  },
+  {
+    label: 'Фьючерс',
+    value: 'futures',
   },
 ];
 
@@ -46,14 +65,23 @@ const payerType: IOption<string>[] = [
   styleUrls: ['./analytics.component.scss'],
 })
 export class AnalyticsComponent {
+  public fullscreen: boolean = false;
+
   public typeOptions: ITabSelectOption<string>[] = assetsTypeOptions;
   public currentType: ITabSelectOption<string> = assetsTypeOptions[0];
+
+  public chartTypeOptions: ITabSelectOption<string>[] = chartTypeOptions;
+  public currentChartType: ITabSelectOption<string> = chartTypeOptions[0];
 
   public payerTypes: IOption<string>[] = payerType;
   public currentPayerType: IOption<string> = payerType[0];
 
   changePayerType(type: IOption<string>) {
     this.currentPayerType = type;
+  }
+
+  changeChartType(type: ITabSelectOption<string>) {
+    this.currentChartType = type;
   }
 
   changeType(type: ITabSelectOption<string>) {
