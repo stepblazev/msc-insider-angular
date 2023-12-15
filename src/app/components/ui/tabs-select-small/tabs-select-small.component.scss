@@ -1,13 +1,13 @@
 .tabs {
-  @apply flex select-none;
+  @apply m-[-0.5rem] flex flex-wrap select-none;
+
+  &__shell {
+    @apply p-2 max-small:basis-1/2 max-small:flex-grow max-w-full;
+  }
 
   &__item {
-    @apply py-[10px] px-6 rounded-lg border-[1px] border-gray3 cursor-pointer;
+    @apply py-[10px] px-6 rounded-lg border-[1px] border-gray3 whitespace-nowrap overflow-ellipsis overflow-hidden cursor-pointer;
     transition: all 0.2s ease;
-
-    &:not(:last-child) {
-      @apply mr-4;
-    }
 
     &:not(.tabs__item--selected):hover {
       @apply border-white;

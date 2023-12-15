@@ -1,5 +1,7 @@
 <div class="tabs">
-    <div *ngFor="let option of options" (click)="clickHandler(option)" class="tabs__item" [ngClass]="{
+    <div class="tabs__shell" *ngFor="let option of options">
+        <div (click)="clickHandler(option)" class="tabs__item" [ngClass]="{
         'tabs__item--selected': option.value == current.value
     }">{{ option.label }}</div>
+    </div>
 </div>

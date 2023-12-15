@@ -9,12 +9,16 @@
         <th class="table__col table__col-type">{{ signal.type }}</th>
         <th class="table__col table__col-name">{{ signal.name }}</th>
         <th class="table__col table__col-rsi">
-            <div class="indicator {{ unavalible ? 'bg-gray4' : signal.RSI_legal.type }}"></div>
-            <span class="ml-2">{{ unavalible ? 'NN' : signal.RSI_legal.value }}</span>
+            <div class="flex items-center small:justify-center">
+                <div class="indicator {{ unavalible ? 'bg-gray4' : signal.RSI_legal.type }}"></div>
+                <span class="ml-2">{{ unavalible ? 'NN' : signal.RSI_legal.value }}</span>
+            </div>
         </th>
         <th class="table__col table__col-rsi">
-            <div class="indicator {{ unavalible ? 'bg-gray4' : signal.RSI_legal.type }}"></div>
-            <span class="ml-2">{{ unavalible ? 'NN' : signal.RSI_legal.value }}</span>
+            <div class="flex items-center small:justify-center">
+                <div class="indicator {{ unavalible ? 'bg-gray4' : signal.RSI_legal.type }}"></div>
+                <span class="ml-2">{{ unavalible ? 'NN' : signal.RSI_legal.value }}</span>
+            </div>
         </th>
         <th *ngIf="!unavalible">
             <div class="table__col-favorite">

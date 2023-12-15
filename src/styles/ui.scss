@@ -172,8 +172,16 @@ button:disabled {
 }
 
 .light-ellipse {
-  &::after {
-    display: none; // todo
+  @apply max-small:hidden;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .light-ellipse__circle {
+    // display: none; // todo
     content: "";
 
     position: absolute;
@@ -189,10 +197,6 @@ button:disabled {
     filter: blur(180px);
 
     z-index: -1;
-  }
-
-  &--left::after {
-    left: -10%;
   }
 }
 

@@ -10,7 +10,7 @@
   }
 
   &__fullscreen {
-    @apply py-2 px-3 flex items-center cursor-pointer border-gray3 border-[1px] rounded;
+    @apply py-2 px-3 flex items-center justify-between cursor-pointer border-gray3 border-[1px] rounded max-laptop:mt-3 max-phone2:w-full;
     transition: all 0.2s ease;
 
     &:hover {
@@ -33,14 +33,14 @@
 }
 
 .assets {
-  @apply flex items-center rounded-xl border-[1px] border-gray3 py-[6px] px-4;
+  @apply max-laptop:w-full flex items-center rounded-xl max-laptop:flex-col border-[1px] border-gray3 py-[6px] px-4 max-laptop:p-4;
 
   &__picker {
-    @apply pr-3 cursor-pointer select-none;
+    @apply laptop:pr-3 max-laptop:pb-3 text-center;
   }
 
   &__stats {
-    @apply pl-3 flex items-center border-l-[1px] border-gray3;
+    @apply laptop:pl-3 max-laptop:pt-3 flex items-center max-laptop:flex-col max-laptop:gap-2 laptop:border-l-[1px] max-laptop:border-t-[1px] border-gray3;
 
     &-icon {
       @apply mr-2 w-6 h-6;
@@ -51,11 +51,11 @@
     }
 
     &-value {
-      @apply mr-2 text-numeric-3;
+      @apply mr-2 text-numeric-3 whitespace-nowrap;
     }
 
     &-change {
-      @apply px-2 py-1 rounded-full bg-error text-body-3;
+      @apply px-2 py-1 rounded-full bg-error text-body-3 whitespace-nowrap;
     }
   }
 }

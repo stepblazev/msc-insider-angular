@@ -11,34 +11,57 @@
   }
 
   &__row {
-    @apply relative flex w-full px-8 py-4 pr-12 max-phone2:p-4 text-body-1 max-laptop:flex-col;
+    @apply relative flex w-full px-8 py-4 max-phone2:p-4 text-body-1 max-small:flex-col pr-12 max-phone2:pr-12;
 
     &:not(:last-child):not(:first-child) {
       @apply border-b-[1px] border-gray4;
     }
 
     &--header {
-      @apply bg-gray3 text-body-2 max-laptop:hidden;
+      @apply bg-gray3 text-body-2 max-small:hidden;
     }
   }
 
   &__col {
-    @apply font-normal flex items-center;
+    @apply relative font-normal max-laptop:text-body-3 whitespace-nowrap overflow-ellipsis overflow-hidden max-small:text-right;
+
+    &:before {
+      @apply small:hidden font-bold absolute left-0;
+    }
 
     &-type {
-      @apply laptop:w-[28%];
+      @apply small:w-[28%];
+
+      &:before {
+        content: "Тип актива: ";
+      }
     }
 
     &-name {
-      @apply laptop:w-[30%] laptop:overflow-hidden laptop:overflow-ellipsis;
+      @apply small:w-[30%];
+
+      &:before {
+        content: "Актив: ";
+      }
     }
 
     &-rsi {
-      @apply laptop:w-[21%] laptop:justify-center text-center laptop:px-10;
+      @apply small:w-[21%] laptop:overflow-visible text-center laptop:px-10;
+
+      &:first-child:before {
+        content: "RSI для юр. лиц: ";
+      }
+      &:last-child:before {
+        content: "RSI для физ. лиц: ";
+      }
     }
 
     &-favorite {
       @apply absolute laptop:right-8 right-4 max-laptop:top-4;
+    }
+
+    &:not(:last-child) {
+      @apply max-small:mb-2;
     }
   }
 

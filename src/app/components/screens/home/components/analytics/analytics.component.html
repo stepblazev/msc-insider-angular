@@ -1,21 +1,23 @@
 <div class="container phone:mb-8 desktop:mb-20">
+    <div class="light-ellipse">
+        <div class="light-ellipse__circle left-0"></div>
+    </div>
     <h2 class="mb-4">Аналитика</h2>
-    <div class="mb-6 flex justify-between items-center">
+    <div class="mb-6 flex justify-between items-center max-small:flex-col">
         <app-tabs-select [options]="typeOptions" [current]="currentType" (valueChanged)="changeType($event)" />
-        <button class="button--white w-[220px]" routerLink="/chart">Все активы</button>
+        <button class="button--white small:w-[220px] small:ml-6 max-small:mt-5 w-full" routerLink="/chart">Все
+            активы</button>
     </div>
     <div class="analytics" [ngClass]="{
         'analytics--fulscreen': fullscreen
     }">
-        <div class="mb-6 pb-6 flex justify-between border-b-[1px] border-gray3">
+        <div class="mb-6 pb-6 flex justify-between max-small:flex-col border-b-[1px] border-gray3">
             <app-tabs-select-small [options]="chartTypeOptions" [current]="currentChartType"
                 (valueChanged)="changeChartType($event)" />
-            <div class="w-[220px]">
-                <app-select [options]="payerTypes" [current]="currentPayerType"
-                    (valueChanged)="changePayerType($event)" />
-            </div>
+            <app-select class="small:w-[220px] w-full small:ml-6 max-small:mt-5" [options]="payerTypes"
+                [current]="currentPayerType" (valueChanged)="changePayerType($event)" />
         </div>
-        <div class="mb-4 flex justify-between items-center">
+        <div class="mb-4 flex justify-between items-center laptop:flex-wrap max-laptop:flex-col max-laptop:items-end">
             <div class="assets">
                 <h4 class="assets__picker">
                     USD/RUB - Доллар США / Российский рубль
