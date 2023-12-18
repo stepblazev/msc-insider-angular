@@ -23,7 +23,7 @@ export class TariffItemComponent implements OnInit {
 
   constructor(
     private readonly _authService: AuthService,
-    private readonly _userService: UserService,
+    public readonly _userService: UserService,
     private readonly _confirmationPopupService: ConfirmationPopupService,
     public readonly _subscriptionService: SubscriptionService
   ) {}
@@ -59,20 +59,23 @@ export class TariffItemComponent implements OnInit {
     return isWithinDays(this._subscriptionService.subscription?.expires_at, 7);
   }
 
-  isCurrent(): boolean {
-    const isCurrent: boolean =
-      this._subscriptionService.subscription?.tariff_id == this.tariff.id;
-    return isCurrent;
+  isFree(): boolean {
+    return this.tariff.role.slug == 'free';
   }
 
-  isCurrentFree(): boolean {
-    const isCurrentFree: boolean =
-      !this._subscriptionService.subscription &&
-      this.tariff.role.slug == 'free';
-    return isCurrentFree;
+  isCurrent(): boolean {
+    const isCurrent: boolean =
+      this._subscriptionService.subscription?.tariff_id == this.tariff.id ||
+      (!this._subscriptionService.subscription &&
+        this.tariff.role.slug == 'free');
+    return this._userService.isAuthorized && isCurrent;
   }
 
   getButtonCaption(): string {
+    if (!this._userService.isAuthorized) {
+      return 'Присоединиться';
+    }
+
     let caption: string = '';
 
     if (!this._subscriptionService.subscription) {

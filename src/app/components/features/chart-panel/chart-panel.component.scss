@@ -1,0 +1,89 @@
+.analytics {
+  @apply phone2:p-6 p-3 phone2:pb-10 pb-6 rounded-lg border-[1px] border-gray3 bg-gray1;
+  transition: all 0.2s ease;
+
+  &--fulscreen {
+    @apply fixed top-0 left-0 w-[100vw] h-[100vh] overflow-y-auto z-[100] rounded-none;
+  }
+
+  &__description {
+    @apply mt-6 text-body-2;
+  }
+
+  &__fullscreen {
+    @apply py-2 px-3 flex items-center justify-between cursor-pointer border-gray3 border-[1px] rounded max-laptop:mt-3 max-phone2:w-full;
+    transition: all 0.2s ease;
+
+    &:hover {
+      @apply border-white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &-label {
+      @apply mr-2;
+    }
+
+    &-icon {
+      @apply w-6 h-6;
+
+      svg {
+        @apply w-full h-full;
+      }
+    }
+  }
+}
+
+.assets {
+  @apply max-laptop:w-full flex items-center rounded-xl max-laptop:flex-col border-[1px] border-gray3 py-[6px] px-4 max-laptop:p-4;
+
+  &__picker {
+    @apply laptop:pr-3 max-laptop:pb-3 text-center;
+  }
+
+  &__stats {
+    @apply laptop:pl-3 max-laptop:pt-3 flex items-center max-laptop:flex-col max-laptop:gap-2 laptop:border-l-[1px] max-laptop:border-t-[1px] border-gray3;
+
+    &-icon {
+      @apply mr-2 w-6 h-6;
+
+      svg {
+        @apply w-full h-full;
+      }
+    }
+
+    &-value {
+      @apply mr-2 text-numeric-3 whitespace-nowrap;
+    }
+
+    &-change {
+      @apply px-2 py-1 rounded-full bg-error text-body-3 whitespace-nowrap;
+    }
+  }
+}
+
+.periods {
+  @apply flex flex-wrap m-[-0.5rem];
+
+  &__item {
+    @apply phone2:py-4 py-2 phone2:px-[26px] px-3 rounded-xl border-[1px] border-gray3 flex phone2:flex-col phone2:justify-center justify-between items-center cursor-pointer;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &--selected {
+      @apply border-white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__label {
+    @apply phone2:mb-2 max-phone2:mr-2 text-body-2 whitespace-nowrap;
+  }
+
+  &__value {
+    @apply text-body-2 font-semibold text-error;
+
+    &--success {
+      @apply text-greenPrimary;
+    }
+  }
+}

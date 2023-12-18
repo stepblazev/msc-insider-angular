@@ -5,7 +5,7 @@
     <div class="filter__checkbox" [ngClass]="{'border-greenPrimary': isAdditionalOpened}">
         <app-checkbox elementId="FILTER_CHECKBOX" label="Фильтры" [checked]="isAdditionalOpened"
             (valueChanged)="setIsAdditionalOpened($event)" />
-        <button *ngIf="isAdditionalOpened" class="filter__reset" (click)="resetFilter()">Сбросить все</button>
+        <div *ngIf="isAdditionalOpened" class="filter__reset" (click)="setIsAdditionalOpened(false)">Сбросить все</div>
     </div>
     <div *ngIf="isAdditionalOpened" class="filter__additional">
         <app-select [options]="_assetsFilterService.filter.type" [current]="_assetsFilterService.filter.type[0]" />

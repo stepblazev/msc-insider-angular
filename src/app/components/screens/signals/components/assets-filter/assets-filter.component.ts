@@ -32,8 +32,4 @@ export class AssetsFilterComponent {
     const oldFilter = this._assetsFilterService.filter;
     this._assetsFilterService.setFilter({ ...oldFilter, name: newName });
   }
-
-  resetFilter() {
-    this.isAdditionalOpened = false;
-  }
 }

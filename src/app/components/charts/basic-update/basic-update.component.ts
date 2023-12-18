@@ -72,7 +72,7 @@ export class BasicUpdateComponent implements OnInit, OnChanges {
 
   generateData() {
     const data = [];
-    let currentDate = new Date('2018-01-01');
+    let currentDate = new Date('2014-01-01');
 
     while (currentDate <= new Date('2023-01-01')) {
       // Симуляция перерыва

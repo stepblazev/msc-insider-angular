@@ -15,7 +15,7 @@
                         <div class="signals__examples-indicator bg-error"></div> – сигнал к продаже, актив перекуплен
                     </li>
                     <li class="signals__examples-item">
-                        <div class="signals__examples-indicator bg-primary"></div> – нейтральное положение игроков
+                        <div class="signals__examples-indicator bg-[#577775]"></div> – нейтральное положение игроков
                     </li>
                     <li class="signals__examples-item">
                         <div class="signals__examples-indicator bg-gray4"></div> – недоступный
@@ -30,7 +30,7 @@
     <div class="signals">
         <div class="signals__filter">
             <h4>Недоступные</h4>
-            <button class="mt-4">Разблокировать</button>
+            <button class="my-4">Разблокировать</button>
         </div>
         <div class="flex-grow">
             <app-assets-table [signals]="_assetsFilterService.signals" [unavalible]="true" />

@@ -9,13 +9,13 @@
         <th class="table__col table__col-type">{{ signal.type }}</th>
         <th class="table__col table__col-name">{{ signal.name }}</th>
         <th class="table__col table__col-rsi">
-            <div class="flex items-center small:justify-center">
+            <div class="flex items-center small:justify-center justify-end">
                 <div class="indicator {{ unavalible ? 'bg-gray4' : signal.RSI_legal.type }}"></div>
                 <span class="ml-2">{{ unavalible ? 'NN' : signal.RSI_legal.value }}</span>
             </div>
         </th>
         <th class="table__col table__col-rsi">
-            <div class="flex items-center small:justify-center">
+            <div class="flex items-center small:justify-center justify-end">
                 <div class="indicator {{ unavalible ? 'bg-gray4' : signal.RSI_legal.type }}"></div>
                 <span class="ml-2">{{ unavalible ? 'NN' : signal.RSI_legal.value }}</span>
             </div>
@@ -27,8 +27,6 @@
         </th>
     </tr>
     <tr class="table__row !p-0">
-        <th class="table__col w-full">
-            <button class="table__more" title="Показать ещё">Показать ещё</button>
-        </th>
+        <div class="table__more" title="Показать ещё">Показать ещё</div>
     </tr>
 </table>

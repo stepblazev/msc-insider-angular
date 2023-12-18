@@ -1,17 +1,107 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>CustomerPortalWeb</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <title>CustomerPortalWeb</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- TODO Стили для лодера -->
+    <style>
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #27282E;
+            z-index: 100;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .logo {
+            width: 100px;
+            transform: scale(1);
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+
+        .loader::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            border: 1px solid #005055;
+            border-radius: 50%;
+            animation: fadeInOut 1s infinite;
+            animation-delay: 1s;
+            z-index: -1;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                width: 50%;
+                height: 50%;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                width: 240%;
+                height: 240%;
+            }
+        }
+    </style>
+
+    <!-- TODO Скрипт для лодера -->
+    <script>
+        function hideLoader() {
+            const loader = document.getElementById('loader');
+            loader.remove();
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('DOMContentLoaded', hideLoader);
+    </script>
 </head>
-<body>
-  <app-root></app-root>
+
+<body style="overflow: hidden;">
+
+    <div id="loader">
+        <div class="loader">
+            <img class="logo" src="./favicon.ico" alt="">
+        </div>
+    </div>
+
+    <app-root></app-root>
 </body>
+
 </html>

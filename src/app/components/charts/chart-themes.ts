@@ -7,6 +7,7 @@ import { EChartsOption, TooltipComponentOption } from 'echarts';
 export function getTooltipSettings(): TooltipComponentOption {
   return {
     trigger: 'axis',
+    className: 'small:!p-6 small:text-[16px] text-[10px] max-small:!rounded-md',
     axisPointer: {
       animation: true,
       label: {
@@ -21,7 +22,6 @@ export function getTooltipSettings(): TooltipComponentOption {
       },
     },
     confine: true,
-    padding: 24,
     backgroundColor: 'rgba(39, 40, 46, 0.60)',
     borderColor: '#1BCD54',
     position: (point: any, params: any, dom: any, rect: any, size: any) => {
@@ -29,11 +29,15 @@ export function getTooltipSettings(): TooltipComponentOption {
     },
     textStyle: {
       color: '#FFF',
-      fontSize: 16,
+      fontSize: 'inherit',
     },
     transitionDuration: 0.2,
-    extraCssText:
-      'box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.30); backdrop-filter: blur(8px); border-radius: 16px 16px 16px 0',
+    extraCssText: `
+        box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.30); 
+        backdrop-filter: blur(8px); 
+        border-radius: 16px 16px 16px 0; 
+        z-index: 1;
+      `,
   };
 }
 
@@ -75,7 +79,7 @@ export function getSolidChartOptions(color: string, data: any): EChartsOption {
     tooltip: getTooltipSettings(),
     xAxis: {
       type: 'time',
-      min: new Date('2018-01-01'),
+      min: new Date('2014-01-01'),
       max: new Date('2023-01-01'),
       axisLabel: {
         hideOverlap: true,
@@ -168,7 +172,7 @@ export function getDynamicChartOptions(data: any): EChartsOption {
     tooltip: getTooltipSettings(),
     xAxis: {
       type: 'time',
-      min: new Date('2018-01-01'),
+      min: new Date('2014-01-01'),
       max: new Date('2023-01-01'),
       axisLabel: {
         hideOverlap: true,
@@ -258,7 +262,7 @@ export function getDoubleChartOptions(
     tooltip: getTooltipSettings(),
     xAxis: {
       type: 'time',
-      min: new Date('2018-01-01'),
+      min: new Date('2014-01-01'),
       max: new Date('2023-01-01'),
       axisLabel: {
         hideOverlap: true,

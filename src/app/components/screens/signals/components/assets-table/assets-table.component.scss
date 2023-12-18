@@ -11,7 +11,7 @@
   }
 
   &__row {
-    @apply relative flex w-full px-8 py-4 max-phone2:p-4 text-body-1 max-small:flex-col pr-12 max-phone2:pr-12;
+    @apply relative flex w-full px-8 py-4 max-phone2:px-4 text-body-1 max-small:flex-col small:pr-12 max-small:pt-12;
 
     &:not(:last-child):not(:first-child) {
       @apply border-b-[1px] border-gray4;
@@ -38,7 +38,7 @@
     }
 
     &-name {
-      @apply small:w-[30%];
+      @apply small:w-[30%] max-small:pl-14;
 
       &:before {
         content: "Актив: ";
@@ -48,16 +48,17 @@
     &-rsi {
       @apply small:w-[21%] laptop:overflow-visible text-center laptop:px-10;
 
-      &:first-child:before {
+      &:nth-child(3)::before {
         content: "RSI для юр. лиц: ";
       }
-      &:last-child:before {
+
+      &:nth-child(4)::before {
         content: "RSI для физ. лиц: ";
       }
     }
 
     &-favorite {
-      @apply absolute laptop:right-8 right-4 max-laptop:top-4;
+      @apply absolute laptop:right-8 phone2:right-7 right-4 max-laptop:top-4;
     }
 
     &:not(:last-child) {
@@ -66,7 +67,6 @@
   }
 
   &__more {
-    all: unset;
     transition: background 0.2s ease;
     @apply w-full px-8 py-4 cursor-pointer text-center text-button;
 

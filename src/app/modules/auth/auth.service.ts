@@ -1,6 +1,6 @@
-import {Injectable} from "@angular/core";
-import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
-import {NotifierService} from "angular-notifier";
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 export enum EAuthPopUpState {
   CLOSED = 'closed',
@@ -13,17 +13,23 @@ export enum EAuthPopUpState {
 
 export type TAuthScreenParams = { auth: string };
 
-export type TResetPasswordContinueParams = TAuthScreenParams & { "reset-id"?: string };
+export type TResetPasswordContinueParams = TAuthScreenParams & {
+  'reset-id'?: string;
+};
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class AuthService {
   private authPopupState = EAuthPopUpState.CLOSED;
 
   public isOneOfAuthFormIsInvalid: boolean = false;
 
-  constructor(private readonly _router: Router, private readonly _activatedRoute: ActivatedRoute, private readonly _notifierService: NotifierService) {}
+  constructor(
+    private readonly _router: Router,
+    private readonly _activatedRoute: ActivatedRoute,
+    private readonly _notifierService: NotifierService
+  ) {}
 
   public get authPopUpState() {
     return this.authPopupState;
@@ -37,25 +43,28 @@ export class AuthService {
       _state = null;
     }
 
-    this._router.navigate(
-      [],
-      {
-        relativeTo: this._activatedRoute,
-        queryParams: {
-          auth: _state
-        },
-        queryParamsHandling: 'merge', // remove to replace all query params by provided
-      }
-    );
+    this._router.navigate([], {
+      relativeTo: this._activatedRoute,
+      queryParams: {
+        auth: _state,
+      },
+      queryParamsHandling: 'merge', // remove to replace all query params by provided
+    });
     this.authPopupState = state;
   }
 
-  public checkResetPasswordContinuePage(params: TResetPasswordContinueParams): boolean {
+  public checkResetPasswordContinuePage(
+    params: TResetPasswordContinueParams
+  ): boolean {
     if (!params['reset-id'] || !params['reset-id'].length) {
-      const notificationId = "RESET_PASSWORD_NOTIFICATION";
+      const notificationId = 'RESET_PASSWORD_NOTIFICATION';
 
       this._notifierService.hide(notificationId);
-      this._notifierService.notify("error", "Некорректная ссылка для восстановления пароля.", notificationId);
+      this._notifierService.notify(
+        'error',
+        'Некорректная ссылка для восстановления пароля.',
+        notificationId
+      );
       this.setAuthPopUpState(EAuthPopUpState.CLOSED);
 
       return false;
@@ -78,8 +87,9 @@ export class AuthService {
         return EAuthPopUpState.RESET_PASSWORD_START;
       }
 
-      case EAuthPopUpState.HELLO: {
-      }
+      case EAuthPopUpState.HELLO:
+        {
+        }
         return EAuthPopUpState.HELLO;
 
       case EAuthPopUpState.RESET_PASSWORD_CONTINUE: {
