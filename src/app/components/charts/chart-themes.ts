@@ -79,8 +79,7 @@ export function getSolidChartOptions(color: string, data: any): EChartsOption {
     tooltip: getTooltipSettings(),
     xAxis: {
       type: 'time',
-      min: new Date('2014-01-01'),
-      max: new Date('2023-01-01'),
+      boundaryGap: ['7%', '1%'],
       axisLabel: {
         hideOverlap: true,
         color: 'white',
@@ -103,7 +102,6 @@ export function getSolidChartOptions(color: string, data: any): EChartsOption {
     yAxis: {
       type: 'value',
       boundaryGap: [0, '10%'],
-      offset: -10,
       splitLine: {
         show: true,
         lineStyle: {
@@ -112,41 +110,41 @@ export function getSolidChartOptions(color: string, data: any): EChartsOption {
         },
       },
       axisLabel: {
+        margin: 35,
+        inside: true,
         color: 'white',
         verticalAlign: 'bottom',
         align: 'left',
       },
     },
-    series: [
-      {
-        name: 'USD/RUB',
-        type: 'line',
-        showSymbol: false,
-        areaStyle: {
-          color: {
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-              { offset: 0, color: color },
-              { offset: 1, color: 'transparent' },
-            ],
-          },
+    series: {
+      name: 'USD/RUB',
+      type: 'line',
+      showSymbol: false,
+      areaStyle: {
+        color: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            { offset: 0, color: color },
+            { offset: 1, color: 'transparent' },
+          ],
         },
-        symbolSize: 8,
-        emphasis: {
-          itemStyle: {
-            borderColor: color,
-            borderWidth: 13,
-            opacity: 0.3,
-            color: color,
-          },
-        },
-        data,
       },
-    ],
+      symbolSize: 8,
+      emphasis: {
+        itemStyle: {
+          borderColor: color,
+          borderWidth: 13,
+          opacity: 0.3,
+          color: color,
+        },
+      },
+      data,
+    },
   };
 }
 
@@ -169,7 +167,9 @@ export function getDynamicChartOptions(data: any): EChartsOption {
     title: {
       show: false,
     },
-    tooltip: getTooltipSettings(),
+    tooltip: {
+      show: false,
+    },
     xAxis: {
       type: 'time',
       min: new Date('2014-01-01'),
@@ -214,6 +214,7 @@ export function getDynamicChartOptions(data: any): EChartsOption {
       {
         lineStyle: {
           color: 'blue',
+          opacity: 0,
         },
         name: 'USD/RUB',
         type: 'line',
@@ -262,8 +263,7 @@ export function getDoubleChartOptions(
     tooltip: getTooltipSettings(),
     xAxis: {
       type: 'time',
-      min: new Date('2014-01-01'),
-      max: new Date('2023-01-01'),
+      boundaryGap: ['7%', '1%'],
       axisLabel: {
         hideOverlap: true,
         color: 'white',
@@ -286,7 +286,6 @@ export function getDoubleChartOptions(
     yAxis: {
       type: 'value',
       boundaryGap: [0, '10%'],
-      offset: -10,
       splitLine: {
         show: true,
         lineStyle: {
@@ -295,6 +294,8 @@ export function getDoubleChartOptions(
         },
       },
       axisLabel: {
+        margin: 35,
+        inside: true,
         color: 'white',
         verticalAlign: 'bottom',
         align: 'left',
@@ -329,7 +330,7 @@ export function getDoubleChartOptions(
             show: true,
             position: 'insideStart',
             color: 'black',
-            offset: [-5, 0, 0, 0],
+            offset: [30, 0, 0, 0],
             backgroundColor: '#70FF00',
             padding: [4, 12, 4, 12],
             borderRadius: [0, 8, 8, 0],
@@ -370,7 +371,7 @@ export function getDoubleChartOptions(
             show: true,
             position: 'insideStart',
             color: 'black',
-            offset: [-5, 0, 0, 0],
+            offset: [30, 0, 0, 0],
             backgroundColor: '#FF5C00',
             padding: [4, 12, 4, 12],
             borderRadius: [0, 8, 8, 0],

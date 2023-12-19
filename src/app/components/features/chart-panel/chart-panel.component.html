@@ -5,7 +5,7 @@
 </div>
 <div class="analytics" [ngClass]="{
     'analytics--fulscreen': fullscreen
-}">
+}" [@fullscreenAnimation]="fullscreen">
     <div class="mb-6 pb-6 flex justify-between max-small:flex-col border-b-[1px] border-gray3">
         <app-tabs-select-small [options]="chartTypeOptions" [current]="currentChartType"
             (valueChanged)="changeChartType($event)" />
@@ -36,59 +36,67 @@
             <input type="checkbox" [(ngModel)]="fullscreen" id="FULLSCREEN" hidden />
             <span class="analytics__fullscreen-label">{{ fullscreen ? "Свернуть" : "На весь экран" }}</span>
             <span class="analytics__fullscreen-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg *ngIf="!fullscreen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none">
                     <path d="M21 12V3H12M12 21H3V12" stroke="white" stroke-width="2" stroke-linecap="round" />
                     <rect x="9" y="9" width="6" height="6" rx="1" fill="white" />
+                </svg>
+                <svg *ngIf="fullscreen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
                 </svg>
             </span>
         </label>
     </div>
-    <div class="mb-6">
+    <div class="mb-8">
         <app-basic-update [currentType]="currentChartType.value" />
     </div>
-    <div class="pb-8 border-b-[1px] border-gray3">
+    <div class="analytics__periods">
         <div class="periods flex-grow">
-            <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+            <div class="periods__shell">
                 <div class="periods__item">
                     <span class="periods__label">7 дней</span>
                     <span class="periods__value">(-2,52%)</span>
                 </div>
             </div>
-            <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+            <div class="periods__shell">
                 <div class="periods__item">
                     <span class="periods__label">1 месяц</span>
                     <span class="periods__value periods__value--success">(+3,09%)</span>
                 </div>
             </div>
-            <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+            <div class="periods__shell">
                 <div class="periods__item">
                     <span class="periods__label">6 месяцев</span>
-                    <span class="periods__value periods__value--success">(+14,93%)</span>
+                    <span class="periods__value">(-14,93%)</span>
                 </div>
             </div>
-            <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+            <div class="periods__shell">
                 <div class="periods__item">
                     <span class="periods__label">1 год</span>
                     <span class="periods__value periods__value--success">(+32,69%)</span>
                 </div>
             </div>
-            <div class="p-2 tablet:w-[20%] phone2:w-1/2 w-full">
+            <div class="periods__shell">
                 <div class=" periods__item periods__item--selected">
                     <span class="periods__label">За всё время</span>
                     <span class="periods__value periods__value--success">(+475,69%)</span>
                 </div>
             </div>
         </div>
+        <div class="desktop:ml-6 desktop:pl-6 desktop:border-l-[1px] max-desktop:mt-4 border-gray3 flex">
+            <div class="flex items-center max-desktop:w-full">
+                <app-date-input class="desktop:w-[160px] max-desktop:flex-grow" label="От ДД.ММ.ГГГГ" />
+                <span class="mx-1 text-[16px]">-</span>
+                <app-date-input class="desktop:w-[160px] max-desktop:flex-grow" label="До ДД.ММ.ГГГГ" />
+            </div>
+            <!-- <div class="h-[78px] py-3 px-4 ml-4 bg-black1 rounded-xl border-[1px] border-white overflow-hidden flex flex-col">
+                <span class="mb-2 text-caption whitespace-nowrap">13.08.2018 - 24.06.2021</span>
+                <span class="text-numeric-4 text-greenPrimary whitespace-nowrap">(+132,57%)</span>
+            </div> -->
+        </div>
     </div>
-    <!-- <div class="mt-4 flex items-center">
-        <div class="flex-grow">
-            <app-date-input label="От ДД.ММ.ГГГГ" />
-        </div>
-        <span class="mx-1">-</span>
-        <div class="flex-grow">
-            <app-date-input label="До ДД.ММ.ГГГГ" />
-        </div>
-    </div> -->
     <p class="analytics__description">
         Индикатор технического анализа, показывающий соотношение положительных и отрицательных<br>
         изменений цены финансового инструмента. Метрика которая позволяет улавливать когда Инсайдеры<br>

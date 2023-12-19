@@ -165,12 +165,9 @@
 
 <app-popup [isOpened]="_subscriptionService.isTariffPopupOpened"
     (closeModalEvent)="_subscriptionService.closeTariffPopup()">
-    <div class="light-ellipse light-ellipse--left">
-        <div
-            class="mb-6 pt-6 pb-8 border-[1px] border-gray2 rounded-bl-none rounded-3xl spliced-block-gradient--double">
-            <h2 class="text-center leading-none">Тарифные планы</h2>
-            <p class="mt-3 text-body-2 text-center">Выберите свой путь к успеху с нашими тарифными планами!</p>
-        </div>
+    <div class="mb-6 pt-6 pb-8 border-[1px] border-gray2 rounded-bl-none rounded-3xl spliced-block-gradient--double">
+        <h2 class="text-center leading-none">Тарифные планы</h2>
+        <p class="mt-3 text-body-2 text-center">Выберите свой путь к успеху с нашими тарифными планами!</p>
     </div>
     <app-tariff-list />
     <div class="light-ellipse"></div>

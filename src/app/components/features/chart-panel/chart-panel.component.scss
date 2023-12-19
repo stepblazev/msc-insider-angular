@@ -1,9 +1,9 @@
 .analytics {
   @apply phone2:p-6 p-3 phone2:pb-10 pb-6 rounded-lg border-[1px] border-gray3 bg-gray1;
-  transition: all 0.2s ease;
 
   &--fulscreen {
-    @apply fixed top-0 left-0 w-[100vw] h-[100vh] overflow-y-auto z-[100] rounded-none;
+    // @apply fixed top-0 left-0 w-[100vw] h-[100vh] overflow-y-auto z-[100] rounded-none;
+    @apply overflow-y-auto;
   }
 
   &__description {
@@ -30,6 +30,10 @@
         @apply w-full h-full;
       }
     }
+  }
+
+  &__periods {
+    @apply pb-8 border-b-[1px] border-gray3 desktop:flex;
   }
 }
 
@@ -64,6 +68,10 @@
 .periods {
   @apply flex flex-wrap m-[-0.5rem];
 
+  &__shell {
+    @apply p-2 tablet:w-[20%] phone2:w-1/2 w-full flex-grow;
+  }
+
   &__item {
     @apply phone2:py-4 py-2 phone2:px-[26px] px-3 rounded-xl border-[1px] border-gray3 flex phone2:flex-col phone2:justify-center justify-between items-center cursor-pointer;
     transition: all 0.2s ease;
@@ -76,7 +84,7 @@
   }
 
   &__label {
-    @apply phone2:mb-2 max-phone2:mr-2 text-body-2 whitespace-nowrap;
+    @apply phone2:mb-2 max-phone2:mr-2 text-body-2 max-small:text-body-3 whitespace-nowrap;
   }
 
   &__value {

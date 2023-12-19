@@ -1,5 +1,5 @@
 .chart-container {
-  @apply small:h-[380px] tablet:h-[537px] h-[220px];
+  @apply small:h-[380px] tablet:h-[537px] h-[220px] overflow-visible;
   transition: all 0.2s ease;
 
   .demo-chart {

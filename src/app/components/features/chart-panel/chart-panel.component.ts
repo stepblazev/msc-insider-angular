@@ -12,6 +12,9 @@ import { TabsSelectSmallComponent } from '../../ui/tabs-select-small/tabs-select
 import { FormsModule } from '@angular/forms';
 import { BasicUpdateComponent } from '../../charts/basic-update/basic-update.component';
 import { Router, RouterLink } from '@angular/router';
+import { DateInputComponent } from '../../ui/controls/date-input/date-input.component';
+import { trigger } from '@angular/animations';
+import { fullscreenAnimation } from './fullscreen-animation';
 
 const assetsTypeOptions: ITabSelectOption<string>[] = [
   {
@@ -83,7 +86,9 @@ const payerType: IOption<string>[] = [
     FormsModule,
     BasicUpdateComponent,
     RouterLink,
+    DateInputComponent,
   ],
+  animations: [trigger('fullscreenAnimation', fullscreenAnimation)],
 })
 export class ChartPanelComponent {
   public fullscreen: boolean = false;
