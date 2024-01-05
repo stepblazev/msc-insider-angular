@@ -42,7 +42,8 @@
                     'mb-1 mr-1': isCurrent() && !isFree(),
                 }">{{tariff.terms}}</p>
             </div>
-            <button class="mt-3 w-full" *ngIf="!(_userService.isAuthorized && isCurrent() && isFree())"
+            <button class="mt-3 w-full whitespace-nowrap"
+                *ngIf="!(_userService.isAuthorized && isCurrent() && isFree())"
                 [ngClass]="this.tariffTheme.classes.button" (click)="updateTariff()">
                 {{ getButtonCaption() }}
             </button>

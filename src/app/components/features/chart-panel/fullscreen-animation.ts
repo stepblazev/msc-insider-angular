@@ -8,7 +8,7 @@ import {
 
 export const fullscreenAnimation: AnimationMetadata[] = [
   state(
-    'false',
+    'small',
     style({
       opacity: 1,
       position: 'static',
@@ -17,7 +17,7 @@ export const fullscreenAnimation: AnimationMetadata[] = [
     })
   ),
   state(
-    'true',
+    'wide',
     style({
       opacity: 1,
       position: 'fixed',
@@ -29,7 +29,7 @@ export const fullscreenAnimation: AnimationMetadata[] = [
       borderRadius: 0,
     })
   ),
-  transition('false => true', [
+  transition('small => wide', [
     animate('0.3s ease', style({ opacity: 0, transform: 'scale(0.8)' })),
     style({
       position: 'fixed',
@@ -42,7 +42,7 @@ export const fullscreenAnimation: AnimationMetadata[] = [
     }),
     animate('0.3s 100ms ease', style({ opacity: 1, transform: 'scale(1)' })),
   ]),
-  transition('true => false', [
+  transition('wide => small', [
     animate('0.3s ease', style({ opacity: 0, transform: 'scale(0.8)' })),
     style({ position: 'static', width: '100%', heght: 'auto' }),
     animate('0.3s 100ms ease', style({ opacity: 1, transform: 'scale(1)' })),

@@ -91,7 +91,7 @@ const payerType: IOption<string>[] = [
   animations: [trigger('fullscreenAnimation', fullscreenAnimation)],
 })
 export class ChartPanelComponent {
-  public fullscreen: boolean = false;
+  public fullscreenState: 'wide' | 'small' = 'small';
 
   public typeOptions: ITabSelectOption<string>[] = assetsTypeOptions;
   public currentType: ITabSelectOption<string> = assetsTypeOptions[0];
@@ -104,15 +104,31 @@ export class ChartPanelComponent {
 
   constructor(public router: Router) {}
 
-  changePayerType(type: IOption<string>) {
+  toggleFullscreen(): void {
+    setTimeout(() => {
+      if (this.isFullscreen()) {
+        this.fullscreenState = 'small';
+        document.body.style.overflow = '';
+      } else {
+        this.fullscreenState = 'wide';
+        document.body.style.overflow = 'hidden';
+      }
+    }, 0);
+  }
+
+  isFullscreen(): boolean {
+    return this.fullscreenState == 'wide';
+  }
+
+  changePayerType(type: IOption<string>): void {
     this.currentPayerType = type;
   }
 
-  changeChartType(type: ITabSelectOption<string>) {
+  changeChartType(type: ITabSelectOption<string>): void {
     this.currentChartType = type;
   }
 
-  changeType(type: ITabSelectOption<string>) {
+  changeType(type: ITabSelectOption<string>): void {
     this.currentType = type;
   }
 }

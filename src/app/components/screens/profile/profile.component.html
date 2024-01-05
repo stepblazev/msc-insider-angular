@@ -1,7 +1,9 @@
-<div class="light-ellipse light-ellipse--left after:bottom-0 after:top-[initial]"></div>
-
 <section class="container !pb-28">
     <h1 class="mb-8">Профиль</h1>
+
+    <div class="light-ellipse">
+        <div class="light-ellipse__circle bottom-0 left-0"></div>
+    </div>
 
     <div class="flex phone:flex-col laptop:flex-row justify-between items-center pb-8 mb-8 border-b border-b-gray5">
         <a [ngClass]="{'active spliced-block-gradient': isActive('/profile')}" routerLink="/profile"

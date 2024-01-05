@@ -43,7 +43,7 @@ export class MainMenuComponent {
 
   public isActive(path: string): boolean {
     const options: IsActiveMatchOptions = {
-      paths: 'exact',
+      paths: 'subset',
       queryParams: 'ignored',
       fragment: 'ignored',
       matrixParams: 'ignored',

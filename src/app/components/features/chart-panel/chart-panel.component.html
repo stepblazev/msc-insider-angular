@@ -4,8 +4,8 @@
         routerLink="/chart">Все активы</button>
 </div>
 <div class="analytics" [ngClass]="{
-    'analytics--fulscreen': fullscreen
-}" [@fullscreenAnimation]="fullscreen">
+    'analytics--fulscreen': isFullscreen()
+}" [@fullscreenAnimation]="fullscreenState">
     <div class="mb-6 pb-6 flex justify-between max-small:flex-col border-b-[1px] border-gray3">
         <app-tabs-select-small [options]="chartTypeOptions" [current]="currentChartType"
             (valueChanged)="changeChartType($event)" />
@@ -32,16 +32,15 @@
                 </span>
             </div>
         </div>
-        <label for="FULLSCREEN" class="analytics__fullscreen">
-            <input type="checkbox" [(ngModel)]="fullscreen" id="FULLSCREEN" hidden />
-            <span class="analytics__fullscreen-label">{{ fullscreen ? "Свернуть" : "На весь экран" }}</span>
+        <label (click)="toggleFullscreen()" class="analytics__fullscreen">
+            <span class="analytics__fullscreen-label">{{ isFullscreen() ? "Свернуть" : "На весь экран" }}</span>
             <span class="analytics__fullscreen-icon">
-                <svg *ngIf="!fullscreen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none">
+                <svg *ngIf="!isFullscreen()" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none">
                     <path d="M21 12V3H12M12 21H3V12" stroke="white" stroke-width="2" stroke-linecap="round" />
                     <rect x="9" y="9" width="6" height="6" rx="1" fill="white" />
                 </svg>
-                <svg *ngIf="fullscreen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                <svg *ngIf="isFullscreen()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" data-slot="icon">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />

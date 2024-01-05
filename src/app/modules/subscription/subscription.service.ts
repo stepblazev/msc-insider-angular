@@ -5,6 +5,8 @@ import { ISubscription } from './models/subscription';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { LOCAL_STORAGE_KEYS } from 'src/constants';
 import { NotifierService } from 'angular-notifier';
+import { UserService } from '../user/user.service';
+import { UserRole } from '../user/value-objects/user-role';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +21,8 @@ export class SubscriptionService {
   constructor(
     private readonly _subscriptionRepository: SubscriptionRepository,
     private readonly _localStorageService: LocalStorageService,
-    private readonly _notifierService: NotifierService
+    private readonly _notifierService: NotifierService,
+    private readonly _userService: UserService
   ) {}
 
   public openTariffPopup(): void {
@@ -93,6 +96,7 @@ export class SubscriptionService {
             LOCAL_STORAGE_KEYS.SUBSCRIPTION,
             this.subscription
           );
+          this._userService.updateAuthorize();
         } else if (response.error) {
           console.error(response.error);
           this._notifierService.notify(

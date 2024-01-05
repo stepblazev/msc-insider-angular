@@ -5,6 +5,7 @@ import {
 } from '../../../../modules/auth/auth.service';
 import { UserService } from '../../../../modules/user/user.service';
 import { Router } from '@angular/router';
+import { SubscriptionService } from 'src/app/modules/subscription/subscription.service';
 
 @Component({
   selector: 'app-user-bar',
@@ -17,7 +18,8 @@ export class UserBarComponent {
   constructor(
     private readonly _router: Router,
     public readonly authService: AuthService,
-    public readonly userService: UserService
+    public readonly userService: UserService,
+    private readonly _subscriptionService: SubscriptionService
   ) {}
 
   public isActiveRoute(): boolean {
@@ -42,6 +44,7 @@ export class UserBarComponent {
     this.userService.logout();
     this.authService.setAuthPopUpState(EAuthPopUpState.CLOSED);
     this._router.navigate([`/`]);
+    this._subscriptionService.subscription = null;
   }
 
   public handleAuthPopUpToggle() {

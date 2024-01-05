@@ -7,5 +7,7 @@ import { AssetsFilterService } from './services/assets-filter.service';
   styleUrls: ['./signals.component.scss'],
 })
 export class SignalsComponent {
-  constructor(public _assetsFilterService: AssetsFilterService) {}
+  constructor(public _assetsFilterService: AssetsFilterService) {
+    window.scrollTo({ top: 0 });
+  }
 }

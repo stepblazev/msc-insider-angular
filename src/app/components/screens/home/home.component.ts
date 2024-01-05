@@ -5,4 +5,8 @@ import { Title } from '@angular/platform-browser';
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  constructor() {
+    window.scrollTo({ top: 0 });
+  }
+}

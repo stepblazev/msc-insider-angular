@@ -11,7 +11,9 @@ export class ProfileComponent {
   constructor(
     private readonly _router: Router,
     private readonly _userService: UserService
-  ) {}
+  ) {
+    window.scrollTo({ top: 0 });
+  }
 
   public get activeTariffName(): string {
     return this._userService.currentUser?.role.getValue().name as string;

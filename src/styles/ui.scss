@@ -173,30 +173,26 @@ button:disabled {
 
 .light-ellipse {
   @apply max-small:hidden;
-  display: none;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
   height: 100%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
 
   .light-ellipse__circle {
     // display: none; // todo
-    content: "";
 
     position: absolute;
-    right: -10%;
-    top: -20%;
 
     width: 556px;
     height: 556px;
     border-radius: 556px;
 
     background: var(--colors, #005055);
-    opacity: 0.4;
     filter: blur(180px);
-
-    z-index: -1;
+    opacity: 0.4;
   }
 }
 

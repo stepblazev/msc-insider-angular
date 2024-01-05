@@ -14,7 +14,7 @@
   }
 
   &__link {
-    @apply w-full p-6 max-small:p-4 pr-8 flex justify-between border-[1px] border-gray3 rounded-xl max-small:items-center;
+    @apply w-full p-6 max-small:p-4 pr-8 flex justify-between border-[1px] border-gray3 rounded-xl max-small:items-center bg-black1;
     transition: border 0.2s ease;
 
     .svg-fill,

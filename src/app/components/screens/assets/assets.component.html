@@ -1,7 +1,14 @@
 <section class="container">
+    <div class="light-ellipse">
+        <div class="light-ellipse__circle top-0 left-0"></div>
+    </div>
     <h1>Активы</h1>
     <p class="my-8 text-subheader-1">Выберите категорию</p>
-    <div class="assets-links">
+    <div class="assets-links relative">
+        <div class="light-ellipse">
+            <div class="light-ellipse__circle bottom-[-100%] right-0"></div>
+        </div>
+
         <div class="assets-links__item">
             <a [ngClass]="{'active spliced-block-gradient': isActive('/assets')}" routerLink="/assets"
                 class="assets-links__link">
@@ -130,6 +137,10 @@
         <p class="mt-6 text-subheader-2">Выберите свой путь к успеху с нашими тарифными планами!</p>
         <div class="mt-8 mb-12">
             <app-tariff-list />
+        </div>
+
+        <div class="light-ellipse">
+            <div class="light-ellipse__circle bottom-0 left-0"></div>
         </div>
     </section>
 </section>

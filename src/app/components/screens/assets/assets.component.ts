@@ -7,7 +7,9 @@ import { IsActiveMatchOptions, Router } from '@angular/router';
   styleUrls: ['./assets.component.scss'],
 })
 export class AssetsComponent {
-  constructor(private readonly _router: Router) {}
+  constructor(private readonly _router: Router) {
+    window.scrollTo({ top: 0 });
+  }
 
   public isActive(path: string): boolean {
     const options: IsActiveMatchOptions = {
