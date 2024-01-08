@@ -2,7 +2,7 @@
   @apply m-[-0.75rem] max-small:m-[-0.5rem] flex flex-wrap pb-8;
 
   &__item {
-    @apply laptop:w-1/3 small:w-1/2 w-full p-3 max-small:p-2;
+    @apply laptop:w-1/3 small:w-1/2 w-full p-3 max-small:p-2 cursor-pointer select-none;
   }
 
   &__title {

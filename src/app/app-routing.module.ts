@@ -10,12 +10,6 @@ import { SignalsComponent } from './components/screens/signals/signals.component
 import { AssetsComponent } from './components/screens/assets/assets.component';
 import { ProfileHomeComponent } from './components/screens/profile/profile-home/profile-home.component';
 
-import { AssetsHomeComponent } from './components/screens/assets/assets-home/assets-home.component';
-import { AssetsStocksComponent } from './components/screens/assets/assets-stocks/assets-stocks.component';
-import { AssetsIndexesComponent } from './components/screens/assets/assets-indexes/assets-indexes.component';
-import { AssetsProductsComponent } from './components/screens/assets/assets-products/assets-products.component';
-import { AssetsMoreComponent } from './components/screens/assets/assets-more/assets-more.component';
-
 import { AuthGuard } from './modules/auth/guards/auth.guard';
 import { ChartComponent } from './components/screens/chart/chart.component';
 
@@ -44,33 +38,6 @@ const routes: Routes = [
     path: 'assets',
     title: 'MSCInsider - Активы',
     component: AssetsComponent,
-    children: [
-      {
-        path: '',
-        component: AssetsHomeComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'stocks',
-        component: AssetsStocksComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'indexes',
-        component: AssetsIndexesComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'products',
-        component: AssetsProductsComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'more',
-        component: AssetsMoreComponent,
-        canActivate: [AuthGuard],
-      },
-    ],
   },
 
   {

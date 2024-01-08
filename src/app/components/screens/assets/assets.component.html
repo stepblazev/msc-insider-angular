@@ -9,9 +9,10 @@
             <div class="light-ellipse__circle bottom-[-100%] right-0"></div>
         </div>
 
+        <!-- Валютные пары -->
         <div class="assets-links__item">
-            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets')}" routerLink="/assets"
-                class="assets-links__link">
+            <div [ngClass]="{'active spliced-block-gradient': isActive(EAssetTypes.CURRENCY)}"
+                (click)="setTypeHandler(EAssetTypes.CURRENCY)" class="assets-links__link">
                 <h4 class="assets-links__title">
                     Валютные пары
                 </h4>
@@ -39,12 +40,13 @@
                         </defs>
                     </svg>
                 </span>
-            </a>
+            </div>
         </div>
 
+        <!-- Акции -->
         <div class="assets-links__item">
-            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets/stocks')}" routerLink="stocks"
-                class="assets-links__link">
+            <div [ngClass]="{'active spliced-block-gradient': isActive(EAssetTypes.STOCK)}"
+                (click)="setTypeHandler(EAssetTypes.STOCK)" class="assets-links__link">
                 <h4 class="assets-links__title">
                     Акции
                 </h4>
@@ -58,12 +60,13 @@
                         <rect class="svg-fill" x="20" y="57.5" width="43" height="4" rx="2" fill="#3B3B41" />
                     </svg>
                 </span>
-            </a>
+            </div>
         </div>
 
+        <!-- Индексы -->
         <div class="assets-links__item">
-            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets/indexes')}" routerLink="indexes"
-                class="assets-links__link">
+            <a [ngClass]="{'active spliced-block-gradient': isActive(EAssetTypes.INDEX)}"
+                (click)="setTypeHandler(EAssetTypes.INDEX)" class="assets-links__link">
                 <h4 class="assets-links__title">
                     Индексы
                 </h4>
@@ -86,9 +89,10 @@
             </a>
         </div>
 
+        <!-- Товары -->
         <div class="assets-links__item">
-            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets/products')}" routerLink="products"
-                class="assets-links__link">
+            <a [ngClass]="{'active spliced-block-gradient': isActive(EAssetTypes.PRODUCT)}"
+                (click)="setTypeHandler(EAssetTypes.PRODUCT)" class="assets-links__link">
                 <h4 class="assets-links__title">
                     Товары
                 </h4>
@@ -110,9 +114,10 @@
             </a>
         </div>
 
+        <!-- Другое -->
         <div class="assets-links__item">
-            <a [ngClass]="{'active spliced-block-gradient': isActive('/assets/more')}" routerLink="more"
-                class="assets-links__link">
+            <a [ngClass]="{'active spliced-block-gradient': isActive(EAssetTypes.OTHER)}"
+                (click)="setTypeHandler(EAssetTypes.OTHER)" class="assets-links__link">
                 <h4 class="assets-links__title">
                     Другое
                 </h4>
@@ -129,16 +134,15 @@
         </div>
 
     </div>
-    <section>
-        <router-outlet />
-    </section>
+
+    <app-assets-list />
+
     <section class="mt-[88px] tariffs">
         <h3>Тарифные планы</h3>
         <p class="mt-6 text-subheader-2">Выберите свой путь к успеху с нашими тарифными планами!</p>
         <div class="mt-8 mb-12">
             <app-tariff-list />
         </div>
-
         <div class="light-ellipse">
             <div class="light-ellipse__circle bottom-0 left-0"></div>
         </div>

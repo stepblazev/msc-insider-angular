@@ -1,5 +1,26 @@
+.assets-loader {
+  @apply absolute w-full h-full top-0 left-0 z-10 transition-all;
+
+  &--hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__container {
+    @apply absolute top-6 left-1/2 translate-x-[-50%] flex flex-col items-center;
+  }
+
+  &__text {
+    @apply mb-4 text-numeric-4;
+  }
+}
+
 .assets {
-  @apply border-t-[1px] border-gray5;
+  @apply border-t-[1px] border-gray5 transition-all;
+
+  &--hidden {
+    opacity: 0;
+  }
 
   &__section {
     @apply py-8 desktop:flex border-b-[1px] border-gray5;

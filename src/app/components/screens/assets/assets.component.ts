@@ -1,24 +1,30 @@
-import { Component } from '@angular/core';
-import { IsActiveMatchOptions, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { AssetsService } from 'src/app/modules/assets/assets.service';
+import { EAssetTypes } from 'src/app/modules/assets/models/asset-types';
 
 @Component({
   selector: 'app-assets',
   templateUrl: './assets.component.html',
   styleUrls: ['./assets.component.scss'],
 })
-export class AssetsComponent {
-  constructor(private readonly _router: Router) {
+export class AssetsComponent implements OnInit {
+  public EAssetTypes = EAssetTypes;
+
+  constructor(public readonly assetsService: AssetsService) {
     window.scrollTo({ top: 0 });
   }
 
-  public isActive(path: string): boolean {
-    const options: IsActiveMatchOptions = {
-      paths: 'exact',
-      queryParams: 'ignored',
-      fragment: 'ignored',
-      matrixParams: 'ignored',
-    };
+  public ngOnInit(): void {
+    this.setTypeHandler(EAssetTypes.CURRENCY);
+  }
 
-    return this._router.isActive(path, options);
+  public setTypeHandler(type: EAssetTypes): void {
+    if (type == this.assetsService.type) return;
+    this.assetsService.setType(type);
+    this.assetsService.fetchAssetsList();
+  }
+
+  public isActive(type: EAssetTypes): boolean {
+    return this.assetsService.type == type;
   }
 }

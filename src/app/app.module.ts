@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -22,6 +22,7 @@ import { UserService } from './modules/user/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubscriptionService } from './modules/subscription/subscription.service';
 import { ConfirmationPopupComponent } from './components/ui/confirmation-popup/confirmation-popup.component';
+import { HttpErrorService } from './services/http-error.service';
 
 function initializeApp(
   userService: UserService,
@@ -76,6 +77,10 @@ function initializeApp(
       useFactory: initializeApp,
       multi: true,
       deps: [UserService, SubscriptionService],
+    },
+    {
+      provide: ErrorHandler,
+      useClass: HttpErrorService,
     },
   ],
   bootstrap: [AppComponent],

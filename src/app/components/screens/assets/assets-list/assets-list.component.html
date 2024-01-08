@@ -1,0 +1,59 @@
+<section class="relative">
+
+    <div class="assets-loader" [ngClass]="{
+        'assets-loader--hidden': !assetsService.isLoading
+    }">
+        <div class="assets-loader__container">
+            <p class="assets-loader__text">Загрузка</p>
+            <app-loader-dots />
+        </div>
+    </div>
+
+    <div class="assets" [ngClass]="{
+        'assets--hidden': assetsService.isLoading
+    }">
+        <div class="assets__section assets__section--avalible">
+            <div class="assets__access">
+                <h4>Доступные вам</h4>
+            </div>
+            <div class="assets__list">
+                <a href="javascript:void(0)" *ngFor="let asset of assetsService.avalibleAssets" class="assets__item">
+                    <div class="flex flex-grow items-start">
+                        <span class="assets__item-title">{{ asset.name }}</span>
+                        <span class="assets__item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <rect width="24" height="24" rx="12" fill="#EC1C1C" />
+                                <path d="M12 17.5L17.1962 8.5H6.80385L12 17.5Z" fill="white" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="flex items-center small:relative">
+                        <span class="assets__item-value">{{ asset.price.value }}</span>
+                        <span class="assets__item-change">{{ asset.price.daily_changes_value }} ({{
+                            asset.price.daily_changes_perc }})</span>
+                        <div class="assets__item-favorite">
+                            <app-favorite-button [assetId]="0" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div *ngIf="assetsService.unavalibleAssets.length" class="assets__section assets__section--unavalible">
+            <div class="assets__access">
+                <h4>Недоступные</h4>
+                <button class="mt-4 min-w-[197px] button--green">Разблокировать</button>
+            </div>
+            <div class="assets__content">
+                <div class="assets__list">
+                    <div class="assets__item" *ngFor="let asset of assetsService.unavalibleAssets">
+                        <div class="flex items-center">
+                            <span class="assets__item-title">{{ asset.name }}</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="assets__more">Смотреть все</button>
+            </div>
+        </div>
+    </div>
+</section>
